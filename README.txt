@@ -1,1 +1,2 @@
 Pharmacy App
+beta version
