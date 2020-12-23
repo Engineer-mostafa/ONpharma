@@ -1,4 +1,4 @@
-CREATE DATABASE schema_v_1_0
+CREATE DATABASE Pharmacy_App_DB;
 
 /*-------------------------------------------------------Creating Tables---------------------------------------------------------------------*/
 /*This TABLE IS responsible for holding the common information among the system users*/
@@ -52,14 +52,14 @@ CREATE TABLE Pharmacist
 
 CREATE TABLE Patient
 (
-    PRIMARY KEY(patiant_ID),
+    PRIMARY KEY(Patient_ID),
 
-    patiant_ID int IDENTITY(1,1),
-    patient_acc_ID int UNIQUE,
+    Patient_ID int IDENTITY(1,1),
+    Patient_acc_ID int UNIQUE,
 
-    patient_smoking_status bit DEFAULT 0,
+    Patient_smoking_status bit DEFAULT 0,
 
-    FOREIGN KEY (patient_acc_ID) REFERENCES Account(acc_ID) ON DELETE CASCADE
+    FOREIGN KEY (Patient_acc_ID) REFERENCES Account(acc_ID) ON DELETE CASCADE
 );
 /*----------------------------------------------------------------*/
 /*------------------Related to the pharmacy----------------------*/
@@ -122,27 +122,27 @@ TODO
 */
 CREATE TABLE Prescription
 (
-    PRIMARY KEY (prescription_ID, patient_id),
+    PRIMARY KEY (Prescription_ID),
 
-    prescription_ID int identity(1,1),
+    Prescription_ID int identity(1,1),
     Prescription_diagnosis varchar(255) NOT NULL,
     Prescription_date date NOT NULL,
-    patient_id int NOT NULL,
-    doctor_ID int NOT NULL,
+    Patient_ID int,
+    Doctor_ID int NOT NULL,
 
-    FOREIGN KEY (patient_id) REFERENCES patient(patient_id) ON DELETE CASCADE
-    --FOREIGN KEY (doctor_ID) references doctor(doctor_ID) on DELETE 
+    FOREIGN KEY (Patient_ID) REFERENCES Patient(Patient_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Doctor_ID) references doctor(doctor_ID) 
 );
 CREATE TABLE prescription_Medicines
 (
-    PRIMARY KEY (prescription_ID, Item_Name),
+    PRIMARY KEY (Prescription_ID, Item_Name),
 
-    quantity int,
+    Quantity int,
     Item_Name varchar(255) NOT NULL,
-    prescription_ID int,
+    Prescription_ID int,
 
     FOREIGN KEY (Item_Name) REFERENCES Pharmaceutical_Item,
-    FOREIGN KEY (prescription_ID) REFERENCES Prescription
+    FOREIGN KEY (Prescription_ID) REFERENCES Prescription(Prescription_ID)
 );
 
 CREATE TABLE Analysis
@@ -161,7 +161,7 @@ CREATE TABLE Analysis
 
 CREATE TABLE Scan
 (
-    PRIMARY key(Scan_Name, Scan_Date, Patient_ID),
+    PRIMARY KEY(Scan_Name, Scan_Date, Patient_ID),
 
     Scan_Name varchar(255) NOT NULL,
     Scan_Date date,
@@ -174,7 +174,7 @@ CREATE TABLE Scan
 
 CREATE TABLE Chronic_Disease
 (
-    PRIMARY key(Disease_Name, Patient_ID),
+    PRIMARY KEY(Disease_Name, Patient_ID),
 
     Disease_Name varchar(255) NOT NULL,
     Disease_Date date,
