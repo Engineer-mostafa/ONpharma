@@ -1,5 +1,6 @@
 CREATE DATABASE Pharmacy_App_DB;
-
+go
+use Pharmacy_App_DB;
 /*-------------------------------------------------------Creating Tables---------------------------------------------------------------------*/
 /*This TABLE IS responsible for holding the common information among the system users*/
 CREATE TABLE Account
