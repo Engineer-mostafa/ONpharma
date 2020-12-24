@@ -114,11 +114,7 @@ CREATE TABLE Purchase_operation
 /*----------------------------------------------------------------*/
 /*---------------------about the patient-------------------------*/
 
-/*
-TODO
-- adding more constrains
-- addig proper beahviours e.g CASCADE ON DELETE, ...
-*/
+
 CREATE TABLE Prescription
 (
     PRIMARY KEY (Prescription_ID),
@@ -132,19 +128,13 @@ CREATE TABLE Prescription
     FOREIGN KEY (Patient_ID) REFERENCES Patient(Patient_ID) ON DELETE CASCADE,
     FOREIGN KEY (Doctor_ID) references doctor(doctor_ID) 
 );
-CREATE TABLE prescription_Medicines
+CREATE TABLE Prescription_Medicines
 (
     PRIMARY KEY (Prescription_ID, Item_Name),
 
-<<<<<<< HEAD
-    quantity int default 0,
+    Quantity int default 0,
     Item_Name varchar(255) NOT NULL,
     prescription_ID int NOT NULL,
-=======
-    Quantity int,
-    Item_Name varchar(255) NOT NULL,
-    Prescription_ID int,
->>>>>>> 69fef1a45ef96ffb6cfcb10afef87ddaec625cce
 
     FOREIGN KEY (Item_Name) REFERENCES Pharmaceutical_Item,
     FOREIGN KEY (Prescription_ID) REFERENCES Prescription(Prescription_ID)
