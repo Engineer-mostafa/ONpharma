@@ -80,8 +80,6 @@ CREATE TABLE Pharmacy
 );
 ALTER TABLE pharmacist ADD FOREIGN KEY (Pharmacist_pharmacy_ID) REFERENCES Pharmacy(pharmacy_ID) ON DELETE SET NULL;
 
-
-
 CREATE TABLE Pharmaceutical_Item
 (
     PRIMARY KEY(item_name),
@@ -118,9 +116,8 @@ CREATE TABLE Purchase_operation
 
 /*
 TODO
-1. implement patient-realted tables
-2. adding more constrains
-3. addig proper beahviours e.g CASCADE ON DELETE, ...
+- adding more constrains
+- addig proper beahviours e.g CASCADE ON DELETE, ...
 */
 CREATE TABLE Prescription
 (
@@ -139,9 +136,15 @@ CREATE TABLE prescription_Medicines
 (
     PRIMARY KEY (Prescription_ID, Item_Name),
 
+<<<<<<< HEAD
+    quantity int default 0,
+    Item_Name varchar(255) NOT NULL,
+    prescription_ID int NOT NULL,
+=======
     Quantity int,
     Item_Name varchar(255) NOT NULL,
     Prescription_ID int,
+>>>>>>> 69fef1a45ef96ffb6cfcb10afef87ddaec625cce
 
     FOREIGN KEY (Item_Name) REFERENCES Pharmaceutical_Item,
     FOREIGN KEY (Prescription_ID) REFERENCES Prescription(Prescription_ID)
@@ -168,7 +171,7 @@ CREATE TABLE Scan
     Scan_Name varchar(255) NOT NULL,
     Scan_Date date,
     Result float NOT NULL,
-    Patient_ID int,
+    Patient_ID int NOT NULL,
 
     FOREIGN KEY (Patient_ID) REFERENCES Patient
 );
@@ -179,8 +182,8 @@ CREATE TABLE Chronic_Disease
     PRIMARY KEY(Disease_Name, Patient_ID),
 
     Disease_Name varchar(255) NOT NULL,
-    Disease_Date date,
-    Patient_ID int,
+    Disease_Date date NOT NULL,
+    Patient_ID int NOT NULL,
 
     FOREIGN KEY (Patient_ID) REFERENCES Patient
 );
