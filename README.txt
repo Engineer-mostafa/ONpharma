@@ -21,3 +21,5 @@ Then wirte in the terminal:
     1- npm start
 
 The localhost that you listen in will appear in the terminal you should copy that in the localhost in the browser
+Pharmacy App
+beta version
