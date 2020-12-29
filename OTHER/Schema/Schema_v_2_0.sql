@@ -11,7 +11,7 @@ CREATE TABLE Account
     -- IDENTITY(starting Value, increment By)-> used for auto incrementing tuples
     acc_ID int auto_increment,
     acc_email varchar(255) NOT NULL UNIQUE,
-    acc_password varchar(255) NOT NULL UNIQUE,
+    acc_password varchar(255) NOT NULL,
 
     Fname varchar(255) NOT NULL,
     Mname varchar(255) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE Account
 
     -- 0 for men and 1 for women 
     gender bit NOT NULL,
-    Bdata date NOT NULL,
+    Bdate date NOT NULL,
 
     phoneNum int NOT NULL UNIQUE
 );
@@ -123,7 +123,7 @@ CREATE TABLE Prescription
     Prescription_ID int auto_increment,
     Prescription_diagnosis varchar(255) NOT NULL,
     Prescription_date date NOT NULL,
-    Patient_ID int,
+    Patient_ID int NOT NULL,
     Doctor_ID int NOT NULL,
 
     FOREIGN KEY (Patient_ID) REFERENCES Patient(Patient_ID) ON DELETE CASCADE,
@@ -151,7 +151,7 @@ CREATE TABLE Analysis
     Result float NOT NULL,
     Lower_Range float,
     Upper_Range float,
-    Patient_ID int,
+    Patient_ID int NOT NULL,
 
     FOREIGN KEY (Patient_ID) REFERENCES Patient(Patient_ID)
 );
