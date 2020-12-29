@@ -1,3 +1,10 @@
+
+
+
+<img src="public/images/booth.jpg">
+
+
+
 To Run App install:
 ----------------------------
     1- NodeJS
