@@ -5,6 +5,7 @@
     <div class="body-inner">
 
         <div>
+            <!-- links that open the modals of registeration for all types of users -->
             <a data-target="#modal-1" data-toggle="modal" href="#"
                 style="position: fixed;width: 15%;height: 2%;top: 32%;left: 2%;"></a>
             <a data-target="#modal-2" data-toggle="modal" href="#"
@@ -18,7 +19,7 @@
 
 
 
-               
+
             <!--Patient Form Regesteration-->
             <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
             <form id="registrationFormPatient" class="form-validate" method="POST">
@@ -31,60 +32,59 @@
 
                                 <h4 id="modal-label-3" class="modal-title">Register As A Patient</h4>
                                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                <!-- this hidden field for definnig the type of regestirtion in backend -->
+                                <input aria-hidden="true" type="text" id="typed" class="hidden" name="type"
+                                    value="Patient">
                             </div>
                             <div class="modal-body">
                                 <div class="form-row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="name">First Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="name" class="form-control" name="Fname"
-                                            placeholder="Enter First name" required>
+                                        <label for="FirstNamep">First Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="FirstNamep" class="form-control" name="FirstNamep"
+                                            placeholder="Enter first name" required>
 
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="name">Last Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="name" class="form-control" name="Lname"
-                                            placeholder="Enter Last name" required>
+                                        <label for="LastNamep">Last Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="LastNamep" class="form-control" name="LastNamep"
+                                            placeholder="Enter second name" required>
 
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="email">Email address<span class="text-danger">*</span></label>
-                                        <input type="email" id="email" class="form-control" name="email"
+                                        <label for="Emailaddressp">Email address<span
+                                                class="text-danger">*</span></label>
+                                        <input type="email" id="Emailaddressp" class="form-control" name="Emailaddressp"
                                             placeholder="Enter your email" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="mobile">Mobile<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="mobile" type="number" name="mobile"
-                                            placeholder="Enter your Mobile number" required>
+                                        <label for="Passwordp">Password<span class="text-danger">*</span></label>
+                                        <input type="password" id="Passwordp" class="form-control" name="Passwordp"
+                                            placeholder="Password" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="gender">Gender<span class="text-danger">*</span></label>
-                                        <select class="form-control" id="gender" name="gender" required>
-                                            <option value= -1>Select your gender</option>
-                                            <option value= 0>Male</option>
-                                            <option value= 1>Female</option>
+                                        <label for="Genderp">Gender<span class="text-danger">*</span></label>
+                                        <select class="form-control" id="Genderp" name="Genderp" required>
+                                            <option value>Select your gender</option>
+                                            <option value="0">Male</option>
+                                            <option value="1">Female</option>
                                         </select>
                                     </div>
-
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <div class="g-recaptcha"
-                                            data-sitekey="6LeyKeMZAAAAAE_UxpP8OwAT51JFUMaFVrbZ5vXF">
-                                        </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="mobilep">Mobile<span class="text-danger">*</span></label>
+                                        <input class="form-control" id="Mobilep" type="number" name="Mobilep"
+                                            placeholder="Enter your Mobile number" required>
                                     </div>
+
                                 </div>
-
                             </div>
-
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
-                                <button class="btn btn-b" type="button">Sign Up</button>
+                                <button class="btn btn-b" type="submit">Sign Up</button>
                             </div>
                         </div>
                     </div>
@@ -111,60 +111,61 @@
 
                                 <h4 id="modal-label-3" class="modal-title">Register As A Doctor</h4>
                                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                <!-- this hidden field for definnig the type of regestirtion in backend -->
+
+                                <input aria-hidden="true" type="text" id="typed" class="hidden" name="type"
+                                    value="Doctor">
                             </div>
                             <div class="modal-body">
                                 <div class="form-row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="name">First Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="name" class="form-control" name="Fname"
-                                            placeholder="Enter username" required>
+                                        <label for="FirstNamed">First Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="FirstNamed" class="form-control" name="FirstNamed"
+                                            placeholder="Enter first name" required>
 
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="name">Last Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="name" class="form-control" name="Lname"
-                                            placeholder="Enter username" required>
+                                        <label for="LastNamed">Last Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="LastNamed" class="form-control" name="LastNamed"
+                                            placeholder="Enter second name" required>
 
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="email">Email address<span class="text-danger">*</span></label>
-                                        <input type="email" id="email" class="form-control" name="email"
+                                        <label for="Emailaddressd">Email address<span
+                                                class="text-danger">*</span></label>
+                                        <input type="email" id="Emailaddressd" class="form-control" name="Emailaddressd"
                                             placeholder="Enter your email" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="mobile">Mobile<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="mobile" type="number" name="mobile"
-                                            placeholder="Enter your Mobile number" required>
+                                        <label for="Passwordd">Password<span class="text-danger">*</span></label>
+                                        <input type="password" id="Passwordd" class="form-control" name="Passwordd"
+                                            placeholder="Password" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="gender">Gender<span class="text-danger">*</span></label>
-                                        <select class="form-control" id="gender" name="gender" required>
-                                            <option value= -1>Select your gender</option>
-                                            <option value= 0 >Male</option>
-                                            <option value= 1>Female</option>
+                                        <label for="Genderd">Gender<span class="text-danger">*</span></label>
+                                        <select class="form-control" id="Genderd" name="Genderd" required>
+                                            <option value>Select your gender</option>
+                                            <option value="0">Male</option>
+                                            <option value="1">Female</option>
                                         </select>
                                     </div>
-
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <div class="g-recaptcha"
-                                            data-sitekey="6LeyKeMZAAAAAE_UxpP8OwAT51JFUMaFVrbZ5vXF">
-                                        </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Mobiled">Mobile<span class="text-danger">*</span></label>
+                                        <input class="form-control" id="Mobiled" type="number" name="Mobiled"
+                                            placeholder="Enter your Mobile number" required>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
 
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
-                                <button class="btn btn-b" type="button">Sign Up</button>
+                                <button class="btn btn-b" type="submit">Sign Up</button>
                             </div>
                         </div>
                     </div>
@@ -191,60 +192,61 @@
 
                                 <h4 id="modal-label-3" class="modal-title">Register As A Pharmacist</h4>
                                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                <!-- this hidden field for definnig the type of regestirtion in backend -->
+
+                                <input aria-hidden="true" type="text" id="typed" class="hidden" name="type"
+                                    value="Pharmacist">
+
                             </div>
                             <div class="modal-body">
                                 <div class="form-row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="name">First Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="name" class="form-control" name="Fname"
-                                            placeholder="Enter First name" required>
+                                        <label for="FirstNamet">First Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="FirstNamet" class="form-control" name="FirstNamet"
+                                            placeholder="Enter first name" required>
 
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="name">Last Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="name" class="form-control" name="Lname"
-                                            placeholder="Enter username" required>
+                                        <label for="LastNamet">Last Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="LastNamet" class="form-control" name="LastNamet"
+                                            placeholder="Enter second name" required>
 
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="email">Email address<span class="text-danger">*</span></label>
-                                        <input type="email" id="email" class="form-control" name="email"
+                                        <label for="Emailaddresst">Email address<span
+                                                class="text-danger">*</span></label>
+                                        <input type="email" id="Emailaddresst" class="form-control" name="Emailaddresst"
                                             placeholder="Enter your email" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="mobile">Mobile<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="mobile" type="number" name="mobile"
-                                            placeholder="Enter your Mobile number" required>
+                                        <label for="Passwordt">Password<span class="text-danger">*</span></label>
+                                        <input type="password" id="Passwordt" class="form-control" name="Passwordt"
+                                            placeholder="Password" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="gender">Gender<span class="text-danger">*</span></label>
-                                        <select class="form-control" id="gender" name="gender" required>
-                                            <option value= -1>Select your gender</option>
-                                            <option value= 0>Male</option>
-                                            <option value= 1>Female</option>
+                                        <label for="Gendert">Gender<span class="text-danger">*</span></label>
+                                        <select class="form-control" id="Gendert" name="Gendert" required>
+                                            <option value>Select your gender</option>
+                                            <option value="0">Male</option>
+                                            <option value="1">Female</option>
                                         </select>
                                     </div>
-
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <div class="g-recaptcha"
-                                            data-sitekey="6LeyKeMZAAAAAE_UxpP8OwAT51JFUMaFVrbZ5vXF">
-                                        </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Mobilet">Mobile<span class="text-danger">*</span></label>
+                                        <input class="form-control" id="Mobilet" type="number" name="Mobilet"
+                                            placeholder="Enter your Mobile number" required>
                                     </div>
+
                                 </div>
-
                             </div>
-
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
-                                <button class="btn btn-b" type="button">Sign Up</button>
+                                <button class="btn btn-b" type="submit">Sign Up</button>
                             </div>
                         </div>
                     </div>
@@ -280,18 +282,18 @@
                                 <div class="form-row">
 
                                     <div class="form-group col-md-12">
-                                        <label for="name">Email<span class="text-danger">*</span></label>
-                                        <input type="text" id="name" class="form-control" name="name"
-                                            placeholder="Enter username" required>
+                                        <label for="Emaill">Email<span class="text-danger">*</span></label>
+                                        <input type="text" id="Emaill" class="form-control" name="Emaill"
+                                            placeholder="Enter Your Email" required>
 
                                     </div>
 
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
-                                        <label for="email">Password<span class="text-danger">*</span></label>
-                                        <input type="email" id="email" class="form-control" name="email"
-                                            placeholder="Enter your email" required>
+                                        <label for="Passwordl">Password<span class="text-danger">*</span></label>
+                                        <input type="password" id="Passwordl" class="form-control" name="Passwordl"
+                                            placeholder="password" required>
                                     </div>
 
                                 </div>
@@ -300,7 +302,7 @@
 
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
-                                <button class="btn btn-b" type="button">Login</button>
+                                <button class="btn btn-b" type="submit">Login</button>
                             </div>
                         </div>
                     </div>
@@ -319,7 +321,7 @@
             <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
-            <form id="Login" class="form-validate text-center" method="POST">
+            <form id="guide" class="form-validate text-center" method="POST">
 
                 <div class="modal fade" id="modal-5" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
                     aria-hidden="true">
@@ -342,6 +344,9 @@
                         </div>
                     </div>
             </form>
+
+
+
         </div>
     </div>
 
@@ -370,17 +375,14 @@
 
 
 
-
-
-
     <img src="images/home3.png" alt="" style=" position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        object-fit: fill;
-                        z-index:-100000000000000;
-                    ">
+                                            top: 0;
+                                            left: 0;
+                                            width: 100%;
+                                            height: 100%;
+                                            object-fit: fill;
+                                            z-index:-100000000000000;
+                                        ">
 
     </div>
 
