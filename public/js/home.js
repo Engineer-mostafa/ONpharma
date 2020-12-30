@@ -10,6 +10,7 @@ const promis = new Promise((resolve, reject) => {
 
 
 
+  
 promis
     .then(statu => {
         console.log(statu);

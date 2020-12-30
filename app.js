@@ -15,9 +15,9 @@ const app = express();
 
 //include routes
 const homeRoute = require('./routes/home');
-const loginRoute = require('./routes/login');
+
 const medicalhistoryRoute = require('./routes/medicalhistory');
-const signupRoute = require('./routes/signup');
+
 const stockRoute = require('./routes/stock');
 const mainHallForPatients = require('./routes/mainHallForPatient');
 
@@ -38,8 +38,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //routes of the pages
 app.use('/home', homeRoute);
-app.use('/login', loginRoute);
-app.use('/signup', signupRoute);
 app.use('/medicalhistory', medicalhistoryRoute);
 app.use('/stock', stockRoute);
 app.use('/mainHallForPatient', mainHallForPatients);

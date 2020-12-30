@@ -17,7 +17,7 @@
             <a data-target="#modal-5" data-toggle="modal" href="#"
                 style="position: fixed;width: 13%;height: 2%;top: 49.5%;left: 2%;"></a>
 
-
+               
 
 
             <!--Patient Form Regesteration-->
@@ -46,10 +46,30 @@
 
                                     </div>
                                     <div class="form-group col-md-6">
+                                        <label for="FirstNamep">Min Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="Mname" class="form-control" name="MNamep"
+                                            placeholder="Enter Minname name" required>
+
+                                    </div>
+                                </div>
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-6">
                                         <label for="LastNamep">Last Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="LastNamep" class="form-control" name="LastNamep"
+                                        <input type="text" id="LastNamel" class="form-control" name="LastNamep"
                                             placeholder="Enter second name" required>
 
+                                    </div>
+                                    <div class="form-group col-md-6">
+
+
+
+
+                                        <label for="bd">Birth Date<span class="text-danger">*</span></label>
+                                        <input type="date" id="bd" class="form-control" name="Bdate"
+                                            placeholder="Enter second name" required>
+
+                                            
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -69,9 +89,9 @@
                                     <div class="form-group col-md-6">
                                         <label for="Genderp">Gender<span class="text-danger">*</span></label>
                                         <select class="form-control" id="Genderp" name="Genderp" required>
-                                            <option value>Select your gender</option>
-                                            <option value="0">Male</option>
-                                            <option value="1">Female</option>
+                                            <option value=-1>Select your gender</option>
+                                            <option value=0>Male</option>
+                                            <option value=1>Female</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -113,42 +133,62 @@
                                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                                 <!-- this hidden field for definnig the type of regestirtion in backend -->
 
-                                <input aria-hidden="true" type="text" id="typed" class="hidden" name="type"
+                                <input aria-hidden="true" type="text"  class="hidden" name="type"
                                     value="Doctor">
                             </div>
                             <div class="modal-body">
                                 <div class="form-row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="FirstNamed">First Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="FirstNamed" class="form-control" name="FirstNamed"
+                                        <label for="FirstNamep">First Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="FirstNamep" class="form-control" name="FirstNamep"
                                             placeholder="Enter first name" required>
 
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="LastNamed">Last Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="LastNamed" class="form-control" name="LastNamed"
+                                        <label for="FirstNamep">Min Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="Mname" class="form-control" name="MNamep"
+                                            placeholder="Enter Minname name" required>
+
+                                    </div>
+                                </div>
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-6">
+                                        <label for="LastNamep">Last Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="LastNamel" class="form-control" name="LastNamep"
                                             placeholder="Enter second name" required>
 
+                                    </div>
+                                    <div class="form-group col-md-6">
+
+
+
+
+                                        <label for="bd">Birth Date<span class="text-danger">*</span></label>
+                                        <input type="date" id="bd" class="form-control" name="Bdate"
+                                            placeholder="Enter second name" required>
+
+                                            
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="Emailaddressd">Email address<span
                                                 class="text-danger">*</span></label>
-                                        <input type="email" id="Emailaddressd" class="form-control" name="Emailaddressd"
+                                        <input type="email" id="Emailaddressd" class="form-control" name="Emailaddressp"
                                             placeholder="Enter your email" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Passwordd">Password<span class="text-danger">*</span></label>
-                                        <input type="password" id="Passwordd" class="form-control" name="Passwordd"
+                                        <input type="password" id="Passwordd" class="form-control" name="Passwordp"
                                             placeholder="Password" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="Genderd">Gender<span class="text-danger">*</span></label>
-                                        <select class="form-control" id="Genderd" name="Genderd" required>
+                                        <select class="form-control" id="Genderd" name="Genderp" required>
                                             <option value>Select your gender</option>
                                             <option value="0">Male</option>
                                             <option value="1">Female</option>
@@ -156,7 +196,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Mobiled">Mobile<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="Mobiled" type="number" name="Mobiled"
+                                        <input class="form-control" id="Mobiled" type="number" name="Mobilep"
                                             placeholder="Enter your Mobile number" required>
                                     </div>
 
@@ -194,7 +234,7 @@
                                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                                 <!-- this hidden field for definnig the type of regestirtion in backend -->
 
-                                <input aria-hidden="true" type="text" id="typed" class="hidden" name="type"
+                                <input aria-hidden="true" type="text"  class="hidden" name="type"
                                     value="Pharmacist">
 
                             </div>
@@ -202,35 +242,55 @@
                                 <div class="form-row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="FirstNamet">First Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="FirstNamet" class="form-control" name="FirstNamet"
+                                        <label for="FirstNamep">First Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="FirstNamep" class="form-control" name="FirstNamep"
                                             placeholder="Enter first name" required>
 
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="LastNamet">Last Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="LastNamet" class="form-control" name="LastNamet"
+                                        <label for="FirstNamep">Min Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="Mname" class="form-control" name="MNamep"
+                                            placeholder="Enter Minname name" required>
+
+                                    </div>
+                                </div>
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-6">
+                                        <label for="LastNamep">Last Name<span class="text-danger">*</span></label>
+                                        <input type="text" id="LastNamel" class="form-control" name="LastNamep"
                                             placeholder="Enter second name" required>
 
+                                    </div>
+                                    <div class="form-group col-md-6">
+
+
+
+
+                                        <label for="bd">Birth Date<span class="text-danger">*</span></label>
+                                        <input type="date"  class="form-control" name="Birdate"
+                                            placeholder="Enter second name" required>
+
+                                            
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="Emailaddresst">Email address<span
                                                 class="text-danger">*</span></label>
-                                        <input type="email" id="Emailaddresst" class="form-control" name="Emailaddresst"
+                                        <input type="email" id="Emailaddresst" class="form-control" name="Emailaddressp"
                                             placeholder="Enter your email" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Passwordt">Password<span class="text-danger">*</span></label>
-                                        <input type="password" id="Passwordt" class="form-control" name="Passwordt"
+                                        <input type="password" id="Passwordt" class="form-control" name="Passwordp"
                                             placeholder="Password" required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="Gendert">Gender<span class="text-danger">*</span></label>
-                                        <select class="form-control" id="Gendert" name="Gendert" required>
+                                        <select class="form-control" id="Gendert" name="Genderp" required>
                                             <option value>Select your gender</option>
                                             <option value="0">Male</option>
                                             <option value="1">Female</option>
@@ -238,7 +298,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Mobilet">Mobile<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="Mobilet" type="number" name="Mobilet"
+                                        <input class="form-control" id="Mobilet" type="number" name="Mobilep"
                                             placeholder="Enter your Mobile number" required>
                                     </div>
 
