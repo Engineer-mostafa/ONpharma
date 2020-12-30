@@ -1,50 +1,275 @@
 <!-- Home Html Page-->
 
 <%- include('layout/header')%>
+    <div class="body-inner">
 
 
-    <div class="img-container">
-        <img class="img-fluid" src="images/mainHallForPatient.jpg" alt="" style="position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    z-index: -10000000000000;">
-    
+
         <a href="#Search" data-lightbox="inline"
             style="position: fixed;width: 5%;height: 2%;top: 29%;left: 11%;transform: rotate(15deg);"></a>
         <a href="medicalhistory" data-lightbox="inline"
-           style="position: fixed;width: 9%;height: 2%;top: 71%;left: 17%;transform: rotate(1deg);"></a>
+            style="position: fixed;width: 9%;height: 2%;top: 71%;left: 17%;transform: rotate(1deg);"></a>
 
-      
-<div id="dock-container">
-    <ul>
-        <li>
-            <a href="javascript:void(0)" id="conference-info-btn">
-                <span>Explore</span>
-                <img src="/" /></a>
-        </li>
-        <li>
-            <a href="javascript:void(0)" id="attendees-btn" >
-                <span>Patients</span>
-                <img src="/" /></a>
-        </li>
-        <li>
-            <a href="/">
-                <span>Help desk</span>
-                <img src="/" /></a>
-        </li>
-        <li>
-            <a href="#">
-                <span>Call us</span>
-                <img src="/" /></a>
-        </li>
-    </ul>
-    <div class="menu-perspective" style="width: 100%;">
-        <div class="menu-board metal-gradient" style="min-width: 512px;"></div>
+        <!-- down bar -->
+        <div id="dock-container">
+            <ul>
+                <li>
+                    <a id="Explore" data-target="#modal-1" data-toggle="modal" href="#">
+                        <span>Explore</span>
+                        <img src="/images/clipboard.png" /></a>
+                </li>
+                <li>
+                    <a id="patients" data-target="#modal-2" data-toggle="modal" href="#">
+                        <span>Patients</span>
+                        <img src="/" /></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>Help desk</span>
+                        <img src="/" /></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>Call us</span>
+                        <img src="/" /></a>
+                </li>
+            </ul>
+            <div class="menu-perspective" style="width: 100%;">
+                <div class="menu-board metal-gradient" style="min-width: 512px;"></div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- explore modal -->
+        <div class="modal fade" id="modal-1" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <a class="navbar-brand h1" style="font-family: cooper black;" href="#">ON-Pharma</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mr-auto">
+
+
+                                </ul>
+                                <form class="form-inline my-2 my-lg-0">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Search"
+                                        aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+
+                                    <div id="collapse1" class="">
+                                        <table class="table">
+                                            <thead class="table-dark">
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Scans</th>
+                                                    <th>Analysis</th>
+                                                    <th>Prescriptions</th>
+                                                    <th>Chronic Diseas</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mary</td>
+                                                    <td>Moe</td>
+                                                    <td>mary@example.com</td>
+                                                    <td>mary@example.com</td>
+                                                    <td>mary@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>July</td>
+                                                    <td>Dooley</td>
+                                                    <td>july@example.com</td>
+                                                    <td>july@example.com</td>
+                                                    <td>july@example.com</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
+                        <button class="btn btn-b" type="submit">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Patient modal -->
+        <div class="modal fade" id="modal-2" tabindex="-1" role="modal" aria-labelledby="modal-label-3" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+        
+                    <h1 class="navbar-brand h1" style="font-family: cooper black;" href="#">ON-Pharma</h1>
+                          
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="panel-group">
+                                <div class="panel panel-default">
+        
+                                    <div id="collapse1" class="">
+                                        <table class="table">
+                                            <thead class="table-dark">
+                                                <tr>
+                                                    <th>First Name</th>
+                                                    <th>Last Name</th>
+                                                    <th>Visit Date</th>
+                                                    <th>Age</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>John</td>
+                                                    <td>Doe</td>
+                                                    <td>john@example.com</td>
+                                                    <td>john@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mary</td>
+                                                    <td>Moe</td>
+                                                    <td>mary@example.com</td>
+                                                    <td>mary@example.com</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>July</td>
+                                                    <td>Dooley</td>
+                                                    <td>july@example.com</td>
+                                                    <td>july@example.com</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
+                        <button class="btn btn-b" type="submit">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img src="images/mainHallForPatient.jpg" alt="" style="position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: fill;
+                z-index: -10000000000000;">
     </div>
-</div>
-
-
-        <%- include('layout/footer')%>
+    <%- include('layout/footer')%>
