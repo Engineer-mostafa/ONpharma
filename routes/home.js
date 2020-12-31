@@ -19,9 +19,7 @@ router.get('/', (request, Response) => {
 
 
 router.post('/', (request, Response) => {
-    //try to use express-validator for validation the data
-    //try to use express-messeges to return messege in error
-    //try to use express-session to return user to reconnect
+    
     var type = request.body.type;
 
     // for signup authontucation 
@@ -51,30 +49,25 @@ router.post('/', (request, Response) => {
         };
         user.create(userInput,async function(lastID) {
             if (lastID) {
-                user.find(lastID, function (result) {
+    
                     switch (request.body.type) {
                         case "Patient":
-                            console.log("Patient");
                             user.Createpatient(lastID);
                             break;
                         case "Doctor":
-                            console.log("Doctor");
                             user.CreateDoctor(lastID);
                             break;
 
                         case "Pharmacist":
-                            console.log("Pharmacist");
                             user.CreatePharmacist(lastID);
                             break;
                     }
-                    // redirect the user to the main page.
-                     Response.redirect('mainHallForPatient');
+                   //  redirect the user to the main page.
+                     Response.redirect('/mainHallForPatient');
 
 
-                }
-                )
             }
-
+            
             else {
                 console.log('Error creating a new user ....');
             };
@@ -82,11 +75,14 @@ router.post('/', (request, Response) => {
 
         })
     }else {
-        user.login(request.body.Emailaddressp, request.body.password, function (result) {
-            if (result) {// Store the user data in a session.
+        user.login(request.body.Emaill, request.body.Passwordl, function (result) {
+           
+            if (result) {
                
+              // console.log(result);
+                console.log("Sucssefully .....Login "+ result.acc_email);
                 // redirect the user to the home page.
-                Response.redirect('/home');
+                Response.redirect('/mainHallForPatient');
             } else {
 
                 Response.send('Username or Password incorrect!');

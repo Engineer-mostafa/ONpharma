@@ -6,7 +6,10 @@ const { request } = require('express');
 function User() {};
 
 User.prototype = {
-    // Find the user data by id or username.
+
+    // This function will search data in the database. 
+    // Find the user data by account id or username.
+
     find : function(user = null, callback)
     {
         // if the user variable is defind
@@ -14,16 +17,16 @@ User.prototype = {
             // if user = number return field = id, if user = string return field = username.
             var field = Number.isInteger(user) ? 'acc_ID' : 'acc_email';
         }
+        
         // prepare the sql query
-        let sql = `SELECT * FROM account WHERE ${field} =  ?` ;
+        let sql_query ="SELECT * FROM account where acc_email = ? "  ;
 
         
-        pool.query(sql,user,function(err, result) {
-            console.log(result);
+        pool.query(sql_query,user,function(err, result) {
             if(err) {throw err}
-
-           else if(result.length) {
-                callback(result[0]);
+           
+            if(result.length) {
+                callback(result);
             }else {
                 callback(null);
             }
@@ -36,12 +39,12 @@ User.prototype = {
     {
 
         var pwd = body.password;
-        var accmail = body.Emailaddressp;
+        var accmail = body.email;
         
         
         // Hash the password before insert it into the database.
          body.password = bcrypt.hashSync(pwd,10);
-
+         
         // this array will contain the values of the fields.
         var bind = [];
         // loop in the attributes of the object and push the values into the bind array.
@@ -50,22 +53,27 @@ User.prototype = {
             bind.push(body[prop]);
         }
         // validate 
-        /*this.find(accmail, function(user) {
+        this.find(accmail, function(USERFOUND) {
             // if there is a user by this username
             
-            if(user) {
+            try{
+                if(USERFOUND) {
                 // now we check his password.
-                throw 'Username "' + accmail + '" is already taken';
+                throw 'email "' + USERFOUND[0].acc_email + '" is already taken';
             }
-        });*/
+        }
+        catch{
+            console.log('Accepted your mail')
+        }
+        });
         
         // prepare the sql query
-        let sql = `INSERT INTO account (acc_email,acc_password,Fname,Mname,Lname,gender,Bdata,phoneNum) VALUES ( ?,?,?,?,?,?,?,?)`;
+        let sql = `INSERT INTO account (acc_email,acc_password,Fname,Mname,Lname,gender,Bdate,phoneNum) VALUES (?,?,?,?,?,?,?,?) `;
         // call the query give it the sql string and the values (bind array)
         pool.query(sql, bind, async function(err, result) {
             if(err) throw err;
-            // return the last inserted id. if there is no error
-            callback(result.insertId);
+           
+            callback(result);
         });
     },
 
@@ -73,98 +81,73 @@ User.prototype = {
     {
         
         // find the user data by his username.
-        this.find(user, function(user) {
+        this.find(user, function(userID) {
             // if there is a user by this username.
-            
-            if(user) {
+       
+            if(userID) {
                 // now we check his password.
-                if(bcrypt.compareSync(password, user.password)) {
+                if(bcrypt.compareSync(password, userID[0].acc_password)) {
                     // return his data.
-                    callback(user);
+                    callback(userID[0]);
                     return;
                 }  
             }
-            else            // if the username/password is wrong then return null.
+            else           
+             // if the username/password is wrong then return null.
             callback(null);
         });
         
     },
-    Createpatient : function(user ,callback)
+    Createpatient : function(user )
     {
-        
-        // find the user data by his email.
-        this.find(user.acc_email, function(user) {
-            // if there is a user by this email.
-            
-            if(user) {
-                var ID =request.body.acc_ID
-                let sql = `INSERT INTO Patient (Patient_acc_ID) VALUES ( ?)`;
-                // call the query give it the sql string and the values (bind array)
+        // getting user id 
+                var ID =user.insertId 
+                let sql = `INSERT INTO Patient (Patient_acc_ID) VALUES (?) `;
+               
+                // call the query give it the sql string and the value (user id )
                 pool.query(sql, ID, async function(err, result) {
                     if(err) throw err;
                     // return the last inserted id. if there is no error
-                    callback(result.insertId);
-                });
-                
-            }
-            else            // if the username/password is wrong then return null.
-            callback(null);
-        });
+                    console.log('inserted Patient successfully....');
+                    return ;
+                    
+                });          
     },
     ////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////
     /////////////////should update for data base //////////////////
     //////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////
-        CreateDoctor : function(user ,callback)
-    {
-        
-        // find the user data by his email.
-        this.find(user.acc_email, function(user) {
-            // if there is a user by this email.
-            
-            if(user) {
-                var ID =request.body.acc_ID
+     CreateDoctor : function(user )
+    {     
+          if(user) {
+                var ID =user.insertId
                 let sql = `INSERT INTO Doctor (doctor_acc_ID) VALUES ( ?)`;
                 // call the query give it the sql string and the values (bind array)
                 pool.query(sql, ID, async function(err, result) {
                     if(err) throw err;
-                    // return the last inserted id. if there is no error
-                    callback(result.insertId);
+                   
+                    console.log('inserted Doctor successfully....');
+                    return ;
                 });
                 
             }
-            else            // if the username/password is wrong then return null.
-            callback(null);
-        });
-        
     },
-    ////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////
-    /////////////////should update for data base //////////////////
-    //////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////
-    CreatePharmacist : function(user ,callback)
+   
+    CreatePharmacist : function(user )
     {
-        
-        // find the user data by his email.
-        this.find(user.acc_email, function(user) {
-            // if there is a user by this email.
-            
-            if(user) {
-                var ID =request.body.acc_ID
+        if(user) {
+                var ID =user.insertId
                 let sql = `INSERT INTO Pharmacist (Pharmacist_acc_ID) VALUES ( ?)`;
                 // call the query give it the sql string and the values (bind array)
                 pool.query(sql, ID, async function(err, result) {
                     if(err) throw err;
                     // return the last inserted id. if there is no error
-                    callback(result.insertId);
+                    console.log('inserted pharmacist successfully....');
                 });
                 
             }
-            else            // if the username/password is wrong then return null.
-            callback(null);
-        });
+           
     }
         
 
