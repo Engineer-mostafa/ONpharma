@@ -13,14 +13,11 @@ const bodyParser = require('body-parser');
 // use the framework
 const app = express();
 
-//get mySQL
 
 
 //include routes
 const homeRoute = require('./routes/home');
-
 const medicalhistoryRoute = require('./routes/medicalhistory');
-
 const stockRoute = require('./routes/stock');
 const mainHallForPatients = require('./routes/mainHallForPatient');
 
@@ -36,6 +33,9 @@ app.set("view engine", 'ejs');
 
 //to convert response into json format
 app.use(bodyParser.json());
+
+
+
 //to able neasting object in json format this required explicitly we should write this if we need to use body-parser
 app.use(bodyParser.urlencoded({extended: true}));
 

@@ -4,20 +4,23 @@ var mysql      = require('mysql');
 const pool = mysql.createPool({
   host     : 'localhost',
   user     : 'root',
-  password : '@23198631yousif@',
-  database : 'Pharmacy_App_DB'
+  password : 'Mosstafalover999',
+  database : 'pharmacy_app_db'
 });
  
 pool.getConnection((err, connection)=>{
     if (err) throw err ;
     else
-    console.log("DB Connected to my sql");
+    console.log("DB Connected to my sql"); 
     if (connection)
     connection.release() ;
     return;
 });
 
-
   pool.query = util.promisify(pool.query);
   module.exports=pool ;
   
+
+
+
+

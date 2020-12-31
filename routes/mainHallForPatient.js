@@ -12,4 +12,15 @@ router.get('/', (request, Response) => {
     );
 });
 
+
+router.post('/', (request, Response) => {
+    Response.render('mainHallForPatient', {
+        title: "Main Hall",
+        css: "mainHallForPatient",
+        js: "mainHallForPatient"
+
+    }
+    );
+});
+
 module.exports = router;
