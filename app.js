@@ -13,6 +13,9 @@ const bodyParser = require('body-parser');
 // use the framework
 const app = express();
 
+//get mySQL
+
+
 //include routes
 const homeRoute = require('./routes/home');
 const loginRoute = require('./routes/login');
