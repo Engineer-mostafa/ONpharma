@@ -44,7 +44,6 @@
 
 
 
-
         <!-- explore modal -->
         <div class="modal fade" id="modal-1" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
             aria-hidden="true">
@@ -53,7 +52,12 @@
                     <div class="modal-header">
 
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                            <a class="navbar-brand h1" style="font-family: cooper black;" href="#">ON-Pharma</a>
+
+                            <a class="navbar-brand" href="#" style="font-family: cooper black; font-size:1rem;">
+                                <img src="/images/heart-rate.png" width="30" height="30"
+                                    class="d-inline-block align-top" alt="">
+                                ON-Pharma
+                            </a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
@@ -61,60 +65,180 @@
                             </button>
 
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav mr-auto">
-
-
+                                <ul class="nav nav-tabs mr-auto" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Scans"
+                                            role="tab" aria-controls="home" aria-selected="false">Scans</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " id="profile-tab" data-toggle="tab" href="#Analysis"
+                                            role="tab" aria-controls="profile" aria-selected="true">Analysis</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Prescreptions"
+                                            role="tab" aria-controls="contact" aria-selected="false">Prescreptions</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Disease"
+                                            role="tab" aria-controls="contact" aria-selected="false">Disease</a>
+                                    </li>
                                 </ul>
                                 <form class="form-inline my-2 my-lg-0">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Search"
-                                        aria-label="Search">
-                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                    <input class="form-control mr-sm-2 searchfield" type="text" placeholder="Search"
+                                        aria-label="Search"  name = "id" style="max-width: 160px;" required>
+                                    <button class="btn  my-2 my-sm-0 search" type="button">Search</button>
                                 </form>
                             </div>
                         </nav>
                     </div>
                     <div class="modal-body">
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <label for="LastNamep">Name<span class="text-danger">*</span></label>
-                                <input type="text" id="LastNamelpatient" class="form-control" name="LastNamep"
-                                    placeholder="Enter second name" required>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade active show" id="Scans" role="tabpanel"
+                                aria-labelledby="home-tab">
+                                <div class="container">
+                                    <div class="panel-group">
+                                        <div class="panel panel-default">
 
+                                            <div id="collapse1" class="">
+                                                <table class="table">
+                                                    <thead class="table-dark">
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Date</th>
+                                                            <th>Resulte</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="scanTable" class="empty">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade " id="Analysis" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="container">
+                                    <div class="panel-group">
+                                        <div class="panel panel-default">
+
+                                            <div id="collapse1" class="">
+                                                <table class="table">
+                                                    <thead class="table-dark">
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Date</th>
+                                                            <th>Resulte</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="analysisTable" class="empty">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Prescreptions" role="tabpanel" aria-labelledby="contact-tab">
+                                <div class="container">
+                                    <div class="panel-group">
+                                        <div class="panel panel-default">
+
+                                            <div id="collapse1" class="">
+                                                <table class="table">
+                                                    <thead class="table-dark">
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Date</th>
+                                                            <th>Resulte</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="prescreptionTable" class="empty">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
 
+                            <div class="tab-pane fade" id="Disease" role="tabpanel" aria-labelledby="contact-tab">
+                                <div class="container">
+                                    <div class="panel-group">
+                                        <div class="panel panel-default">
 
-                            <div class="form-group col-md-3">
-            
-                                <label for="bd">Date<span class="text-danger">*</span></label>
-                                <input type="date" id="bdpatient" class="form-control" name="Bdate" placeholder="Enter second name" required>
-                            
-                            
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <label for="Genderp">Type<span class="text-danger">*</span></label>
-                                <select class="form-control" id="Genderp" name="Genderp" required>
-                                    <option value=-1>Select the Type</option>
-                                    <option value=0>Male</option>
-                                    <option value=1>Female</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="LastNamep">Choose PDF file<span class="text-danger">*</span></label>
-                                <input type="file" id="LastNamelpatient" class="form-control" name="LastNamep"
-                                    placeholder="Enter second name" required>
-
+                                            <div id="collapse1" class="">
+                                                <table class="table">
+                                                    <thead class="table-dark">
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Detected From</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="chronicDisease" class="empty">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <h5 style="font-family: cooper black;">Add To Patient</h5>
+
+                        <hr>
+                        <form action="">
+
+                            <div class="form-row ">
+                                <div class="form-group col-md-3">
+                                    <label for="LastNamep">Name<span class="text-danger">*</span></label>
+                                    <input type="text" id="LastNamelpatient" class="form-control" name="LastNamep"
+                                        placeholder="Enter the name of scan/analysis/..." required>
+
+                                </div>
+
+
+
+                                <div class="form-group col-md-3">
+
+                                    <label for="bd">Date<span class="text-danger">*</span></label>
+                                    <input type="date" id="bdpatient" class="form-control" name="Bdate"
+                                        placeholder="Enter second name" required>
+
+
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="Genderp">Type<span class="text-danger">*</span></label>
+                                    <select class="form-control" id="Genderp" name="Genderp" required>
+                                        <option value=-1>Select the Type</option>
+                                        <option value=0>Scan</option>
+                                        <option value=1>Analysis</option>
+                                        <option value=2>Prescreption</option>
+                                        <option value=3>Chronic Disease</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="LastNamep">Choose PDF file<span class="text-danger">*</span></label>
+                                    <input type="file" id="LastNamelpatient" class="form-control" name="LastNamep"
+                                        placeholder="Enter second name" required>
+
+                                </div>
+                            </div>
                     </div>
 
                     <div class="modal-footer">
                         <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
+                        <button class="btn btn-b" type="submit">Sign Up</button>
+
+
+
                     </div>
                 </div>
             </div>
         </div>
+        </form>
+
 
 
 
@@ -139,65 +263,11 @@
                                                 <tr>
                                                     <th>First Name</th>
                                                     <th>Last Name</th>
-                                                    <th>Visit Date</th>
-                                                    <th>Age</th>
+                                                    
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>John</td>
-                                                    <td>Doe</td>
-                                                    <td>john@example.com</td>
-                                                    <td>john@example.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>John</td>
-                                                    <td>Doe</td>
-                                                    <td>john@example.com</td>
-                                                    <td>john@example.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>John</td>
-                                                    <td>Doe</td>
-                                                    <td>john@example.com</td>
-                                                    <td>john@example.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>John</td>
-                                                    <td>Doe</td>
-                                                    <td>john@example.com</td>
-                                                    <td>john@example.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>John</td>
-                                                    <td>Doe</td>
-                                                    <td>john@example.com</td>
-                                                    <td>john@example.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>John</td>
-                                                    <td>Doe</td>
-                                                    <td>john@example.com</td>
-                                                    <td>john@example.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>John</td>
-                                                    <td>Doe</td>
-                                                    <td>john@example.com</td>
-                                                    <td>john@example.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Mary</td>
-                                                    <td>Moe</td>
-                                                    <td>mary@example.com</td>
-                                                    <td>mary@example.com</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>July</td>
-                                                    <td>Dooley</td>
-                                                    <td>july@example.com</td>
-                                                    <td>july@example.com</td>
-                                                </tr>
+                                            <tbody id="getmePatients" class="empty">
+                                             
                                             </tbody>
                                         </table>
                                     </div>

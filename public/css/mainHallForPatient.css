@@ -1,9 +1,16 @@
 #collapse1{
     height:300px;
 overflow-y:scroll;
+
 }
 
+.form-inline {
+flex-flow: none;
+}
 
+.body{
+        line-height: 1.4;
+}
 @keyframes walk {
     0% {
         background-position: 1050px;

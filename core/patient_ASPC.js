@@ -12,20 +12,20 @@ const { request } = require('express');
 
   // to insert new Analysis
 // ----------------------------------------------------------
-function get() {
-  pool.query("SELECT * FROM SCAN ", (error, rows) => {
-  if (error)
-    throw error;
-  else {
+// function get() {
+//   pool.query("SELECT * FROM SCAN ", (error, rows) => {
+//   if (error)
+//     throw error;
+//   else {
     
-    let s = rows;
+//     let s = rows;
 
-    console.log("FETCHED SUCCEFULLY");
-    return rows;
-  }
-});
-}
-
+//     console.log("FETCHED SUCCEFULL55Y");
+//     return rows;
+//   }
+// });
+// }
+function get(){}
 
 
 

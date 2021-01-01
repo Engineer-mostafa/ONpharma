@@ -25,7 +25,7 @@ router.get('/', (request, Response) => {
     //we will get all tables here of scans , analysis , prescreptions and chronic deasises 
 
 
-    Response.render('medicalhistory', {
+Response.render('medicalhistory', {
         title: "Medical History",
         css: "medicalhistory",
         js: "medicalhistory"
@@ -40,7 +40,8 @@ router.post('/', (req, res) => {
     console.log("in medical Post");
     var result;
 
-
+    debugger;
+    console.log(req.body.type);
    //should modified for current user id 
     switch (req.body.type  /*data i get from ajax object*/) {
         case "Scan":

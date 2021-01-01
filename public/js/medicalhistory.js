@@ -31,7 +31,7 @@ $("#scans").on("click", function () {
                             "<td>" +
                             element.Scan_Date.substring(0, 10) +
                             "</td>" +
-                            "</tr>")
+                            "</tr>");
                     }
                     );
                     $('#scanTable').removeClass("empty")
@@ -80,7 +80,7 @@ $("#Analysis").on("click", function () {
                             "<td>" +
                             element.Analysis_Date.substring(0, 10) +
                             "</td>" +
-                            "</tr>")
+                            "</tr>");
                     }
                     );
                     $('#analysisTable').removeClass("empty")
@@ -129,7 +129,7 @@ $("#Prescriptions").on("click", function () {
                             "<td>" +
                             element.Prescription_date.substring(0, 10) +
                             "</td>" +
-                            "</tr>")
+                            "</tr>");
                     }
                     );
                     $('#prescriptionTable').removeClass("empty")
@@ -175,7 +175,7 @@ $("#ChronicDisease").on("click", function () {
                             "<td>" +
                             element.Disease_Date.substring(0, 10) +
                             "</td>" +
-                            "</tr>")
+                            "</tr>");
                     }
                     );
                     $('#chronicDisease').removeClass("empty")
