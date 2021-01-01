@@ -26,6 +26,9 @@
     "express-flash": "0.0.2",
     "express-messages": "^1.0.1",
     "express-validator": "^6.9.0",
+    "formidable": "^1.2.2",
+    "fs": "0.0.1-security",
+    "mv": "^2.1.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.6",
     "util": "^0.12.3"

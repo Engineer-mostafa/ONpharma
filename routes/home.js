@@ -8,6 +8,9 @@ const { response } = require('express');
 const user = new User();
 
 router.get('/', (request, Response) => {
+
+
+    
     Response.render('home', {
         title: "Home",
         css: "home",

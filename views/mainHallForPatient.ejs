@@ -11,7 +11,7 @@
             style="position: fixed;width: 9%;height: 2%;top: 71%;left: 17%;transform: rotate(1deg);"></a>
 
 
-        <!-- down bar -->
+        <!-- bottom bar -->
         <div id="dock-container">
             <ul>
                 <li>
@@ -39,6 +39,22 @@
                 <div class="menu-board metal-gradient" style="min-width: 512px;"></div>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -187,7 +203,7 @@
                         <h5 style="font-family: cooper black;">Add To Patient</h5>
 
                         <hr>
-                        <form action="">
+                        <form action="mainHallForPatient"  method="POST" enctype="multipart/form-data">
 
                             <div class="form-row ">
                                 <div class="form-group col-md-3">
@@ -220,7 +236,7 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="LastNamep">Choose PDF file<span class="text-danger">*</span></label>
-                                    <input type="file" id="LastNamelpatient" class="form-control" name="LastNamep"
+                                    <input type="file" id="filetoupload" class="form-control" name="filetoupload"
                                         placeholder="Enter second name" required>
 
                                 </div>
@@ -242,7 +258,28 @@
 
 
 
-        <!-- Patient modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Patient modal in the bottom bar -->
         <div class="modal fade" id="modal-2" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
             aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered">
