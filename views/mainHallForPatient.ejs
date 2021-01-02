@@ -5,13 +5,13 @@
 
 
 
-        <a href="#Search" data-lightbox="inline"
+        <a data-lightbox="inline" data-target="#modal-3" data-toggle="modal" href="#"
             style="position: fixed;width: 5%;height: 2%;top: 29%;left: 11%;transform: rotate(15deg);"></a>
         <a href="medicalhistory" data-lightbox="inline"
             style="position: fixed;width: 9%;height: 2%;top: 71%;left: 17%;transform: rotate(1deg);"></a>
 
 
-        <!-- bottom bar -->
+        <!------------------------------------- bottom bar ------------------------------------------------------------------->
         <div id="dock-container">
             <ul>
                 <li>
@@ -59,151 +59,155 @@
 
 
 
+        <!--------------------------------------------------- Explore modal---------------------------------------------------->
 
-        <!-- explore modal -->
-        <div class="modal fade" id="modal-1" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
+        <form action="mainHallForPatient" method="POST" enctype="multipart/form-data">
 
-                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="modal fade" id="modal-1" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
 
-                            <a class="navbar-brand" href="#" style="font-family: cooper black; font-size:1rem;">
-                                <img src="/images/heart-rate.png" width="30" height="30"
-                                    class="d-inline-block align-top" alt="">
-                                ON-Pharma
-                            </a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
+                            <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="nav nav-tabs mr-auto" id="myTab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Scans"
-                                            role="tab" aria-controls="home" aria-selected="false">Scans</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " id="profile-tab" data-toggle="tab" href="#Analysis"
-                                            role="tab" aria-controls="profile" aria-selected="true">Analysis</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Prescreptions"
-                                            role="tab" aria-controls="contact" aria-selected="false">Prescreptions</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Disease"
-                                            role="tab" aria-controls="contact" aria-selected="false">Disease</a>
-                                    </li>
-                                </ul>
-                                <form class="form-inline my-2 my-lg-0">
-                                    <input class="form-control mr-sm-2 searchfield" type="text" placeholder="Search"
-                                        aria-label="Search"  name = "id" style="max-width: 160px;" required>
-                                    <button class="btn  my-2 my-sm-0 search" type="button">Search</button>
-                                </form>
-                            </div>
-                        </nav>
-                    </div>
-                    <div class="modal-body">
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade active show" id="Scans" role="tabpanel"
-                                aria-labelledby="home-tab">
-                                <div class="container">
-                                    <div class="panel-group">
-                                        <div class="panel panel-default">
+                                <a class="navbar-brand" href="#" style="font-family: cooper black; font-size:1rem;">
+                                    <img src="/images/heart-rate.png" width="30" height="30"
+                                        class="d-inline-block align-top" alt="">
+                                    ON-Pharma
+                                </a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
 
-                                            <div id="collapse1" class="">
-                                                <table class="table">
-                                                    <thead class="table-dark">
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Date</th>
-                                                            <th>Resulte</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="scanTable" class="empty">
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="nav nav-tabs mr-auto" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#Scans"
+                                                role="tab" aria-controls="home" aria-selected="false">Scans</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " id="profile-tab" data-toggle="tab" href="#Analysis"
+                                                role="tab" aria-controls="profile" aria-selected="true">Analysis</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Prescreptions"
+                                                role="tab" aria-controls="contact"
+                                                aria-selected="false">Prescreptions</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#Disease"
+                                                role="tab" aria-controls="contact" aria-selected="false">Disease</a>
+                                        </li>
+                                    </ul>
+                                    <form class="form-inline my-2 my-lg-0">
+                                        <input class="form-control mr-sm-2 searchfield" type="text"
+                                            placeholder="Search Patient" aria-label="Search" name="id"
+                                            style="max-width: 160px;" required>
+                                        <button class="btn  my-2 my-sm-0 search" type="button">Search</button>
+                                    </form>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade " id="Analysis" role="tabpanel" aria-labelledby="profile-tab">
-                                <div class="container">
-                                    <div class="panel-group">
-                                        <div class="panel panel-default">
-
-                                            <div id="collapse1" class="">
-                                                <table class="table">
-                                                    <thead class="table-dark">
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Date</th>
-                                                            <th>Resulte</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="analysisTable" class="empty">
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="Prescreptions" role="tabpanel" aria-labelledby="contact-tab">
-                                <div class="container">
-                                    <div class="panel-group">
-                                        <div class="panel panel-default">
-
-                                            <div id="collapse1" class="">
-                                                <table class="table">
-                                                    <thead class="table-dark">
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Date</th>
-                                                            <th>Resulte</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="prescreptionTable" class="empty">
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="tab-pane fade" id="Disease" role="tabpanel" aria-labelledby="contact-tab">
-                                <div class="container">
-                                    <div class="panel-group">
-                                        <div class="panel panel-default">
-
-                                            <div id="collapse1" class="">
-                                                <table class="table">
-                                                    <thead class="table-dark">
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Detected From</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="chronicDisease" class="empty">
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </nav>
                         </div>
-                        <h5 style="font-family: cooper black;">Add To Patient</h5>
+                        <div class="modal-body">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade active show" id="Scans" role="tabpanel"
+                                    aria-labelledby="home-tab">
+                                    <div class="container">
+                                        <div class="panel-group">
+                                            <div class="panel panel-default">
 
-                        <hr>
-                        <form action="mainHallForPatient"  method="POST" enctype="multipart/form-data">
+                                                <div id="collapse1" class="">
+                                                    <table class="table">
+                                                        <thead class="table-dark">
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Date</th>
+                                                                <th>Resulte</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="scanTable" class="empty">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade " id="Analysis" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="container">
+                                        <div class="panel-group">
+                                            <div class="panel panel-default">
+
+                                                <div id="collapse1" class="">
+                                                    <table class="table">
+                                                        <thead class="table-dark">
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Date</th>
+                                                                <th>Resulte</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="analysisTable" class="empty">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="Prescreptions" role="tabpanel"
+                                    aria-labelledby="contact-tab">
+                                    <div class="container">
+                                        <div class="panel-group">
+                                            <div class="panel panel-default">
+
+                                                <div id="collapse1" class="">
+                                                    <table class="table">
+                                                        <thead class="table-dark">
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Date</th>
+                                                                <th>Resulte</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="prescreptionTable" class="empty">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="tab-pane fade" id="Disease" role="tabpanel" aria-labelledby="contact-tab">
+                                    <div class="container">
+                                        <div class="panel-group">
+                                            <div class="panel panel-default">
+
+                                                <div id="collapse1" class="">
+                                                    <table class="table">
+                                                        <thead class="table-dark">
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Detected From</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="chronicDisease" class="empty">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 style="font-family: cooper black;">Add To Patient</h5>
+
+                            <hr>
 
                             <div class="form-row ">
                                 <div class="form-group col-md-3">
@@ -231,7 +235,6 @@
                                         <option value=0>Scan</option>
                                         <option value=1>Analysis</option>
                                         <option value=2>Prescreption</option>
-                                        <option value=3>Chronic Disease</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
@@ -241,18 +244,18 @@
 
                                 </div>
                             </div>
-                    </div>
+                        </div>
 
-                    <div class="modal-footer">
-                        <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
-                        <button class="btn btn-b" type="submit">Sign Up</button>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
+                            <button class="btn btn-b" type="submit">Add</button>
 
 
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </form>
 
 
@@ -279,14 +282,20 @@
 
 
 
-        <!-- Patient modal in the bottom bar -->
+        <!---------------------------------------------------- Patient modal in the bottom bar ------------------------------------------------->
         <div class="modal fade" id="modal-2" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
             aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-lightk">
+                            <a class="navbar-brand" href="#" style="font-family: cooper black; font-size:1rem;">
+                                <img src="/images/heart-rate.png" width="30" height="30"
+                                    class="d-inline-block align-top" alt="">
+                                ON-Pharma
+                            </a>
+                        </nav>
 
-                        <h1 class="navbar-brand h1" style="font-family: cooper black;" href="#">ON-Pharma</h1>
 
                     </div>
                     <div class="modal-body">
@@ -300,11 +309,11 @@
                                                 <tr>
                                                     <th>First Name</th>
                                                     <th>Last Name</th>
-                                                    
+
                                                 </tr>
                                             </thead>
                                             <tbody id="getmePatients" class="empty">
-                                             
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -319,6 +328,100 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
+        
+
+            <!---------------------------------------------------- Search Modal ------------------------------------------------->
+
+        <form action="" method="POST" class="form-validator">
+
+            <div class="modal fade" id="modal-3" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <nav class="navbar navbar-expand-lg navbar-light bg-lightk justify-content-between">
+                                <a class="navbar-brand" href="#" style="font-family: cooper black; font-size:1rem;">
+                                    <img src="/images/heart-rate.png" width="30" height="30"
+                                        class="d-inline-block align-top" alt="">
+                                    ON-Pharma
+                                </a>
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mr-auto">
+
+
+
+                                        <li class="nav-item  active">
+                                            <div class="form-group col-md-6">
+                                                <label for="Gendert">Type<span class="text-danger">*</span></label>
+                                                <select class="form-control" id="selecttype" name="Genderp" style="    min-width: 152px;" required>
+                                                    <option value ="-1">Search For</option>
+                                                    <option value = "0">Medicines</option>
+                                                    <option value = "1">Pharmacy</option>
+                                                </select>
+                                            </div>
+
+                                        </li>
+
+                                    </ul>
+                                    <input class="form-control mr-sm-2" type="search" id="searchfeildtowritename" placeholder="Search"
+                                        aria-label="Search" style="max-width: 190px;" required>
+                                    <button id="searchfor" class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+                                </div>
+                            </nav>
+                            </nav>
+
+
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="panel-group">
+                                    <div class="panel panel-default">
+
+                                        <div id="collapse1" class="">
+                                            <table class="table">
+                                                <thead class="table-dark" id="thead">
+                                                   
+                                                </thead>
+                                                <tbody id="searchingfor" >
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <img src="images/mainHallForPatient.jpg" alt="" style="position: absolute;
                 top: 0;

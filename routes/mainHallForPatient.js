@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
 
     switch (req.body.type  /*data i get from ajax object*/) {
         case "search":
-            pool.query("SELECT * FROM SCAN ", (error, rows) => {
+            pool.query(`SELECT * FROM SCAN s , account a WHERE a.acc_ID = s.Patient_acc_ID and a.phoneNum = ${req.body.phone}`, (error, rows) => {
                 if (error)
                     throw error;
                 else {
@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
             });
             break;
         case "Analysis":
-            pool.query("SELECT * FROM analysis ", (error, rows) => {
+            pool.query(`SELECT * FROM analysis s, account a WHERE a.acc_ID = s.Patient_acc_ID and a.phoneNum = ${req.body.phone}`, (error, rows) => {
                 if (error)
                     throw error;
                 else {
@@ -63,7 +63,7 @@ router.post('/', (req, res) => {
             break;
 
         case "Prescriptions":
-            pool.query("SELECT * FROM prescription ", (error, rows) => {
+            pool.query(`SELECT * FROM prescription p, account a WHERE a.acc_ID = p.Patient_acc_ID and a.phoneNum = ${req.body.phone}`, (error, rows) => {
                 if (error)
                     throw error;
                 else {
@@ -96,10 +96,27 @@ router.post('/', (req, res) => {
                 }
             });
             break;
-        
-        
+
+
         case "chronicDisease":
-            pool.query("SELECT * FROM chronic_disease", (error, rows) => {
+            pool.query(`SELECT * FROM chronic_disease  c, account a WHERE a.acc_ID = c.Patient_acc_ID and a.phoneNum = ${req.body.phone}`, (error, rows) => {
+                if (error)
+                    throw error;
+                else {
+
+                    result = JSON.stringify(rows);
+
+                    //console.log("FETCHED SUCCEFULLY5");
+
+                    res.end(
+                        result
+                    );
+                }
+            });
+            break;
+
+        case "search_for_pharmacy":
+            pool.query("SELECT pharmacy_name , pharmacy_address FROM pharmacy where pharmacy_name = '"+req.body.searchField +"'", (error, rows) => {
                 if (error)
                     throw error;
                 else {
@@ -115,13 +132,31 @@ router.post('/', (req, res) => {
             });
             break;
         
+        case "search_for_Medicines":
+            pool.query("SELECT pharmacy_name , pharmacy_address FROM pharmacy ph , pharmacy_repository pr  where pr.pharmacy_ID = ph.pharmacy_ID and pr.item_name ='" +req.body.searchField +"'", (error, rows) => {
+                if (error)
+                    throw error;
+                else {
+
+                    result = JSON.stringify(rows);
+
+                    //console.log("FETCHED SUCCEFULLY5");
+
+                    res.end(
+                        result
+                    );
+                }
+            });
+            break;
+
         default:
             console.log("i Will Download File");
             var form = new formidable.IncomingForm();
             form.parse(req, function (err, fields, files) {
                 var oldpath = files.filetoupload.path;
-                console.log(oldpath);
+                //new path to save in our files
                 var newpath = 'F:/Mostafa/CMP 2/semester 1/DB-MS/Pharmacy App/public/pdfs/' + files.filetoupload.name;
+
                 mv(oldpath, newpath, function (err) {
                     if (err) throw err;
                     res.render('mainHallForPatient', {

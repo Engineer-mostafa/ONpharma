@@ -1,7 +1,7 @@
 
 
 
-//ajax scan table
+//ajax search fetch scans / pres / analysis / chronic 
 // *******************************************************
 $(".search").on("click", function () {
 
@@ -14,11 +14,23 @@ $(".search").on("click", function () {
                 //data which will be sent to back-end
                 data: {
                     type: "search",
+                    phone: $(".searchfield").val()
                 },
                 //if all success and it will return back-end
                 success: function (data, status) {
                     console.log("suc");
-                   
+
+                    //if he search again i will remove the last one and add anothor one
+                    $('#scanTable').empty();
+
+                    $('#analysisTable').empty();
+
+
+                    $('#prescreptionTable').empty();
+
+
+                    $('#chronicDisease').empty();
+
 
                     if ($('#scanTable').hasClass("empty")) {
                         var scans = ((JSON.parse(data)));
@@ -38,13 +50,14 @@ $(".search").on("click", function () {
                                 "</tr>")
                         }
                         );
-                        $('#scanTable').removeClass("empty");
                         $.ajax(
                             {
                                 method: "POST",
-                                url: "medicalhistory",
+                                url: "mainHallForPatient",
                                 data: {
                                     type: "Analysis",
+                                    phone: $(".searchfield").val()
+
                                 },
                                 success: function (data, status) {
                                     console.log("suc");
@@ -67,14 +80,15 @@ $(".search").on("click", function () {
                                                 "</tr>")
                                         }
                                         );
-                                        $('#analysisTable').removeClass("empty");
 
                                         $.ajax(
                                             {
                                                 method: "POST",
-                                                url: "medicalhistory",
+                                                url: "mainHallForPatient",
                                                 data: {
                                                     type: "Prescriptions",
+                                                    phone: $(".searchfield").val()
+
                                                 },
                                                 success: function (data, status) {
                                                     console.log("suc");
@@ -95,13 +109,14 @@ $(".search").on("click", function () {
                                                                 "</tr>")
                                                         }
                                                         );
-                                                        $('#prescreptionTable').removeClass("empty");
                                                         $.ajax(
                                                             {
                                                                 method: "POST",
-                                                                url: "medicalhistory",
+                                                                url: "mainHallForPatient",
                                                                 data: {
                                                                     type: "chronicDisease",
+                                                                    phone: $(".searchfield").val()
+
                                                                 },
                                                                 success: function (data, status) {
                                                                     console.log("suc");
@@ -122,7 +137,6 @@ $(".search").on("click", function () {
                                                                                 "</tr>")
                                                                         }
                                                                         );
-                                                                        $('#chronicDisease').removeClass("empty")
                                                                     }
 
 
@@ -189,6 +203,17 @@ $(".search").on("click", function () {
 
 
 
+
+
+
+
+
+
+
+
+
+
+//get all my patients
 $("#patients").on("click", function () {
 
     $.ajax(
@@ -202,7 +227,7 @@ $("#patients").on("click", function () {
                 console.log("suc");
 
 
-               
+
                 if ($('#getmePatients').hasClass("empty")) {
                     var getMyPatients = ((JSON.parse(data)));
                     console.log("in Patient00");
@@ -239,3 +264,150 @@ $("#patients").on("click", function () {
         }
     );
 });
+
+
+
+
+//search for medicines and pharmacies
+
+$("#searchfor").on("click", function () {
+
+    if ($("#selecttype").val() == "-1" && !$("#searchfeildtowritename").val()) { alert("Please You Should Fill Type And Search Field"); }
+
+    else if ($("#selecttype").val() == "-1") {
+        alert("Please You Should Fill Type");
+    }
+    else if (!$("#searchfeildtowritename").val()) {
+        alert("Please You Should Fill Search Field");
+    }
+    else {
+        //search for Medicines
+        if ($("#selecttype").val() == "0") {
+            console.log("searching for Med");
+            $.ajax(
+                {
+                    method: "POST",
+                    url: "mainHallForPatient",
+                    data: {
+                        type: "search_for_Medicines",
+                        searchField: $("#searchfeildtowritename").val(),
+                      
+                    },
+                    success: function (data, status) {
+                        console.log("suc");
+
+
+                        $("#thead").empty();
+                        $("#thead").append(
+                            "<tr>" +
+                            "<th>" +
+                            "In Pharmacy"+
+                                         "</th>" +
+                            "<th>" +
+                            "Address"+
+                                         "</th>" +
+                            "</tr>"
+                        );
+                        $("#searchingfor").empty();
+
+
+                        var pharmacies_has_medicin = ((JSON.parse(data)));
+                        console.log(pharmacies_has_medicin);
+                        pharmacies_has_medicin.forEach(element => {
+
+                            console.log(element);
+
+                            $('#searchingfor').append(
+                                "<tr>" +
+                                "<td>" +
+                                element.pharmacy_name +
+                                "</td>" +
+                                "<td>" +
+                                element.pharmacy_address +
+                                "</td>" +
+                                "</tr>");
+                        }
+                        );
+
+
+
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("fialed");
+
+                        console.log(xhr);
+                        console.log(status);
+                        console.log(error);
+
+                    },
+
+                }
+            );
+        }
+
+        // search for pharmacy
+        else {
+            console.log("searching for ph");
+
+            $.ajax(
+                {
+                    method: "POST",
+                    url: "mainHallForPatient",
+                    data: {
+                        type: "search_for_pharmacy",
+                        searchField: $("#searchfeildtowritename").val(),
+                       
+                    },
+                    success: function (data, status) {
+                        console.log("suc");
+
+                        $("#thead").empty();
+                        $("#thead").append(
+                            "<tr>" +
+                            "<th>" +
+                            "Name" +
+                            "</th>" +
+                            "<th>" +
+                            "Address" +
+                            "</th>" +
+                            "</tr>"
+                        );
+                        $("#searchingfor").empty();
+//pharmacies that has the searching name
+                            var myPharmacies = ((JSON.parse(data)));
+                        console.log(myPharmacies);
+                        myPharmacies.forEach(element => {
+
+                                console.log(element);
+
+                            $('#searchingfor').append(
+                                    "<tr>" +
+                                    "<td>" +
+                                    element.pharmacy_name +
+                                    "</td>" +
+                                    "<td>" +
+                                    element.pharmacy_address +
+                                    "</td>" +
+                                    "</tr>");
+                            }
+                            );
+                      
+
+
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("fialed");
+
+                        console.log(xhr);
+                        console.log(status);
+                        console.log(error);
+
+                    },
+
+                }
+            );
+        }
+
+
+    }
+})
