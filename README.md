@@ -11,8 +11,7 @@ To Run App Install
 
 Then Write In Terminal
 ----------------------------
-    npm install express body-parser ejs nodemon express-validator express-flash express-messages mysql express-fileupload bcrypt util
-
+    npm i
 
 Then Replace Script Object In The Package.json File With This Object
 -------------------------------------------------------------------------
