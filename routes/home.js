@@ -20,7 +20,8 @@ router.get('/', (request, Response) => {
     Response.render('home', {
         title: "Home",
         css: "home",
-        js: "home"
+        js: "home",
+        img:"heart-rate.png"
 
     }
     );
@@ -138,8 +139,8 @@ router.post('/', (request, Response) => {
     Response.render('home', {
         title: "Home",
         css: "home",
-        js: "home"
-
+        js: "home",
+        img: "heart-rate.png"
     }
     );
 });

@@ -8,7 +8,8 @@ router.get('/', (req, res) => {
     res.render('pharmacistview', {
         title: "Pharmacy",
         css: "pharmacistview",
-        js: "pharmacistview"
+        js: "pharmacistview",
+        img: "pharmacistv.png"
 
     }
     );

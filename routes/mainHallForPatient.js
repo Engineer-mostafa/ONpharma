@@ -17,7 +17,8 @@ router.get('/', async (request, Response) => {
     Response.render('mainHallForPatient', {
         title: "Main Hall",
         css: "mainHallForPatient",
-        js: "mainHallForPatient"
+        js: "mainHallForPatient",
+        img: "checklist.png"
 
     }
     );

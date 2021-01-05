@@ -28,8 +28,8 @@ router.get('/', (request, Response) => {
 Response.render('medicalhistory', {
         title: "Medical History",
         css: "medicalhistory",
-        js: "medicalhistory"
-
+        js: "medicalhistory",
+        img:"patient.png"
     }
     );
 });
