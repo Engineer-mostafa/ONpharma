@@ -103,7 +103,7 @@
                                     </ul>
                                     <form class="form-inline my-2 my-lg-0">
                                         <input class="form-control mr-sm-2 searchfield" type="text"
-                                            placeholder="Search Patient" aria-label="Search" name="id"
+                                            placeholder="Patient QRCode" aria-label="Search" name="id"
                                             style="max-width: 160px;" required>
                                         <button class="btn  my-2 my-sm-0 search" type="button">Search</button>
                                     </form>
@@ -111,6 +111,9 @@
                             </nav>
                         </div>
                         <div class="modal-body">
+                                        <div id="spinner" style="
+                                            margin-bottom: 230px;
+                                        "></div>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active show" id="Scans" role="tabpanel"
                                     aria-labelledby="home-tab">
@@ -170,6 +173,7 @@
                                                                 <th>Name</th>
                                                                 <th>Date</th>
                                                                 <th>Resulte</th>
+                                                                <th>Status</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="prescreptionTable" class="empty">
@@ -336,8 +340,8 @@
     jsbarcode-fontoptions="bold" displayValue ="false">
     </svg> -->
 
-        <svg id="barcode"></svg>
-        <img class="barcode" src="" alt="">
+        <!-- <svg id="barcode"></svg>
+        <img class="barcode" src="" alt=""> -->
         <!-- --------------------------------------------------------------------------------------------------------------------- -->
 
 
@@ -389,6 +393,9 @@
 
                         </div>
                         <div class="modal-body">
+                            <div id="spinner2" style="
+                                                                        margin-bottom: 100px;
+                                                                    "></div>
                             <div class="container">
                                 <div class="panel-group">
                                     <div class="panel panel-default">

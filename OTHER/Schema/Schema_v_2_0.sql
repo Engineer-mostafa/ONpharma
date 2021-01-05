@@ -80,8 +80,8 @@ ALTER TABLE pharmacist ADD FOREIGN KEY (Pharmacist_pharmacy_ID) REFERENCES Pharm
 
 CREATE TABLE Pharmaceutical_Item
 (
-    PRIMARY KEY(item_name),
-
+    PRIMARY KEY(item_id_barcode),
+	item_id_barcode int auto_increment,
     item_name varchar(255),
     item_type varchar(255) NOT NULL,
     item_price int
@@ -89,14 +89,14 @@ CREATE TABLE Pharmaceutical_Item
 
 CREATE TABLE Pharmacy_Repository
 (
-    PRIMARY KEY(pharmacy_ID, item_name),
+    PRIMARY KEY(pharmacy_ID, item_id),
 
     pharmacy_ID int,
-    item_name varchar(255),
+    item_id int ,
     item_quantity int DEFAULT 0,
 
     FOREIGN KEY (pharmacy_ID) REFERENCES Pharmacy(pharmacy_ID) ON DELETE CASCADE,
-    FOREIGN KEY (item_name) REFERENCES Pharmaceutical_Item(item_name)
+    FOREIGN KEY (item_id) REFERENCES Pharmaceutical_Item(item_id_barcode)
 );
 
 CREATE TABLE Purchase_operation
@@ -122,6 +122,7 @@ CREATE TABLE Prescription
     Prescription_date date NOT NULL,
     Patient_acc_ID int NOT NULL,
     doctor_acc_ID int NOT NULL,
+    pres_status bool default 0,
 
     FOREIGN KEY (Patient_acc_ID) REFERENCES Patient(Patient_acc_ID) ON DELETE CASCADE,
     FOREIGN KEY (doctor_acc_ID) references doctor(doctor_acc_ID) 
@@ -129,13 +130,13 @@ CREATE TABLE Prescription
 
 CREATE TABLE Prescription_Medicines
 (
-    PRIMARY KEY (Prescription_ID, Item_Name),
+    PRIMARY KEY (Prescription_ID, Item_id),
 
     Quantity int default 0,
-    Item_Name varchar(255),
+    Item_id int,
     Prescription_ID int  auto_increment,
 
-    FOREIGN KEY (Item_Name) REFERENCES Pharmaceutical_Item(item_name),
+    FOREIGN KEY (Item_id) REFERENCES Pharmaceutical_Item(item_id_barcode),
     FOREIGN KEY (Prescription_ID) REFERENCES Prescription(Prescription_ID)
 );
 
@@ -145,9 +146,7 @@ CREATE TABLE Analysis
 
     Analysis_Name varchar(255) NOT NULL,
     Analysis_Date date NOT NULL,
-    Result float NOT NULL,
-    Lower_Range float,
-    Upper_Range float,
+    Result varchar(255) NOT NULL,
     Patient_acc_ID int NOT NULL,
 
     FOREIGN KEY (Patient_acc_ID) REFERENCES Patient(Patient_acc_ID)
@@ -159,7 +158,7 @@ CREATE TABLE Scan
 
     Scan_Name varchar(255) NOT NULL,
     Scan_Date date,
-    Result float NOT NULL,
+    Result varchar(255) NOT NULL,
     Patient_acc_ID int NOT NULL,
 
     FOREIGN KEY (Patient_acc_ID) REFERENCES Patient(Patient_acc_ID)
@@ -184,28 +183,29 @@ INSERT INTO `pharmacy_app_db`.`account` ( `acc_email`, `acc_password`, `Fname`, 
 /**/
 INSERT INTO `pharmacy_app_db`.`patient` (`Patient_acc_ID`, `Patient_smoking_status`) VALUES (1, 0);
 /**/
-INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_name`, `item_type`, `item_price`) VALUES ('bro', 'beauty', 10);
-INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_name`, `item_type`, `item_price`) VALUES ('med', 'medicine', 12);
+INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_id_barcode`,`item_name`, `item_type`, `item_price`) VALUES (1,'bro', 'beauty', 10);
+INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_id_barcode`,`item_name`, `item_type`, `item_price`) VALUES (2,'med', 'medicine', 12);
 /**/
 INSERT INTO `pharmacy_app_db`.`pharmacist` (`Pharmacist_acc_ID`) VALUES ('2');
 /**/
 INSERT INTO `pharmacy_app_db`.`pharmacy` (`pharmacy_manager_ID`, `pharmacy_name`, `pharmacy_address`) VALUES (2, 'brother', 'shobra');
 /**/
-INSERT INTO `pharmacy_app_db`.`pharmacy_repository` (`pharmacy_ID`, `item_name`, `item_quantity`) VALUES (1, 'bro', 50);
-INSERT INTO `pharmacy_app_db`.`pharmacy_repository` (`pharmacy_ID`, `item_name`, `item_quantity`) VALUES (1, 'med', 100);
+INSERT INTO `pharmacy_app_db`.`pharmacy_repository` (`pharmacy_ID`, `item_id`, `item_quantity`) VALUES (1, 1, 50);
+INSERT INTO `pharmacy_app_db`.`pharmacy_repository` (`pharmacy_ID`, `item_id`, `item_quantity`) VALUES (1, 2, 100);
 /**/
-INSERT INTO `pharmacy_app_db`.`analysis` (`Analysis_Name`, `Analysis_Date`, `Result`, `Lower_Range`, `Upper_Range`, `Patient_acc_ID`) VALUES ('cbc', '2000-10-10', '10', '0', '100', '1');
+INSERT INTO `pharmacy_app_db`.`analysis` (`Analysis_Name`, `Analysis_Date`, `Result`, `Patient_acc_ID`) VALUES ('cbc', '2000-10-10', 'DB Lecture 3 - Fall 2020.pdf','1');
 /**/
 INSERT INTO `pharmacy_app_db`.`chronic_disease` (`Disease_Name`, `Disease_Date`, `Patient_acc_ID`) VALUES ('brd', '2000-10-10', '1');
 /**/
 INSERT INTO `pharmacy_app_db`.`doctor` (`doctor_acc_ID`, `doctor_degree`, `doctor_specialization`, `doctor_address`) VALUES ('3', 'bech', 'suergery', 'shobra');
 /**/
-INSERT INTO `pharmacy_app_db`.`prescription` (`Prescription_ID`, `Prescription_diagnosis`, `Prescription_date`, `Patient_acc_ID`, `doctor_acc_ID`) VALUES ('1', 'brd', '2000-10-10', '1', '3');
+INSERT INTO `pharmacy_app_db`.`prescription` (`Prescription_ID`, `Prescription_diagnosis`, `Prescription_date`, `Patient_acc_ID`, `doctor_acc_ID`) VALUES ('1', 'DB Lecture 1 - Fall 2020.pdf', '2000-10-10', '1', '3');
 /**/
-INSERT INTO `pharmacy_app_db`.`prescription_medicines` (`Quantity`, `Item_Name`, `Prescription_ID`) VALUES ('5', 'med', '1');
+INSERT INTO `pharmacy_app_db`.`prescription_medicines` (`Quantity`, `Item_id`, `Prescription_ID`) VALUES ('5', 1, '1');
 /**/
 INSERT INTO `pharmacy_app_db`.`purchase_operation` (`operation_ID`, `pharmacy_ID`, `operation_cash`) VALUES ('1', '1', '10');
 /**/
-INSERT INTO `pharmacy_app_db`.`scan` (`Scan_Name`, `Scan_Date`, `Result`, `Patient_acc_ID`) VALUES ('leg', '2000-10-10', 'good', '1');
+INSERT INTO `pharmacy_app_db`.`scan` (`Scan_Name`, `Scan_Date`, `Result`, `Patient_acc_ID`) VALUES ('leg', '2000-10-10', 'DB Lecture 1 - Fall 2020.pdf', '1');
+INSERT INTO `pharmacy_app_db`.`scan` (`Scan_Name`, `Scan_Date`, `Result`, `Patient_acc_ID`) VALUES ('scan2', '2000-10-10', 'DB Lecture 6 - Fall 2020.pdf', '1');
 /**/
 

@@ -1,0 +1,257 @@
+<!-- Stock Html Page-->
+
+<%- include('layout/header')%>
+    <div class="body-inner">
+
+
+        <div id="dock-container">
+            <ul>
+                <li>
+                    <a id="add" data-target="#modal-1" data-toggle="modal" href="#" onclick="reloadStock()">
+                        <span>Stock</span>
+                        <img src="/images/stock.png" /></a>
+                </li>
+                <li>
+                    <a id="Cashier" data-target="#modal-2" data-toggle="modal" href="#">
+                        <span>Cashier</span>
+                        <img src="/images/pharmacist.png" /></a>
+                </li>
+                <li>
+                    <a id="Branch" data-target="#modal-3" data-toggle="modal" href="#">
+                        <span>Create New Branch</span>
+                        <img src="/images/pharmacy.png" /></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>Help desk</span>
+                        <img src="/images/customer-service.png" /></a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>Call us</span>
+                        <img src="/images/phone.png" /></a>
+                </li>
+            </ul>
+            <div class="menu-perspective" style="width: 100%;">
+                <div class="menu-board metal-gradient" style="min-width: 512px;"></div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <!--------------------------------------------------- Stock modal---------------------------------------------------->
+
+
+        <div class="modal fade" id="modal-1" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+                            <a class="navbar-brand" href="#" style="font-family: cooper black; font-size:1rem;">
+                                <img src="/images/heart-rate.png" width="30" height="30"
+                                    class="d-inline-block align-top" alt="">
+                                ON-Pharma
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="nav nav-tabs mr-auto" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="stock-tab" data-toggle="tab" href="#Stock"
+                                            role="tab" aria-controls="home" aria-selected="false">My Stock</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " id="item-tab" data-toggle="tab" href="#item" role="tab"
+                                            aria-controls="home" aria-selected="false">Search For
+                                            Specific Item</a>
+                                    </li>
+
+                                </ul>
+                                <div class="form-group col-md-3 med_stock"
+                                    style="    margin-bottom: 0rem;     margin-top: -16px;">
+                                    <label for="Genderp">Name Of Item<span class="text-danger">*</span></label>
+                                    <select class="form-control" id="med_stock" name="Genderp" required>
+
+                                    </select>
+                                </div>
+                                <button class="btn  my-2 my-sm-0 search" type="button">Search</button>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="modal-body">
+
+                        <div id="spinner" style="
+    margin-bottom: 365px;
+"></div>
+
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade active show" id="Stock" role="tabpanel"
+                                aria-labelledby="home-tab">
+                                <div class="container">
+                                    <div class="panel-group">
+                                        <div class="panel panel-default">
+
+                                            <div id="collapse1" style="
+                                                        height: 300px;
+                                                        overflow-y: scroll;
+                                                        ">
+
+                                                <table class="table">
+                                                    <thead class="table-dark">
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Quantaty</th>
+                                                            <th>Price</th>
+                                                            <th>BarCode</th>
+                                                        </tr>
+
+
+                                                    </thead>
+                                                    <tbody id="stocktable" class="empty">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="item" role="tabpanel" aria-labelledby="contact-tab">
+                                <div class="container">
+                                    <div class="panel-group">
+                                        <div class="panel panel-default">
+
+                                            <div id="collapse1" style="
+                                                        height: 300px;
+                                                        overflow-y: scroll;
+                                                        ">
+                                                <table class="table">
+                                                    <thead class="table-dark">
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Quantaty</th>
+                                                            <th>Price</th>
+                                                            <th>BarCode</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="specificItem" class="empty">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- add new item -->
+
+                            <h5 style="font-family: cooper black;">Add Item To Your Stock</h5>
+                            <hr>
+                            <div class="form-row ">
+                                <div class="form-group col-md-3">
+                                    <label for="Genderp">Name Of Item<span class="text-danger">*</span></label>
+                                    <select class="form-control" id="all_med" name="Genderp" required>
+
+                                    </select>
+                                </div>
+
+
+
+                                <div class="form-group col-md-3">
+
+                                    <label for="bd">Quantity<span class="text-danger">*</span></label>
+                                    <input type="number" id="qadditemtomystock" class="form-control" name="Bdate"
+                                        placeholder="Enter Quantity" required>
+
+
+                                </div>
+
+                                <a class="btn btn-primary my-4" id="additemtomystock" type="submit">Add</a>
+
+
+
+
+
+
+                            </div>
+
+                            <!-- edit item -->
+
+                            <h5 style="font-family: cooper black;">Edit Item in Your Stock</h5>
+                            <hr>
+                            <div class="form-row ">
+                                <div class="form-group col-md-3">
+                                    <label for="Genderp">Name Of Item<span class="text-danger">*</span></label>
+                                    <select class="form-control" id="edit_med" name="Genderp" required>
+
+                                    </select>
+                                </div>
+
+
+
+                                <div class="form-group col-md-3">
+
+                                    <label for="bd">Quantity<span class="text-danger">*</span></label>
+                                    <input type="number" id="qedititemtomystock" class="form-control" name="Bdate"
+                                        placeholder="Enter Quantity" required>
+
+
+                                </div>
+
+
+                                <a class="btn btn-primary my-4" id="edititemtomystock" type="submit">edit</a>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <img src="images/pharmaview.jpg" alt="" style="position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: fill;
+                    z-index: -10000000000000;">
+    </div>
+
+
+    <%- include('layout/footer')%>

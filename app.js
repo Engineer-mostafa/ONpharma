@@ -18,7 +18,7 @@ const app = express();
 //include routes
 const homeRoute = require('./routes/home');
 const medicalhistoryRoute = require('./routes/medicalhistory');
-const stockRoute = require('./routes/stock');
+const PharmacyRoute = require('./routes/pharmacist_view');
 const mainHallForPatients = require('./routes/mainHallForPatient');
 
 //local host
@@ -42,7 +42,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 //routes of the pages
 app.use('/home', homeRoute);
 app.use('/medicalhistory', medicalhistoryRoute);
-app.use('/stock', stockRoute);
+app.use('/pharmacistview', PharmacyRoute);
 app.use('/mainHallForPatient', mainHallForPatients);
 
 
