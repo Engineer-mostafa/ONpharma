@@ -1,4 +1,4 @@
-Pharmacy App
+First Online Care
 -----------------------
 
 <img src="public/images/booth.jpg">
