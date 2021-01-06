@@ -90,6 +90,3 @@ app.listen(port, (error) => {
 
 
 
-
-//note for me <form action = ""  method = "post">
-//in forms action attribute i write on it the route i need this form to response in if i dont write any route by default the server will response in the same route
