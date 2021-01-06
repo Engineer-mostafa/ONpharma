@@ -12,13 +12,8 @@ var QRCode = require('qrcode')
 
 router.get('/',  (request, Response) => {
     console.log("in Main Hall Get");
-<<<<<<< HEAD
-   
-  
-=======
 
 
->>>>>>> 0baaeae0e8bdc04243f0f8f497fd27824a7c630d
     Response.render('mainHallForPatient', {
         title: "Main Hall",
         css: "mainHallForPatient",
