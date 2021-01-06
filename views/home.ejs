@@ -19,7 +19,7 @@
 
 
                
-
+           
 
             <!--Patient Form Regesteration-->
             <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -100,12 +100,18 @@
                                         <input class="form-control" id="Mobilep" type="number" name="Mobilep"
                                             placeholder="Enter your Mobile number" required>
                                     </div>
-
+                                    <%if(typeof errors == "undefined"){%>
+                                       
+                                 <% } else { %>
+                                         
+                                       <p><%= errors%></p>   
+                                    <%}%>
+                                    
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
-                                <button class="btn btn-b" type="submit">Sign Up</button>
+                                <button class="btn btn-b" id ="signup-btn" type="submit">Sign Up</button>
                             </div>
                         </div>
                     </div>
@@ -327,7 +333,7 @@
             <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
-            <form id="Login" class="form-validate" method="POST">
+            <form id="Login" class="form-validate" method="POST" action ="home">
 
                 <div class="modal fade" id="modal-4" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
                     aria-hidden="true">

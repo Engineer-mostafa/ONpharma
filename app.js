@@ -20,6 +20,7 @@ const homeRoute = require('./routes/home');
 const medicalhistoryRoute = require('./routes/medicalhistory');
 const stockRoute = require('./routes/stock');
 const mainHallForPatients = require('./routes/mainHallForPatient');
+const session = require('express-session');
 
 //local host
 const port = process.env.PORT || 3000;
@@ -34,7 +35,16 @@ app.set("view engine", 'ejs');
 //to convert response into json format
 app.use(bodyParser.json());
 
+//session
+app.use (session({
+    secret :'keyboard cat',
+    resave : false ,
+    saveUninitialized :false ,
+    cookie:{
+        maxAge :60*1000*30
+    }
 
+}));
 
 //to able neasting object in json format this required explicitly we should write this if we need to use body-parser
 app.use(bodyParser.urlencoded({extended: true}));

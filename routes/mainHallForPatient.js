@@ -13,14 +13,13 @@ var QRCode = require('qrcode')
 router.get('/', async (request, Response) => {
     console.log("in Main Hall Get");
    
-    
+  
     Response.render('mainHallForPatient', {
         title: "Main Hall",
         css: "mainHallForPatient",
         js: "mainHallForPatient"
 
-    }
-    );
+    });
 });
 
 
