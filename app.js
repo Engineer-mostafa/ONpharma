@@ -18,7 +18,7 @@ const app = express();
 //include routes
 const homeRoute = require('./routes/home');
 const medicalhistoryRoute = require('./routes/medicalhistory');
-const stockRoute = require('./routes/stock');
+const PharmacyRoute = require('./routes/pharmacist_view');
 const mainHallForPatients = require('./routes/mainHallForPatient');
 const session = require('express-session');
 
@@ -51,9 +51,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //routes of the pages
 app.use('/home', homeRoute);
-app.use('/medicalhistory', medicalhistoryRoute);
-app.use('/stock', stockRoute);
-app.use('/mainHallForPatient', mainHallForPatients);
+app.use('/medical-history', medicalhistoryRoute);
+app.use('/pharmacist-v', PharmacyRoute);
+app.use('/main-Hall', mainHallForPatients);
 
 
 
@@ -100,6 +100,3 @@ app.listen(port, (error) => {
 
 
 
-
-//note for me <form action = ""  method = "post">
-//in forms action attribute i write on it the route i need this form to response in if i dont write any route by default the server will response in the same route

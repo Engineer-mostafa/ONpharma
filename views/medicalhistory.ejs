@@ -14,262 +14,269 @@
     object-fit: fill;
     z-index: -10000000000000;">
 
-    <!-- <img src="images/my_character_man.svg" style="position: fixed;width: 49%;height: 76%;top: 20%;left: 51%;"> -->
-    <img src="images/medicalHistoryBanner0.png" style="position: fixed;width: 50%;height: 74%;top: 22%;left: 0%;">
-    <!-- <div> -->
+            <!-- <img src="images/my_character_man.svg" style="position: fixed;width: 49%;height: 76%;top: 20%;left: 51%;"> -->
+            <img src="images/medicalHistoryBanner0.png"
+                style="position: fixed;width: 50%;height: 74%;top: 22%;left: 0%;">
+            <!-- <div> -->
 
-    <!-- links that open the modals of tables -->
-    <a data-target="#modal-1" data-toggle="modal" href="#" id="scans"
-        style="position: fixed;width: 8%;height: 2%;top: 35%;left: 18%;"></a>
+            <!-- links that open the modals of tables -->
+            <a data-target="#modal-1" data-toggle="modal" href="#" id="scans"
+                style="position: fixed;width: 8%;height: 2%;top: 35%;left: 18%;"></a>
 
-    <a data-target="#modal-2" data-toggle="modal" href="#" id="Analysis"
-        style="position: fixed;width: 11%;height: 2%;top: 41%;left: 18%;"></a>
-    <a data-target="#modal-3" data-toggle="modal" href="#" id="Prescriptions"
-        style="position: fixed;width: 14%;height: 2%;top: 46%;left: 18%;"></a>
-    <a data-target="#modal-4" data-toggle="modal" href="#" id="ChronicDisease"
-        style="position: fixed;width: 16%;height: 2%;top: 52%;left: 18%;"></a>
-
-
-    <!--Scans-->
-    <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-    <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <!-- Modal heading -->
-                <div class="modal-header">
-                    <h1 class="modal-title " id="exampleModalLabel">
-                        Scans
-                    </h1>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">
-                            ×
-                        </span>
-                    </button>
-                </div>
-
-                <!-- Modal body with image -->
-                <div class="modal-body">
+            <a data-target="#modal-2" data-toggle="modal" href="#" id="Analysis"
+                style="position: fixed;width: 11%;height: 2%;top: 41%;left: 18%;"></a>
+            <a data-target="#modal-3" data-toggle="modal" href="#" id="Prescriptions"
+                style="position: fixed;width: 14%;height: 2%;top: 46%;left: 18%;"></a>
+            <a data-target="#modal-4" data-toggle="modal" href="#" id="ChronicDisease"
+                style="position: fixed;width: 16%;height: 2%;top: 52%;left: 18%;"></a>
 
 
-                    <div class="container">
-                        <div class="panel-group">
-                            <div class="panel panel-default">
+            <!--Scans-->
+            <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <!-- Modal heading -->
+                        <div class="modal-header">
+                            <h1 class="modal-title " id="exampleModalLabel">
+                                Scans
+                            </h1>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">
+                                    ×
+                                </span>
+                            </button>
+                        </div>
 
-                                <div id="collapse1" class="">
-                                    <table class="table">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Date</th>
-                                                <th>Resulte</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="scanTable" class="empty">
-                                            <tr>
-                                                <td><a  href="/pdfs/Weekly Schedule.pdf" target="_blank" >scans</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                        <!-- Modal body with image -->
+                        <div class="modal-body">
+
+                            <div id="spinner1" style="
+                                                                        margin-bottom: 100px;
+                                                                    "></div>
+                            <div class="container">
+                                <div class="panel-group">
+                                    <div class="panel panel-default">
+
+                                        <div id="collapse1" class="">
+                                            <table class="table">
+                                                <thead class="table-dark">
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Date</th>
+                                                        <th>Resulte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="scanTable" class="empty">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-b btn-danger" type="button">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <!--Analysis-->
-    <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
-    <div class="modal fade" id="modal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <!-- Modal heading -->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        Analysis
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">
-                            ×
-                        </span>
-                    </button>
-                </div>
-
-                <!-- Modal body with image -->
-                <div class="modal-body">
-
-
-                    <div class="container">
-                        <div class="panel-group">
-                            <div class="panel panel-default">
-
-                                <div id="collapse1" class="">
-                                    <table class="table">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Date</th>
-                                                <th>Resulte</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="analysisTable" class="empty">
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-b btn-danger" type="button">Close</button>
                         </div>
                     </div>
                 </div>
-
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-b btn-danger" type="button">Close</button>
-                </div>
             </div>
-        </div>
-    </div>
 
 
 
 
+            <!--Analysis-->
+            <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
+            <div class="modal fade" id="modal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <!-- Modal heading -->
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Analysis
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">
+                                    ×
+                                </span>
+                            </button>
+                        </div>
 
+                        <!-- Modal body with image -->
+                        <div class="modal-body">
 
+                            <div id="spinner2" style="
+                                                                        margin-bottom: 100px;
+                                                                    "></div>
+                            <div class="container">
+                                <div class="panel-group">
+                                    <div class="panel panel-default">
 
-    <!--Prescriptions-->
-    <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                                        <div id="collapse1" class="">
+                                            <table class="table">
+                                                <thead class="table-dark">
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Date</th>
+                                                        <th>Resulte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="analysisTable" class="empty">
 
-    <div class="modal fade" id="modal-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <!-- Modal heading -->
-                <div class="modal-header">
-                    <h5 class="modal-title " id="exampleModalLabel">
-                        Prescriptions
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">
-                            ×
-                        </span>
-                    </button>
-                </div>
-
-                <!-- Modal body with image -->
-                <div class="modal-body">
-
-
-                    <div class="container">
-                        <div class="panel-group">
-                            <div class="panel panel-default">
-
-                                <div id="collapse1" class="">
-                                    <table class="table">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th>Prescriptions</th>
-                                                <th>Name</th>
-                                                <th>pdf</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="prescriptionTable" class="empty">
-
-                                        </tbody>
-                                    </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-b btn-danger" type="button">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-    <!--ChronicDisese-->
-    <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
-    <div class="modal fade" id="modal-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <!-- Modal heading -->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        Chronic Disease
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">
-                            ×
-                        </span>
-                    </button>
-                </div>
-
-                <!-- Modal body with image -->
-                <div class="modal-body">
-
-
-                    <div class="container">
-                        <div class="panel-group">
-                            <div class="panel panel-default">
-
-                                <div id="collapse1" class="">
-                                    <table class="table">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Detected From</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="chronicDisease" class="empty">
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-b btn-danger" type="button">Close</button>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-b btn-danger" type="button">Close</button>
+
+
+
+
+
+
+
+            <!--Prescriptions-->
+            <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+            <div class="modal fade" id="modal-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <!-- Modal heading -->
+                        <div class="modal-header">
+                            <h5 class="modal-title " id="exampleModalLabel">
+                                Prescriptions
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">
+                                    ×
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- Modal body with image -->
+                        <div class="modal-body">
+                            <div id="spinner3" style="
+                                                                        margin-bottom: 100px;
+                                                                    "></div>
+                            <div class="container">
+                                <div class="panel-group">
+                                    <div class="panel panel-default">
+
+                                        <div id="collapse1" class="">
+                                            <table class="table">
+                                                <thead class="table-dark">
+                                                    <tr>
+                                                        <th>Prescriptions</th>
+                                                        <th>Date</th>
+                                                        <th>PDF</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="prescriptionTable" class="empty">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-b btn-danger" type="button">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+            <!--ChronicDisese-->
+            <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+            <div class="modal fade" id="modal-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <!-- Modal heading -->
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Chronic Disease
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">
+                                    ×
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- Modal body with image -->
+                        <div class="modal-body">
+                            <div id="spinner4" style="
+                                                                        margin-bottom: 100px;
+                                                                    "></div>
+
+                            <div class="container">
+                                <div class="panel-group">
+                                    <div class="panel panel-default">
+
+                                        <div id="collapse1" class="">
+                                            <table class="table">
+                                                <thead class="table-dark">
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Detected From</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="chronicDisease" class="empty">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button data-dismiss="modal" class="btn btn-b btn-danger" type="button">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
         </div>
-    </div>
-
-
-
-
-
-
-
-
-    </div>
     </div>
 
     <%- include('layout/footer')%>

@@ -87,6 +87,7 @@ User.prototype = {
     },
 
     login: function (user, password, callback) {
+        console.log("login");
 
         // find the user data by his username.
         this.find(user, function (userID) {
@@ -100,10 +101,9 @@ User.prototype = {
                    
                   
                     callback(userID);
-                    return ;
-                   
                    
                 }
+              
             }
               // if the username/password is wrong then return null.
                 {
