@@ -8,7 +8,7 @@ $("#scans").on("click", function () {
     $.ajax(
         {
             method: "POST",
-            url: "medicalhistory",
+            url: "medical-history",
             //data which will be sent to back-end
             data: {
                 type: "Scan",
@@ -25,8 +25,6 @@ $("#scans").on("click", function () {
 
                     scans.forEach(element => {
                         $('#scanTable').append(
-
-
                             "<tr>" +
                             "<td>" +
                             element.Scan_Name +
@@ -67,7 +65,7 @@ $("#Analysis").on("click", function () {
     $.ajax(
         {
             method: "POST",
-            url: "medicalhistory",
+            url: "medical-history",
             data: {
                 type: "Analysis",
             },
@@ -125,7 +123,7 @@ $("#Prescriptions").on("click", function () {
     $.ajax(
         {
             method: "POST",
-            url: "medicalhistory",
+            url: "medical-history",
             data: {
                 type: "Prescriptions",
             },
@@ -181,7 +179,7 @@ $("#ChronicDisease").on("click", function () {
     $.ajax(
         {
             method: "POST",
-            url: "medicalhistory",
+            url: "medical-history",
             data: {
                 type: "chronicDisease",
             },

@@ -1,49 +1,49 @@
 
 
 // ----------------------------------------generate QR Code with html svg-----------------------------------------------
-$(function () {
+// $(function () {
 
-    JsBarcode("#barcode", "156161", {
-        font: "fantasy",
-        displayValue: false
-    });
-
-
-    var svg = $("#barcode")[0];
-    console.log("svg =" + svg);
-    var xml = new XMLSerializer().serializeToString(svg);
-
-    console.log("xml =" + xml);
-    var base64 = 'data:image/svg+xml;base64,' + btoa(xml);
-    console.log("base64 =" + base64);
-    var img = $(".barcode")[0];
-    img.src = base64;
-    $.ajax(
-        {
-            method: "POST",
-            url: "mainHallForPatient",
-            data: {
-                type: "barcode",
-                barcode: base64
-            },
-            success: function (data, status) {
-                console.log("suc");
+//     JsBarcode("#barcode", "156161", {
+//         font: "fantasy",
+//         displayValue: false
+//     });
 
 
+//     var svg = $("#barcode")[0];
+//     console.log("svg =" + svg);
+//     var xml = new XMLSerializer().serializeToString(svg);
 
-            },
-            error: function (xhr, status, error) {
-                console.log("fialed");
+//     console.log("xml =" + xml);
+//     var base64 = 'data:image/svg+xml;base64,' + btoa(xml);
+//     console.log("base64 =" + base64);
+//     var img = $(".barcode")[0];
+//     img.src = base64;
+//     $.ajax(
+//         {
+//             method: "POST",
+//              url: "main-Hall",
+//             data: {
+//                 type: "barcode",
+//                 barcode: base64
+//             },
+//             success: function (data, status) {
+//                 console.log("suc");
 
-                console.log(xhr);
-                console.log(status);
-                console.log(error);
 
-            },
 
-        }
-    );
-});
+//             },
+//             error: function (xhr, status, error) {
+//                 console.log("fialed");
+
+//                 console.log(xhr);
+//                 console.log(status);
+//                 console.log(error);
+
+//             },
+
+//         }
+//     );
+// });
 
 
 
@@ -60,7 +60,7 @@ $(".search").on("click", function () {
         $.ajax(
             {
                 method: "POST",
-                url: "mainHallForPatient",
+                url: "main-Hall",
                 //data which will be sent to back-end
                 data: {
                     type: "search",
@@ -107,7 +107,7 @@ $(".search").on("click", function () {
                         $.ajax(
                             {
                                 method: "POST",
-                                url: "mainHallForPatient",
+                                 url: "main-Hall",
                                 data: {
                                     type: "Analysis",
                                     phone: $(".searchfield").val()
@@ -142,7 +142,7 @@ $(".search").on("click", function () {
                                         $.ajax(
                                             {
                                                 method: "POST",
-                                                url: "mainHallForPatient",
+                                                 url: "main-Hall",
                                                 data: {
                                                     type: "Prescriptions",
                                                     phone: $(".searchfield").val()
@@ -178,7 +178,7 @@ $(".search").on("click", function () {
                                                         $.ajax(
                                                             {
                                                                 method: "POST",
-                                                                url: "mainHallForPatient",
+                                                                 url: "main-Hall",
                                                                 data: {
                                                                     type: "chronicDisease",
                                                                     phone: $(".searchfield").val()
@@ -301,7 +301,7 @@ $("#patients").on("click", function () {
     $.ajax(
         {
             method: "POST",
-            url: "mainHallForPatient",
+             url: "main-Hall",
             data: {
                 type: "getMyPatients",
             },
@@ -395,7 +395,7 @@ $("#searchfor").on("click", function () {
             $.ajax(
                 {
                     method: "POST",
-                    url: "mainHallForPatient",
+                     url: "main-Hall",
                     data: {
                         type: "search_for_Medicines",
                         searchField: $("#searchfeildtowritename").val(),
@@ -471,7 +471,7 @@ $("#searchfor").on("click", function () {
             $.ajax(
                 {
                     method: "POST",
-                    url: "mainHallForPatient",
+                     url: "main-Hall",
                     data: {
                         type: "search_for_pharmacy",
                         searchField: $("#searchfeildtowritename").val(),
@@ -540,4 +540,49 @@ $("#searchfor").on("click", function () {
 
 
     }
-})
+});
+
+
+
+
+
+
+
+//add item to patient
+$("#additemtopatient").on("click", function () {
+    
+    if ($("#NameOfItemToAdd").val() && $("#dateofsubmition").val() && $(".searchfield").val() && $("#filetoupload").val()) {
+        var tot = $("#typeoftheaddeditem").val();
+        Swal.fire({
+            title: `Are You Sure You Want To Add ${$("#NameOfItemToAdd").val()} ${tot=="0"?"Scan":tot=="1"?"Analysis":"Prescription"}?`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Save`,
+            denyButtonText: `Don't save`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                console.log($("#typeoftheaddeditem").val());
+                console.log("#Confirmed");
+
+                Swal.fire('Added Successfully!', '', 'success');
+                $("#addform").submit();
+
+                     
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
+    }
+    else {
+        
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'You Should Fill All Input Fields!',
+        });
+    }
+});
+
+
+

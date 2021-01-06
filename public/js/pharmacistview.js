@@ -5,7 +5,7 @@ function reloadStock() {
         $.ajax(
             {
                 method: "POST",
-                url: "pharmacistview",
+                url: "pharmacist-v",
                 data: {
                     type: "pharmacistview",
                 },
@@ -41,9 +41,6 @@ function reloadStock() {
                         var svg = $(`.${element.item_name}`)[0];
                         console.log("svg =" + svg);
                         var xml = new XMLSerializer().serializeToString(svg);
-
-
-
                     }
                     );
 
@@ -54,16 +51,24 @@ function reloadStock() {
                     $.ajax(
                         {
                             method: "POST",
-                            url: "pharmacistview",
+                            url: "pharmacist-v",
                             data: {
                                 type: "all_med",
 
                             },
                             success: function (data, status) {
-                                console.log("suc");
+                                console.log("suc to fetch all med");
                                 $('#all_med').empty();
 
                                 var all_med = ((JSON.parse(data)));
+                                if (all_med.length == 0) {
+                                    console.log("empty");
+                                    $("#additemtomystock").css("display","none");
+                                }
+                                else {
+                                    $("#additemtomystock").css("display", "block");
+
+                                }
                                 all_med.forEach(element => {
                                     $('#all_med').append(
                                         "<option value ='" + element.item_name + "'>" +
@@ -94,17 +99,25 @@ function reloadStock() {
                     $.ajax(
                         {
                             method: "POST",
-                            url: "pharmacistview",
+                            url: "pharmacist-v",
                             data: {
                                 type: "med_stock",
 
                             },
                             success: function (data, status) {
-                                console.log("suc");
+                                console.log("suc to fetch my med");
                                 $('#med_stock').empty();
                                 $('#edit_med').empty();
 
                                 var med_stock = ((JSON.parse(data)));
+                                if (med_stock.length == 0) {
+                                    console.log("empty");
+                                    $("#edititemtomystock").css("display", "none");
+                                }
+                                else {
+                                    $("#edititemtomystock").css("display", "block");
+
+                                }
                                 med_stock.forEach(element => {
                                     $('#med_stock').append(
                                         "<option value ='" + element.item_name + "'>" +
@@ -188,7 +201,7 @@ $(".search").on("click", function () {
         $.ajax(
             {
                 method: "POST",
-                url: "pharmacistview",
+                url: "pharmacist-v",
                 data: {
                     type: "search",
                     item_name: $("#med_stock").val()
@@ -265,37 +278,56 @@ $(".search").on("click", function () {
 $("#additemtomystock").on("click", function () {
     var addquantity = $("#qadditemtomystock").val();
     if (addquantity && addquantity >= 0) {
-        $.ajax(
-            {
-                method: "POST",
-                url: "pharmacistview",
-                data: {
-                    type: "additemtomystock",
-                    Quantity: addquantity,
-                    name: $("#all_med").val(),
 
-                },
-                success: function (data, status) {
-                    console.log("suc");
-                    Swal.fire(
-                        'Good job!',
-                        'Item Added Successfully',
-                        'success'
-                    );
-                    reloadStock();
-                },
-                error: function (xhr, status, error) {
-                    console.log("fialed");
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Somthing Went Wrong try agian later',
 
-                    });
-                },
+        Swal.fire({
+            title: `Are You Sure You Want To Add ${addquantity} of ${$("#all_med").val()} to your stock`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Save`,
+            denyButtonText: `Don't save`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax(
+                    {
+                        method: "POST",
+                        url: "pharmacist-v",
+                        data: {
+                            type: "additemtomystock",
+                            Quantity: addquantity,
+                            name: $("#all_med").val(),
 
+                        },
+                        success: function (data, status) {
+                            console.log("suc");
+                            Swal.fire(
+                                'Good job!',
+                                'Item Added Successfully',
+                                'success'
+                            );
+                            reloadStock();
+                        },
+                        error: function (xhr, status, error) {
+                            console.log("fialed");
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Somthing Went Wrong try agian later',
+
+                            });
+                        },
+
+                    }
+                );
+                Swal.fire('Added Successfully!', '', 'success');
+              
+
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
             }
-        );
+        })
+      
 
     }
     else {
@@ -325,7 +357,7 @@ $("#edititemtomystock").on("click", function () {
         $.ajax(
             {
                 method: "POST",
-                url: "pharmacistview",
+                url: "pharmacist-v",
                 data: {
                     type: "edititemtomystock",
                     Quantity: edititemtomystock,
@@ -346,7 +378,7 @@ $("#edititemtomystock").on("click", function () {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'You Shoult Enter Positive Quantity',
+                        text: 'You Should Enter Positive Quantity',
 
                     });
 

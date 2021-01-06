@@ -7,7 +7,7 @@
 
         <a data-lightbox="inline" data-target="#modal-3" data-toggle="modal" href="#"
             style="position: fixed;width: 5%;height: 2%;top: 29%;left: 11%;transform: rotate(15deg);"></a>
-        <a href="medicalhistory" data-lightbox="inline"
+        <a href="medical-history" data-lightbox="inline"
             style="position: fixed;width: 9%;height: 2%;top: 71%;left: 17%;transform: rotate(1deg);"></a>
 
 
@@ -59,8 +59,7 @@
 
 
         <!--------------------------------------------------- Explore modal---------------------------------------------------->
-
-        <form action="mainHallForPatient" method="POST" enctype="multipart/form-data">
+        <form method="POST" id="addform" enctype="multipart/form-data">
 
             <div class="modal fade" id="modal-1" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
                 aria-hidden="true">
@@ -103,7 +102,7 @@
                                     </ul>
                                     <form class="form-inline my-2 my-lg-0">
                                         <input class="form-control mr-sm-2 searchfield" type="text"
-                                            placeholder="Patient QRCode" aria-label="Search" name="id"
+                                            placeholder="Patient QRCode" aria-label="Search" name="searchField"
                                             style="max-width: 160px;" required>
                                         <button class="btn  my-2 my-sm-0 search" type="button">Search</button>
                                     </form>
@@ -111,7 +110,7 @@
                             </nav>
                         </div>
                         <div class="modal-body">
-                                        <div id="spinner" style="
+                            <div id="spinner" style="
                                             margin-bottom: 230px;
                                         "></div>
                             <div class="tab-content" id="myTabContent">
@@ -215,8 +214,9 @@
                             <div class="form-row ">
                                 <div class="form-group col-md-3">
                                     <label for="LastNamep">Name<span class="text-danger">*</span></label>
-                                    <input type="text" id="LastNamelpatient" class="form-control" name="LastNamep"
+                                    <input type="text" id="NameOfItemToAdd" class="form-control" name="nameoftheitem"
                                         placeholder="Enter the name of scan/analysis/..." required>
+
 
                                 </div>
 
@@ -225,7 +225,7 @@
                                 <div class="form-group col-md-3">
 
                                     <label for="bd">Date<span class="text-danger">*</span></label>
-                                    <input type="date" id="bdpatient" class="form-control" name="Bdate"
+                                    <input type="date" id="dateofsubmition" class="form-control" name="dateofsubmition"
                                         placeholder="Enter second name" required>
 
 
@@ -233,39 +233,32 @@
 
                                 <div class="form-group col-md-3">
                                     <label for="Genderp">Type<span class="text-danger">*</span></label>
-                                    <select class="form-control" id="Genderp" name="Genderp" required>
-                                        <option value=-1>Select the Type</option>
-                                        <option value=0>Scan</option>
-                                        <option value=1>Analysis</option>
-                                        <option value=2>Prescreption</option>
+                                    <select class="form-control" id="typeoftheaddeditem" name="typeoftheaddeditem"
+                                        required>
+                                        <option value="0">Scan</option>
+                                        <option value="1">Analysis</option>
+                                        <option value="2">Prescreption</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="LastNamep">Choose PDF file<span class="text-danger">*</span></label>
-                                    <input type="file" id="filetoupload" class="form-control" name="filetoupload"
-                                        placeholder="Enter second name" required>
+
+                                        <label for="LastNamep">Choose PDF file<span class="text-danger">*</span></label>
+                                        <input type="file" id="filetoupload" class="form-control" name="filetoupload"
+                                            placeholder="Enter second name" required>
 
                                 </div>
+
                             </div>
                         </div>
 
                         <div class="modal-footer">
                             <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
-                            <button class="btn btn-b" type="submit">Add</button>
-
-
-
+                            <button class="btn btn-b" id="additemtopatient" type="button">Add</button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
-
-
-
-
-
-
 
 
 
@@ -448,4 +441,6 @@
                 object-fit: fill;
                 z-index: -10000000000000;">
     </div>
+
+
     <%- include('layout/footer')%>

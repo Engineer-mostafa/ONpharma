@@ -80,22 +80,34 @@ User.prototype = {
     },
 
     login: function (user, password, callback) {
+        console.log("login");
 
         // find the user data by his username.
         this.find(user, function (userID) {
             // if there is a user by this username.
+            console.log(userID[0].acc_password);
+            console.log(password);
 
-            if (userID) {
+            if (userID.length) {
                 // now we check his password.
                 if (bcrypt.compareSync(password, userID[0].acc_password)) {
                     // return his data.
+                    console.log(userID[0]);
                     callback(userID[0]);
                     return;
                 }
+                else
+                {
+                    console.log("else bcrypt");
+
+                    
+                    }
             }
             else
                 // if the username/password is wrong then return null.
-                {
+            {
+                console.log("else not login");
+
                     callback(null);
                     return ;
                 }

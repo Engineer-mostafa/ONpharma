@@ -41,9 +41,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //routes of the pages
 app.use('/home', homeRoute);
-app.use('/medicalhistory', medicalhistoryRoute);
-app.use('/pharmacistview', PharmacyRoute);
-app.use('/mainHallForPatient', mainHallForPatients);
+app.use('/medical-history', medicalhistoryRoute);
+app.use('/pharmacist-v', PharmacyRoute);
+app.use('/main-Hall', mainHallForPatients);
 
 
 

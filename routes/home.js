@@ -21,7 +21,7 @@ router.get('/', (request, Response) => {
         title: "Home",
         css: "home",
         js: "home",
-        img:"heart-rate.png"
+        img: "heart-rate.png"
 
     }
     );
@@ -38,10 +38,28 @@ const schema = Joi.object({
 }
 )
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 router.post('/', (request, Response) => {
 
     var type = request.body.type;
-
+    console.log("in log in Post");
+    console.log(type);
+    var token;
     // for signup authontucation 
     if (type == "Patient" || type == "Doctor" || type == "Pharmacist") {
         //getting user information from user
@@ -66,32 +84,31 @@ router.post('/', (request, Response) => {
 
         };
         // VALIDATE DATA BEFORE MAKING A USER
-       
-            const {error} = schema.validate(userInput);
-            //IF there is error then we don't create user  
-            if (error)
-            { 
-                //respose
-           return console.log(error.details[0].message) ;
-            }
-        
-        
+
+        const { error } = schema.validate(userInput);
+        //IF there is error then we don't create user  
+        if (error) {
+            //respose
+            return console.log(error.details[0].message);
+        }
+
+
 
         user.create(userInput, async function (lastID) {
 
             try {
                 if (lastID) {
-                     
+
                     switch (request.body.type) {
                         case "Patient":
-                           user.Createpatient(lastID);
+                            user.Createpatient(lastID);
                             break;
                         case "Doctor":
-                           user.CreateDoctor(lastID);
+                            user.CreateDoctor(lastID);
                             break;
 
                         case "Pharmacist":
-                           user.CreatePharmacist(lastID);
+                            user.CreatePharmacist(lastID);
                             break;
                     }
                     //  redirect the user to the main page.
@@ -103,14 +120,15 @@ router.post('/', (request, Response) => {
             }
             catch {
                 response.status(400).send(error);
-                
+
 
             }
 
         })
     } else {
+        console.log("else");
+        console.log(request.body);
         user.login(request.body.Emaill, request.body.Passwordl, function (result) {
-
             if (result) {
 
                 // console.log(result);
@@ -118,31 +136,25 @@ router.post('/', (request, Response) => {
 
                 console.log(result.acc_ID);
                 // CREATE and assign a token
-                const token = jwt.sign({_id:result.acc_ID},"secretkey");
+                token = jwt.sign({ _id: result.acc_ID }, "secretkey");
                 console.log(token);
-                
+                console.log("in log in");
                 // response.setheader({"Cookies":token});
                 // redirect the user to the home page.
-                 // response.redirect('/medicalhistory');
-                  
-              
-                
+
+
+            // Response.status(202).send({ message: 'You are now signed in', token: token });
+            // Response.redirect('/mainHallForPatient');
+
             } else {
 
-               return  Response.status(400).send('Username or Password incorrect!');
+                return Response.status(400).send('Username or Password incorrect!');
             }
         })
     }
 
 
 
-    Response.render('home', {
-        title: "Home",
-        css: "home",
-        js: "home",
-        img: "heart-rate.png"
-    }
-    );
 });
 
 module.exports = router;

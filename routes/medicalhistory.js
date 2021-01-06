@@ -22,7 +22,6 @@ const { request } = require('express');
 router.get('/', (request, Response) => {
 
     console.log("in medical get");
-    //we will get all tables here of scans , analysis , prescreptions and chronic deasises 
 
 
 Response.render('medicalhistory', {
@@ -39,8 +38,6 @@ router.post('/', (req, res) => {
 
     console.log("in medical Post");
     var result;
-
-    debugger;
     console.log(req.body.type);
    //should modified for current user id 
     switch (req.body.type  /*data i get from ajax object*/) {
@@ -75,8 +72,7 @@ router.post('/', (req, res) => {
                     );
                 }
             });
-            break;
-        
+            break;  
         case "Prescriptions":
             pool.query("SELECT * FROM prescription ", (error, rows) => {
                 if (error)
