@@ -21,8 +21,7 @@ router.get('/',  (request, Response) => {
         img: "checklist.png",
         add:""
 
-    }
-    );
+    });
 });
 
 

@@ -19,7 +19,7 @@
 
 
                
-
+           
 
             <!--Patient Form Regesteration-->
             <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -100,12 +100,18 @@
                                         <input class="form-control" id="Mobilep" type="number" name="Mobilep"
                                             placeholder="Enter your Mobile number" required>
                                     </div>
-
+                                    <%if(typeof errors == "undefined"){%>
+                                       
+                                 <% } else { %>
+                                         
+                                       <p><%= errors%></p>   
+                                    <%}%>
+                                    
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
-                                <button class="btn btn-b" type="submit">Sign Up</button>
+                                <button class="btn btn-b" id ="signup-btn" type="submit">Sign Up</button>
                             </div>
                         </div>
                     </div>
@@ -327,9 +333,13 @@
             <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
+<<<<<<< HEAD
+            <form id="Login" class="form-validate" method="POST" action ="home">
+=======
             <form id="Login" class="form-validate" method="POST" action="home">
 <input aria-hidden="true" type="text" class="hidden" name="type" value="not">
 
+>>>>>>> 0baaeae0e8bdc04243f0f8f497fd27824a7c630d
 
                 <div class="modal fade" id="modal-4" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
                     aria-hidden="true">
