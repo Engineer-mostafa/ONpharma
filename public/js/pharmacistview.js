@@ -1,4 +1,4 @@
-
+// runtime effect on change
 function reloadStock() {
     $("#spinner").addClass("show");
 
@@ -47,7 +47,7 @@ function reloadStock() {
 
 
 
-                    //for all medicines in pharmacy
+                    //for all medicines in our application
                     $.ajax(
                         {
                             method: "POST",
@@ -191,6 +191,7 @@ if ($("#item-tab").on("click", function () {
 }));
 
 
+//search for specific medicine
 $(".search").on("click", function () {
     $("#spinner").addClass("show");
 
@@ -274,7 +275,7 @@ $(".search").on("click", function () {
 });
 
 
-//add new
+//add new item to my stock
 $("#additemtomystock").on("click", function () {
     var addquantity = $("#qadditemtomystock").val();
     if (addquantity && addquantity >= 0) {
@@ -350,7 +351,7 @@ $("#additemtomystock").on("click", function () {
 
 
 
-//edit
+//edit item in my stock
 $("#edititemtomystock").on("click", function () {
     var edititemtomystock = $("#qedititemtomystock").val();
     if (edititemtomystock && edititemtomystock >= 0) {

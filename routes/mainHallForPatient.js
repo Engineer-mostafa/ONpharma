@@ -7,6 +7,8 @@ var fs = require('fs');
 var mv = require('mv');
 var nodemailer = require('nodemailer');
 var QRCode = require('qrcode')
+const ASPC = require('../core/patient_ASPC');
+var aspc = new ASPC();
 
 
 
@@ -34,123 +36,31 @@ router.post('/', (req, res) => {
 
     switch (req.body.type  /*data i get from ajax object*/) {
         case "search":
-            pool.query(`SELECT * FROM SCAN s , account a WHERE a.acc_ID = s.Patient_acc_ID and a.acc_ID = ${req.body.phone}`, (error, rows) => {
-                if (error)
-                    throw error;
-                else {
-
-                    result = JSON.stringify(rows);
-
-                    console.log("FETCHED SUCCEFULLY1");
-
-                    res.end(
-                        result
-                    );
-                }
-            });
+            aspc.getScan(req.body.phone, res.end);
             break;
         case "Analysis":
-            pool.query(`SELECT * FROM analysis s, account a WHERE a.acc_ID = s.Patient_acc_ID and a.acc_ID = ${req.body.phone}`, (error, rows) => {
-                if (error)
-                    throw error;
-                else {
-
-                    result = JSON.stringify(rows);
-
-                    console.log("FETCHED SUCCEFULLY2");
-
-                    res.end(
-                        result
-                    );
-                }
-            });
+            aspc.getAnalysis(req.body.phone, res.end);
             break;
 
         case "Prescriptions":
-            pool.query(`SELECT * FROM prescription p, account a WHERE a.acc_ID = p.Patient_acc_ID and a.acc_ID = ${req.body.phone}`, (error, rows) => {
-                if (error)
-                    throw error;
-                else {
-
-                    result = JSON.stringify(rows);
-
-                    console.log("FETCHED SUCCEFULLY3");
-
-                    res.end(
-                        result
-                    );
-                }
-            });
+            aspc.getPrescriptions(req.body.phone, res.end);
             break;
 
 
         case "getMyPatients":
-            pool.query("SELECT * FROM patient;", (error, rows) => {
-                if (error)
-                    throw error;
-                else {
-
-                    result = JSON.stringify(rows);
-
-                    console.log("FETCHED SUCCEFULLY4");
-
-                    res.end(
-                        result
-                    );
-                }
-            });
+            aspc.getMyPatient(1,res.end);
             break;
 
-
         case "chronicDisease":
-            pool.query(`SELECT * FROM chronic_disease  c, account a WHERE a.acc_ID = c.Patient_acc_ID and a.acc_ID = ${req.body.phone}`, (error, rows) => {
-                if (error)
-                    throw error;
-                else {
-
-                    result = JSON.stringify(rows);
-
-                    //console.log("FETCHED SUCCEFULLY5");
-
-                    res.end(
-                        result
-                    );
-                }
-            });
+            aspc.getCoronicDisease(req.body.phone, res.end);
             break;
 
         case "search_for_pharmacy":
-            pool.query("SELECT pharmacy_name , pharmacy_address FROM pharmacy where pharmacy_name = '" + req.body.searchField + "'", (error, rows) => {
-                if (error)
-                    throw error;
-                else {
-
-                    result = JSON.stringify(rows);
-
-                    //console.log("FETCHED SUCCEFULLY5");
-
-                    res.end(
-                        result
-                    );
-                }
-            });
+            aspc.search_for_pharmacy(req.body.searchField, res.end);
             break;
 
         case "search_for_Medicines":
-            pool.query("SELECT pharmacy_name , pharmacy_address FROM pharmacy ph , pharmacy_repository pr ,pharmaceutical_item pi  where pr.pharmacy_ID = ph.pharmacy_ID and pi.item_id_barcode = pr.item_id and pi.item_name ='" + req.body.searchField + "'", (error, rows) => {
-                if (error)
-                    throw error;
-                else {
-
-                    result = JSON.stringify(rows);
-
-                    //console.log("FETCHED SUCCEFULLY5");
-
-                    res.end(
-                        result
-                    );
-                }
-            });
+            aspc.search_for_Medicines(req.body.searchField, res.end);
             break;
 
         case "barcode":
@@ -242,7 +152,6 @@ router.post('/', (req, res) => {
 
     }
 
-            //res.redirect('/mainHallForPatient');
 
 
 });

@@ -4,7 +4,17 @@
 
     <div class="body-inner">
 
+
+      
+
         <div>
+
+            <div class="road" style="    margin-top: 7%;
+"> 
+                <div class="character" style="    margin-top: 103%;">
+            
+                </div>
+            </div>
             <!-- links that open the modals of registeration for all types of users -->
             <a data-target="#modal-1" data-toggle="modal" href="#"
                 style="position: fixed;width: 15%;height: 2%;top: 32%;left: 2%;"></a>
@@ -18,8 +28,8 @@
                 style="position: fixed;width: 13%;height: 2%;top: 49.5%;left: 2%;"></a>
 
 
-               
-           
+
+
 
             <!--Patient Form Regesteration-->
             <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -70,7 +80,7 @@
                                         <input type="date" id="bdpatient" class="form-control" name="Bdate"
                                             placeholder="Enter second name" required>
 
-                                            
+
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -100,18 +110,20 @@
                                         <input class="form-control" id="Mobilep" type="number" name="Mobilep"
                                             placeholder="Enter your Mobile number" required>
                                     </div>
-                                    <%if(typeof errors == "undefined"){%>
-                                       
-                                 <% } else { %>
-                                         
-                                       <p><%= errors%></p>   
-                                    <%}%>
-                                    
+                                    <%if(typeof errors=="undefined" ){%>
+
+                                        <% } else { %>
+
+                                            <p>
+                                                <%= errors%>
+                                            </p>
+                                            <%}%>
+
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
-                                <button class="btn btn-b" id ="signup-btn" type="submit">Sign Up</button>
+                                <button class="btn btn-b" id="signup-btn" type="submit">Sign Up</button>
                             </div>
                         </div>
                     </div>
@@ -140,8 +152,7 @@
                                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                                 <!-- this hidden field for definnig the type of regestirtion in backend -->
 
-                                <input aria-hidden="true" type="text"  class="hidden" name="type"
-                                    value="Doctor">
+                                <input aria-hidden="true" type="text" class="hidden" name="type" value="Doctor">
                             </div>
                             <div class="modal-body">
                                 <div class="form-row">
@@ -176,7 +187,7 @@
                                         <input type="date" id="bddoctor" class="form-control" name="Bdate"
                                             placeholder="Enter second name" required>
 
-                                            
+
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -240,8 +251,7 @@
                                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                                 <!-- this hidden field for definnig the type of regestirtion in backend -->
 
-                                <input aria-hidden="true" type="text"  class="hidden" name="type"
-                                    value="Pharmacist">
+                                <input aria-hidden="true" type="text" class="hidden" name="type" value="Pharmacist">
 
                             </div>
                             <div class="modal-body">
@@ -249,8 +259,8 @@
 
                                     <div class="form-group col-md-6">
                                         <label for="FirstNamep">First Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="FirstNamepharmacist" class="form-control" name="FirstNamep"
-                                            placeholder="Enter first name" required>
+                                        <input type="text" id="FirstNamepharmacist" class="form-control"
+                                            name="FirstNamep" placeholder="Enter first name" required>
 
                                     </div>
                                     <div class="form-group col-md-6">
@@ -264,8 +274,8 @@
 
                                     <div class="form-group col-md-6">
                                         <label for="LastNamep">Last Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="LastNamelpharmacist" class="form-control" name="LastNamep"
-                                            placeholder="Enter second name" required>
+                                        <input type="text" id="LastNamelpharmacist" class="form-control"
+                                            name="LastNamep" placeholder="Enter second name" required>
 
                                     </div>
                                     <div class="form-group col-md-6">
@@ -274,10 +284,10 @@
 
 
                                         <label for="bd">Birth Date<span class="text-danger">*</span></label>
-                                        <input type="date"  class="form-control" name="Bdate"
+                                        <input type="date" class="form-control" name="Bdate"
                                             placeholder="Enter second name" required>
 
-                                            
+
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -333,89 +343,87 @@
             <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
-<<<<<<< HEAD
-            <form id="Login" class="form-validate" method="POST" action ="home">
-=======
-            <form id="Login" class="form-validate" method="POST" action="home">
-<input aria-hidden="true" type="text" class="hidden" name="type" value="not">
+           
+                <form id="Login" class="form-validate" method="POST" action="home">
+                    <input aria-hidden="true" type="text" class="hidden" name="type" value="not">
 
->>>>>>> 0baaeae0e8bdc04243f0f8f497fd27824a7c630d
 
-                <div class="modal fade" id="modal-4" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-sm modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
+                    <div class="modal fade" id="modal-4" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
 
-                                <h4 id="modal-label-3" class="modal-title">Login</h4>
-                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-row">
+                                    <h4 id="modal-label-3" class="modal-title">Login</h4>
+                                    <button aria-hidden="true" data-dismiss="modal" class="close"
+                                        type="button">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-row">
 
-                                    <div class="form-group col-md-12">
-                                        <label for="Emaill">Email<span class="text-danger">*</span></label>
-                                        <input type="text" id="Emaill" class="form-control" name="Emaill"
-                                            placeholder="Enter Your Email" required>
+                                        <div class="form-group col-md-12">
+                                            <label for="Emaill">Email<span class="text-danger">*</span></label>
+                                            <input type="text" id="Emaill" class="form-control" name="Emaill"
+                                                placeholder="Enter Your Email" required>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="Passwordl">Password<span class="text-danger">*</span></label>
+                                            <input type="password" id="Passwordl" class="form-control" name="Passwordl"
+                                                placeholder="password" required>
+                                        </div>
 
                                     </div>
 
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label for="Passwordl">Password<span class="text-danger">*</span></label>
-                                        <input type="password" id="Passwordl" class="form-control" name="Passwordl"
-                                            placeholder="password" required>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="modal-footer">
-                                <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
-                                <button class="btn btn-b" type="submit">Login</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-
-
-
-
-
-
-
-
-
-            <!--Guide Form-->
-            <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
-
-            <form id="guide" class="form-validate text-center" method="POST">
-
-                <div class="modal fade" id="modal-5" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-md modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header text-center">
-                                <h2 class="modal-title">Hello, our <strong>Clients</strong></h2>
-
-                            </div>
-
-                            <div class="text-center">
-
-                                <strong>Write The Guides</strong>
-
 
                                 <div class="modal-footer">
-                                    <button data-dismiss="modal" class="btn btn-b" type="button">Got it</button>
+                                    <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
+                                    <button class="btn btn-b" type="submit">Login</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-            </form>
+                </form>
+
+
+
+
+
+
+
+
+
+                <!--Guide Form-->
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+                <form id="guide" class="form-validate text-center" method="POST">
+
+                    <div class="modal fade" id="modal-5" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-md modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header text-center">
+                                    <h2 class="modal-title">Hello, our <strong>Clients</strong></h2>
+
+                                </div>
+
+                                <div class="text-center">
+
+                                    <strong>Write The Guides</strong>
+
+
+                                    <div class="modal-footer">
+                                        <button data-dismiss="modal" class="btn btn-b" type="button">Got it</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </form>
 
 
 

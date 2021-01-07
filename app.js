@@ -13,6 +13,8 @@ const bodyParser = require('body-parser');
 // use the framework
 const app = express();
 
+//session
+const session = require('express-session');
 
 
 //include routes
@@ -20,8 +22,7 @@ const homeRoute = require('./routes/home');
 const medicalhistoryRoute = require('./routes/medicalhistory');
 const PharmacyRoute = require('./routes/pharmacist_view');
 const mainHallForPatients = require('./routes/mainHallForPatient');
-//const cashier = require('./routes/cashier');
-const session = require('express-session');
+const cashier = require('./routes/cashier');
 
 //local host
 const port = process.env.PORT || 3000;
@@ -55,7 +56,7 @@ app.use('/home', homeRoute);
 app.use('/medical-history', medicalhistoryRoute);
 app.use('/pharmacist-v', PharmacyRoute);
 app.use('/main-Hall', mainHallForPatients);
-// app.use('/cashier', cashier);
+app.use('/cashier', cashier);
 
 
 
