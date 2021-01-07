@@ -7,18 +7,6 @@ const { request } = require('express');
 
 
 
-
-
-
-
-
-
-
-// to insert new Analysis
-// ----------------------------------------------------------
-
-
-
 router.get('/', (request, Response) => {
 
     console.log("in medical get");
