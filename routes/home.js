@@ -7,7 +7,8 @@ const User = require('../core/user');
 const { response, request } = require('express');
 //const session = require('express-session')
 //FOR OUR VALIDATION
-const Joi = require('@hapi/joi');
+//const Joi = require('@hapi/joi');
+//const { function } = require('@hapi/joi');
 //schema for validation 
 
 const user = new User();
@@ -25,10 +26,12 @@ router.get('/', (request, Response) => {
         title: "Home",
         css: "home",
         js: "home",
+        img: "heart-rate.png"
 
     }
     );
 });
+
 
 
 router.post('/',
@@ -40,17 +43,14 @@ router.post('/',
         .withMessage('Password must contain a number'),
     // email - validation 
     body("Emailaddressp", "E-mail already in use").custom((value) => {
-        var user_  ;
-         user.find(value , async function (result){
-            user_ = await result;
-           
-        });
-        
-        if (!user_)
-        return true ;
-        
-        return false ;
        
+        return user.find_mail_for_one(value).then(function(user){
+            if (user){
+                return Promise.reject("E-mail already in use");
+            }
+
+        })
+
     }),
     //first name - validation
     body("FirstNamep")
@@ -73,21 +73,15 @@ router.post('/',
     //mobile number - validation
     body("Mobilep", "This phone-number already in use")
         .custom((value) => {
-            var user_ ;
+           return user.find_mobile_phone(value).then(function(user){
+               if (user){
+                   return Promise.reject("This phone-number already in use");
+               }
 
-            user.find_mobile_phone(value , async function(result){
-                 user_  = await result;
-               console.log('here');
-                console.log(user_)
-            });
-            if (!user_)
-            return true;
-            
-
-            return false ;
+           })
 
         }),
-
+    
 
     async (request, Response) => {
 
