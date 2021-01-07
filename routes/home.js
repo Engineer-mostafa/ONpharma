@@ -5,23 +5,21 @@ const { body, validationResult } = require('express-validator');
 const User = require('../core/user');
 
 const { response, request } = require('express');
-//const session = require('express-session')
-//FOR OUR VALIDATION
-//const Joi = require('@hapi/joi');
-//const { function } = require('@hapi/joi');
-//schema for validation 
+
 
 const user = new User();
+
 
 router.get('/', (request, Response) => {
 
     let user = request.session.user;
     // If there is a session named user that means the use is logged in
     //so we redirect him to home page by using /home route below
-
+   
     if (user) {
-        Response.redirect('/mainHallForPatient');
+        Response.redirect('/main-hall');
     }
+
     Response.render('home', {
         title: "Home",
         css: "home",
@@ -30,6 +28,7 @@ router.get('/', (request, Response) => {
 
     }
     );
+    
 });
 
 
@@ -43,9 +42,11 @@ router.post('/',
         .withMessage('Password must contain a number'),
     // email - validation 
     body("Emailaddressp", "E-mail already in use").custom((value) => {
-       
-        return user.find_mail_for_one(value).then(function(user){
-            if (user){
+
+        return user.find_mail_for_one(value).then(function (user) {
+
+            if (user) {
+
                 return Promise.reject("E-mail already in use");
             }
 
@@ -73,15 +74,16 @@ router.post('/',
     //mobile number - validation
     body("Mobilep", "This phone-number already in use")
         .custom((value) => {
-           return user.find_mobile_phone(value).then(function(user){
-               if (user){
-                   return Promise.reject("This phone-number already in use");
-               }
+            return user.find_mobile_phone(value).then(function (user) {
+                if (user) {
 
-           })
+                    return Promise.reject("This phone-number already in use");
+                }
+
+            })
 
         }),
-    
+
 
     async (request, Response) => {
 
@@ -92,6 +94,7 @@ router.post('/',
             const errors = validationResult(request);
             if (!errors.isEmpty()) {
                 console.log(errors.array());
+               
                 return Response.status(400).json({ errors: errors.array() });
             }
             //getting user information from user
@@ -141,11 +144,15 @@ router.post('/',
 
                         });
                     }
+                   
+
                 }
                 catch {
                     response.status(400).send(error);
 
                 }
+                if (request.session.user)
+                    Response.redirect('/home');
 
             })
         } else {
@@ -154,30 +161,36 @@ router.post('/',
 
                 console.log('home');
 
-
-                if (result) {
-
-
-                    request.session.user = result;
-                    request.session.opp = 1
-
-                    console.log("Sucssefully .....Login " + result.acc_email);
+                    if (await result) {
 
 
-                }
-                else {
+                        request.session.user =  result;
+                        request.session.opp = 1
 
-                    return Response.status(400).send('Username or Password incorrect!');
+                        console.log("Sucssefully .....Login " + result.acc_email);
 
-                }
+
+
+                    }else{
+                        
+                        return Response.status(400).send('Username or Password incorrect!');
+                    }
+                    
+              
+                if (request.session.user)
+                Response.redirect('/main-hall');
+
+
             })
             
-               
-         
-           
+
+
         }
 
-        Response.redirect('/mainHallForPatient');
+
+
+
+
 
     });
 

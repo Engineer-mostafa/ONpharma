@@ -13,7 +13,8 @@ const bodyParser = require('body-parser');
 // use the framework
 const app = express();
 
-
+//use for error messages 
+const flash = require('express-flash');
 
 //include routes
 const homeRoute = require('./routes/home');
@@ -42,13 +43,15 @@ app.use (session({
     resave : false ,
     saveUninitialized :false ,
     cookie:{
-        maxAge :60*1000*30
+        maxAge :60*1000*30,
+        sameSite :true 
     }
 
 }));
 
 //to able neasting object in json format this required explicitly we should write this if we need to use body-parser
 app.use(bodyParser.urlencoded({extended: true}));
+
 
 //routes of the pages
 app.use('/home', homeRoute);
