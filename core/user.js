@@ -16,7 +16,7 @@ User.prototype = {
             // if user = number return field = id, if user = string return field = username.
             var field = Number.isInteger(user) ? 'acc_ID' : 'acc_email';
         }
-     
+
         // prepare the sql query
         let sql_query = `SELECT * FROM account where  ${field}  = ? `;
 
@@ -33,27 +33,33 @@ User.prototype = {
             }
         });
     },
-    find_mobile_phone :function (mobile = null , callback) {
-        if (mobile)
-        {
+    find_mobile_phone: function (mobile = null) {
+        
+        if (mobile) {
             let sql_query =`SELECT * FROM account where  phoneNum  = ? `
-            pool.query(sql_query , mobile , function(err,result){
-                if (err) {throw err}
+           return pool.query(sql_query , mobile ).then( function(result){
+               return result[0];
+            }).catch(function(err){
+                throw err ;
+            });
+            
+            
 
-                else{
-                    if (result.length>0)
-                    {
-                        callback(result[0]);  
-                    }
-                    else
-                    {
-                        callback(null);
-                    }
-                }
-            })
+           
         }
-        callback(null);
-},
+    },
+   find_mail_for_one :function(mobile =null){
+    if (mobile) {
+        let sql_query = `SELECT * FROM account where  acc_email  = ? `;
+       return pool.query(sql_query , mobile ).then( function(result){
+           return result[0];
+        }).catch(function(err){
+            throw err ;
+        });
+        
+    }
+
+   },
     // This function will insert data into the database. (create a new user)
     // body is an object 
     create: function (body, callback) {
@@ -73,7 +79,7 @@ User.prototype = {
             bind.push(body[prop]);
         }
         // validate 
-        
+
 
         // prepare the sql query
         let sql = `INSERT INTO account (acc_email,acc_password,Fname,Mname,Lname,gender,Bdate,phoneNum) VALUES (?,?,?,?,?,?,?,?) `;
@@ -83,7 +89,7 @@ User.prototype = {
 
             callback(result.insertId);
         });
-       
+
     },
 
     login: function (user, password, callback) {
@@ -98,20 +104,20 @@ User.prototype = {
                 // now we check his password.
                 if (bcrypt.compareSync(password, userID.acc_password)) {
                     // return his data.
-                   
-                  
+
+
                     callback(userID);
-                   
-                }
-              
-            }
-              // if the username/password is wrong then return null.
-                {
-                    callback(null);
-                    
+
                 }
 
-                
+            }
+            // if the username/password is wrong then return null.
+            {
+                callback(null);
+
+            }
+
+
         });
 
     },
@@ -144,7 +150,7 @@ User.prototype = {
                 if (err) throw err;
 
                 console.log('inserted Doctor successfully....');
-               
+
             });
 
         }
@@ -164,7 +170,7 @@ User.prototype = {
 
 
         }
-        return ;
+        return;
 
     }
 
