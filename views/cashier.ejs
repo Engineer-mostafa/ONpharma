@@ -1,7 +1,247 @@
 <%- include('layout/header')%>
 
-    <h1>Hello From cashier</h1>
+    <section id="page-content" class="sidebar-right" style="transform: none;">
+        <div class="container" style="transform: none;">
+            <div class="row" style="transform: none;">
+                <!-- Left Side Bar -->
+                <div class="sidebar col-lg-3">
+
+                    <div class="widget">
+                        <h4 class="widget-title">Prescreption</h4>
+                        <hr>
+                        <div class="embed-responsive embed-responsive-16by9" id="emb"><embed
+                                src="/images/patient.png"></embed>
+                        </div>
+                    </div>
+
+
+                    <div class="widget clearfix widget-categories">
+                        <h4 class="widget-title">Items</h4>
+                        <ul class="list list-arrow-icons">
+                            <li> <a title="Beauty" href="#">Beauty </a> </li>
+                            <li> <a title="Medicines" href="#">Medicines </a> </li>
+                        </ul>
+                    </div>
 
 
 
-<%- include('layout/footer')%>
+
+                </div>
+
+
+
+
+                <!-- Middile Content -->
+                <div class="content col-lg-6">
+
+                    <div id="blog" class="single-post">
+
+                        <div class="post-item">
+                            <div class="post-item-wrap">
+                                <div class="post-image">
+
+                                </div>
+                                <div class="post-item-description">
+                                    <h2>Patients Section</h2>
+                                    <div class="post-meta">
+                                        <span class="post-meta-date" id="currentdate"></span>
+
+
+                                        <!-- <div class="post-meta-share">
+                                            <a class="btn btn-xs btn-slide btn-facebook" href="#">
+                                                <i class="fab fa-facebook-f"></i>
+                                                <span>Facebook</span>
+                                            </a>
+                                            <a class="btn btn-xs btn-slide btn-twitter" href="#" data-width="100">
+                                                <i class="fab fa-twitter"></i>
+                                                <span>Twitter</span>
+                                            </a>
+                                            <a class="btn btn-xs btn-slide btn-instagram" href="#" data-width="118">
+                                                <i class="fab fa-instagram"></i>
+                                                <span>Instagram</span>
+                                            </a>
+                                            <a class="btn btn-xs btn-slide btn-googleplus" href="#"
+                                                data-width="80">
+                                            <i class="fas fa-envelope"></i>
+
+                                                <span>Mail</span>
+                                            </a>
+                                        </div> -->
+                                    </div>
+                                    <!-- Middile content -->
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <ul class="nav nav-tabs mr-auto" id="myTab" role="tablist">
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link " id="contact-tab" data-toggle="tab"
+                                                            href="#Prescreptions" role="tab" aria-controls="contact"
+                                                            aria-selected="false">Prescreptions</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="contact-tab" data-toggle="tab"
+                                                            href="#Disease" role="tab" aria-controls="contact"
+                                                            aria-selected="false">Disease</a>
+                                                    </li>
+
+                                                    <li style="    margin-left: 15%;">
+                                                        <form class="form-inline my-2 my-lg-0">
+                                                            <input class="form-control mr-sm-2" type="search"
+                                                                id="searchforpatient" placeholder="Search for Patient"
+                                                                aria-label="Search">
+                                                            <button class="btn btn-outline-success my-2 my-sm-0"
+                                                                type="button" id="searchforbutton"><i
+                                                                    class="fa fa-search"></i></button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+
+
+                                                <div class="tab-content" id="myTabContent"
+                                                    style="max-height: 80%;overflow: scroll; margin-top: 0.5em;">
+                                                    <div class="tab-pane fade" id="Prescreptions" role="tabpanel"
+                                                        aria-labelledby="Prescreptions-tab">
+                                                        <table class="table  table-bordered">
+                                                            <thead class="table-dark">
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Date</th>
+                                                                    <th>Open</th>
+                                                                    <th>Disburse</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="prescreptionTable" class="empty">
+
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+                                                    <div class="tab-pane fade" id="Disease" role="tabpanel"
+                                                        aria-labelledby="Disease-tab">
+                                                        <table class="table">
+                                                            <thead class="table-dark">
+                                                                <tr>
+                                                                    <th>Name</th>
+                                                                    <th>Detected From</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="chronicDisease" class="empty">
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+                <!------------------------------- Right Side Bar ------------------------------->
+                <div class="sidebar  col-lg-3"
+                    style="position: relative;overflow: visible;box-sizing: border-box;min-height: 1px;">
+                    <div class="theiaStickySidebar"
+                        style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;">
+                        <div class="widget  widget-newsletter" style="margin-bottom: 8px;padding-bottom: 21px;">
+
+                            <div class="input-group">
+                                <input type="search" aria-required="true" name="q" id="additemtotheorder"
+                                    class="form-control widget-search-form" placeholder="item" style="
+                                max-width: 9em;
+                                margin-right: 4px;">
+
+                                <div class="input-group-append">
+                                    <input type="number" id="qadditemtomystock" class="form-control" name="Bdate"
+                                        placeholder="Quantity" required=""
+                                        style="max-width: 7.7em; border-top-left-radius: 0;border-bottom-left-radius: 0;">
+
+
+                                </div>
+                                <div class="input-group-append">
+                                    <button class="btn" type="button" style="margin-left: 10px;" id="additembutton"><i
+                                            class="fas fa-plus fa-spin"></i></button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="widget" style="margin-bottom: 28px;padding-bottom: 22px;">
+                            <div class="tabs">
+                                <ul class="nav nav-tabs" id="tabs-posts" role="tablist"
+                                    style="    border-bottom: 0px solid #e6e8eb;">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#order"
+                                            role="tab" aria-controls="popular" aria-selected="true">Order <i
+                                                class="fas fa-cash-register"></i> </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Chat" role="tab"
+                                            aria-controls="featured" aria-selected="false">Chat <i
+                                                class="far fa-comment-dots"> </i></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#AllToday"
+                                            role="tab" aria-controls="recent" aria-selected="false">All Today <i
+                                                class="fas fa-chart-pie"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="tabs-posts-content"
+                                    style="max-height: 320px;overflow: scroll;">
+
+
+                                    <div class="tab-pane fade show active" id="order" role="tabpanel"
+                                        aria-labelledby="popular-tab">
+                                       
+                                    </div>
+
+
+                                    <div class="tab-pane fade" id="Chat" role="tabpanel" aria-labelledby="featured-tab">
+                                        <h2>Comming Soon</h2>
+                                    </div>
+
+
+                                    <div class="tab-pane fade" id="AllToday" role="tabpanel"
+                                        aria-labelledby="recent-tab">
+                                        <div class="post-thumbnail-list" id="alltodatForm">
+                                        <h2>Comming Soon</h2>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!----------------------------------- Cash The Order ---------------------------------------->
+                        <div class="widget widget-tweeter" data-username="envato" data-limit="2">
+                            <button type="button" class="btn btn-primary btn-lg btn-block" id="cash">Cash</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <%- include('layout/footer')%>

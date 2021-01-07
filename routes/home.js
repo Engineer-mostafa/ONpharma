@@ -24,7 +24,7 @@ router.get('/', (request, Response) => {
         title: "Home",
         css: "home",
         js: "home",
-        img: "heart-rate.png"
+        img:"heart-rate.png",
 
     }
     );

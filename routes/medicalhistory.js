@@ -5,6 +5,7 @@ const ASPC = require('../core/patient_ASPC');
 const pool = require('../core/Pool');
 const { request } = require('express');
 
+var aspc = new ASPC();
 
 
 router.get('/', (request, Response) => {
@@ -30,74 +31,22 @@ router.post('/', (req, res) => {
    //should modified for current user id 
     switch (req.body.type  /*data i get from ajax object*/) {
         case "Scan":
-            pool.query("SELECT * FROM SCAN ", (error, rows) => {
-                if (error)
-                    throw error;
-                else {
-
-                    result = JSON.stringify(rows);
-
-                    console.log("FETCHED SUCCEFULLY");
-
-                    res.end(
-                        result
-                    );
-                }
-            });
+            aspc.getScan(1, res.end);
             break;
         case "Analysis":
-            pool.query("SELECT * FROM analysis ", (error, rows) => {
-                if (error)
-                    throw error;
-                else {
+            aspc.getAnalysis(1, res.end);
 
-                    result = JSON.stringify(rows);
-
-                    console.log("FETCHED SUCCEFULLY");
-
-                    res.end(
-                        result
-                    );
-                }
-            });
             break;  
         case "Prescriptions":
-            pool.query("SELECT * FROM prescription ", (error, rows) => {
-                if (error)
-                    throw error;
-                else {
+            aspc.getPrescriptions(1, res.end);
 
-                    result = JSON.stringify(rows);
-
-                    console.log("FETCHED SUCCEFULLY");
-
-                    res.end(
-                        result
-                    );
-                }
-            });
             break;
         default:
-            pool.query("SELECT * FROM chronic_disease", (error, rows) => {
-                if (error)
-                    throw error;
-                else {
+            aspc.getCoronicDisease(1, res.end);
 
-                    result = JSON.stringify(rows);
-
-                    console.log("FETCHED SUCCEFULLY");
-
-                    res.end(
-                        result
-                    );
-                }
-            });
             break;
 
     }
-
-
-
 
 });
 
