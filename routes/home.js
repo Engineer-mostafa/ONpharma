@@ -107,7 +107,7 @@ router.post('/',
             else {
                 gender = 0;
             }
-
+             
             var s = request.body.Bdate;
             var userInput = {
                 email: request.body.Emailaddressp,
@@ -117,7 +117,8 @@ router.post('/',
                 Lastname: request.body.LastNamep,
                 gender: gender,
                 Birthdate: s,
-                phoneNum: request.body.Mobilep
+                phoneNum: request.body.Mobilep,
+                usertype : type 
 
             };
 
@@ -128,10 +129,7 @@ router.post('/',
                     if (await lastID) {
                         console.log(lastID);
                         switch (request.body.type) {
-                            case "Patient":
-                                user.Createpatient(lastID);
-
-                                break;
+                            
                             case "Doctor":
                                 var doctor_input= {
                                 doc_id : lastID,

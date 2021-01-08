@@ -93,7 +93,7 @@ User.prototype = {
         }
        
         // prepare the sql query
-        let sql = `INSERT INTO account (acc_email,acc_password,Fname,Mname,Lname,gender,Bdate,phoneNum) VALUES (?,?,?,?,?,?,?,?) `;
+        let sql = `INSERT INTO account (acc_email,acc_password,Fname,Mname,Lname,gender,Bdate,phoneNum , User_type ) VALUES (?,?,?,?,?,?,?,?,?) `;
         // call the query give it the sql string and the values (bind array)
         pool.query(sql, bind).then ( function ( result) {
 
@@ -134,22 +134,7 @@ User.prototype = {
         });
 
     },
-    Createpatient: function (user) {
-        // getting user id 
-        var ID = user
-        let sql = `INSERT INTO Patient (Patient_acc_ID) VALUES (?) `;
-
-        // call the query give it the sql string and the value (user id )
-        pool.query(sql, ID).then( function ( result) {
-           
-            // return the last inserted id. if there is no error
-           console.log('inserted Patient successfully....');
-           
-        }).catch(function(err){
-            throw err ;
-        });
-        return ;
-    },
+   
     
     CreateDoctor: function (user) {
         if (user) {

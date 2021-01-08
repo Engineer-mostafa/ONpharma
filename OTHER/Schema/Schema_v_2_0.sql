@@ -16,12 +16,15 @@ CREATE TABLE Account
     Fname varchar(255) NOT NULL,
     Mname varchar(255) NOT NULL,
     Lname varchar(255) NOT NULL,
-
+     
     -- 0 for men and 1 for women 
     gender bit NOT NULL,
     Bdate date NOT NULL,
 
-    phoneNum bigint NOT NULL UNIQUE
+    phoneNum bigint NOT NULL UNIQUE,
+
+    -- user type 
+    User_type varchar(255) NOT Null 
 );
 /*---------------------Users-------------------------*/
 
@@ -51,16 +54,7 @@ CREATE TABLE Pharmacist
 
 );
 
-CREATE TABLE Patient
-(
-    PRIMARY KEY(Patient_acc_ID),
 
-    Patient_acc_ID int UNIQUE,
-
-    Patient_smoking_status bit DEFAULT 0,
-
-    FOREIGN KEY (Patient_acc_ID) REFERENCES Account(acc_ID) ON DELETE CASCADE
-);
 /*----------------------------------------------------------------*/
 /*------------------Related to the pharmacy----------------------*/
 
@@ -124,7 +118,7 @@ CREATE TABLE Prescription
     doctor_acc_ID int NOT NULL,
     pres_status bool default 0,
 
-    FOREIGN KEY (Patient_acc_ID) REFERENCES Patient(Patient_acc_ID) ON DELETE CASCADE,
+    FOREIGN KEY (Patient_acc_ID) REFERENCES Account(acc_ID) ON DELETE CASCADE,
     FOREIGN KEY (doctor_acc_ID) references doctor(doctor_acc_ID) 
 );
 
@@ -149,7 +143,7 @@ CREATE TABLE Analysis
     Result varchar(255) NOT NULL,
     Patient_acc_ID int NOT NULL,
 
-    FOREIGN KEY (Patient_acc_ID) REFERENCES Patient(Patient_acc_ID)
+    FOREIGN KEY (Patient_acc_ID) REFERENCES Account(acc_ID)
 );
 
 CREATE TABLE Scan
@@ -161,7 +155,7 @@ CREATE TABLE Scan
     Result varchar(255) NOT NULL,
     Patient_acc_ID int NOT NULL,
 
-    FOREIGN KEY (Patient_acc_ID) REFERENCES Patient(Patient_acc_ID)
+    FOREIGN KEY (Patient_acc_ID) REFERENCES Account(acc_ID)
 );
 
 
@@ -173,7 +167,7 @@ CREATE TABLE Chronic_Disease
     Disease_Date date NOT NULL,
     Patient_acc_ID int NOT NULL,
 
-    FOREIGN KEY (Patient_acc_ID) REFERENCES Patient(Patient_acc_ID)
+    FOREIGN KEY (Patient_acc_ID) REFERENCES Account(acc_ID)
 );
 /********************************************************************/
 /**/
