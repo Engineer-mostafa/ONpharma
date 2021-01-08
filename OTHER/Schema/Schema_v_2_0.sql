@@ -21,7 +21,7 @@ CREATE TABLE Account
     gender bit NOT NULL,
     Bdate date NOT NULL,
 
-    phoneNum int NOT NULL UNIQUE
+    phoneNum bigint NOT NULL UNIQUE
 );
 /*---------------------Users-------------------------*/
 
