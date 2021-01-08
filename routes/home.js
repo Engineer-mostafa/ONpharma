@@ -15,7 +15,7 @@ router.get('/', (request, Response) => {
     let user = request.session.user;
     // If there is a session named user that means the use is logged in
     //so we redirect him to home page by using /home route below
-   
+
     if (user) {
         Response.redirect('/main-hall');
     }
@@ -24,11 +24,11 @@ router.get('/', (request, Response) => {
         title: "Home",
         css: "home",
         js: "home",
-        img:"heart-rate.png",
+        img: "heart-rate.png",
 
     }
     );
-    
+
 });
 
 
@@ -73,6 +73,8 @@ router.post('/',
         .withMessage('Last name length should at least 3'),
     //mobile number - validation
     body("Mobilep", "This phone-number already in use")
+        .isLength({ max: 11 }, { min: 11 })
+        .withMessage("The phone number lenght should be 11-number ")
         .custom((value) => {
             return user.find_mobile_phone(value).then(function (user) {
                 if (user) {
@@ -94,7 +96,7 @@ router.post('/',
             const errors = validationResult(request);
             if (!errors.isEmpty()) {
                 console.log(errors.array());
-               
+
                 return Response.status(400).json({ errors: errors.array() });
             }
             //getting user information from user
@@ -120,10 +122,10 @@ router.post('/',
             };
 
             console.log('create')
-            user.create(userInput, function (lastID) {
+            user.create(userInput, async function (lastID) {
 
                 try {
-                    if (lastID) {
+                    if (await lastID) {
                         console.log(lastID);
                         switch (request.body.type) {
                             case "Patient":
@@ -131,28 +133,44 @@ router.post('/',
 
                                 break;
                             case "Doctor":
-                                user.CreateDoctor(lastID);
+                                var doctor_input= {
+                                doc_id : lastID,
+                                doc_special:request.body.Doc_special,
+                                doc_degree : request.body.Doc_deg,
+                                doc_address: request.body.Doc_address
+                                }
+                                user.CreateDoctor(doctor_input);
                                 break;
 
                             case "Pharmacist":
                                 user.CreatePharmacist(lastID);
                                 break;
-                        }
-                        user.find(lastID, function (result) {
-                            request.session.user = result;
-                            request.session.opp = 0;
 
-                        });
+
+                        };
                     }
-                   
 
                 }
                 catch {
                     response.status(400).send(error);
 
                 }
-                if (request.session.user)
+                user.find_id(lastID).then(function (user) {
+
+                    if (user) {
+                        request.session.user = user;
+                        request.session.opp = 0;
+                        console.log(request.session.user);
+                    }
+
+                })
+
+               
                     Response.redirect('/home');
+                    
+                
+
+
 
             })
         } else {
@@ -161,28 +179,28 @@ router.post('/',
 
                 console.log('home');
 
-                    if (await result) {
+                if (await result) {
 
 
-                        request.session.user =  result;
-                        request.session.opp = 1
+                    request.session.user = result;
+                    request.session.opp = 1
 
-                        console.log("Sucssefully .....Login " + result.acc_email);
+                    console.log("Sucssefully .....Login " + result.acc_email);
 
 
 
-                    }else{
-                        
-                        return Response.status(400).send('Username or Password incorrect!');
-                    }
-                    
-              
+                } else {
+
+                    return Response.status(400).send('Username or Password incorrect!');
+                }
+
+
                 if (request.session.user)
-                Response.redirect('/main-hall');
+                    Response.redirect('/main-hall');
 
 
             })
-            
+
 
 
         }

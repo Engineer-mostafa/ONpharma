@@ -21,42 +21,57 @@ User.prototype = {
         let sql_query = `SELECT * FROM account where  ${field}  = ? `;
 
 
-        pool.query(sql_query, user, function (err, result) {
-            if (err) { throw err }
-
-            else {
+        return pool.query(sql_query, user).then (function (result) {
+           
                 if (result.length > 0) {
                     callback(result[0]);
                 } else {
                     callback(null);
                 }
             }
+        ).catch(function(err){
+              throw err ;
         });
     },
     find_mobile_phone: function (mobile = null) {
         
         if (mobile) {
             let sql_query =`SELECT * FROM account where  phoneNum  = ? `
+
+
            return pool.query(sql_query , mobile ).then( function(result){
                return result[0];
             }).catch(function(err){
                 throw err ;
             });
-            
-            
+           
+        }
+    },
+    find_id: function (id = null) {
+        
+        if (id) {
+            let sql_query =`SELECT * FROM account where  acc_ID  = ? `
 
+
+           return pool.query(sql_query , id ).then( function(result){
+               return result[0];
+            }).catch(function(err){
+                throw err ;
+            });
            
         }
     },
    find_mail_for_one :function(mobile =null){
     if (mobile) {
         let sql_query = `SELECT * FROM account where  acc_email  = ? `;
+
        return pool.query(sql_query , mobile ).then( function(result){
            return result[0];
         }).catch(function(err){
             throw err ;
         });
         
+
     }
 
    },
@@ -65,8 +80,6 @@ User.prototype = {
     create: function (body, callback) {
 
         var pwd = body.password;
-        var accmail = body.email;
-
 
         // Hash the password before insert it into the database.
         body.password = bcrypt.hashSync(pwd, 10);
@@ -78,16 +91,16 @@ User.prototype = {
 
             bind.push(body[prop]);
         }
-        // validate 
-
-
+       
         // prepare the sql query
         let sql = `INSERT INTO account (acc_email,acc_password,Fname,Mname,Lname,gender,Bdate,phoneNum) VALUES (?,?,?,?,?,?,?,?) `;
         // call the query give it the sql string and the values (bind array)
-        pool.query(sql, bind, async function (err, result) {
-            if (err) throw err;
+        pool.query(sql, bind).then ( function ( result) {
 
             callback(result.insertId);
+
+        }).catch(function(err){
+            throw err ;
         });
 
     },
@@ -127,50 +140,52 @@ User.prototype = {
         let sql = `INSERT INTO Patient (Patient_acc_ID) VALUES (?) `;
 
         // call the query give it the sql string and the value (user id )
-        pool.query(sql, ID, async function (err, result) {
-            if (err) throw err;
+        pool.query(sql, ID).then( function ( result) {
+           
             // return the last inserted id. if there is no error
-            console.log('inserted Patient successfully....');
-            return;
-
+           console.log('inserted Patient successfully....');
+           
+        }).catch(function(err){
+            throw err ;
         });
+        return ;
     },
-    ////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////
-    /////////////////should update for data base //////////////////
-    //////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////
+    
     CreateDoctor: function (user) {
         if (user) {
 
-            var ID = user
-            let sql = `INSERT INTO Doctor (doctor_acc_ID) VALUES ( ?)`;
+            
+            let sql = `INSERT INTO Doctor ( doctor_acc_ID , doctor_degree , doctor_specialization , doctor_address ) VALUES ( ${user.doc_id} , '${user.doc_degree}' , '${user.doc_special}' , '${user.doc_address}' )`;
+            
             // call the query give it the sql string and the values (bind array)
-            pool.query(sql, ID, async function (err, result) {
-                if (err) throw err;
+            pool.query(sql).then( function( result) {
 
                 console.log('inserted Doctor successfully....');
-
+                return ;
+            }).catch(function(err){
+                throw err ;
             });
-
+          
         }
-        return;
+        
     },
 
-    CreatePharmacist: function (user) {
+    CreatePharmacist: function (user ) {
         if (user) {
             var ID = user
             let sql = `INSERT INTO Pharmacist (Pharmacist_acc_ID) VALUES ( ?)`;
             // call the query give it the sql string and the values (bind array)
-            pool.query(sql, ID, async function (err, result) {
-                if (err) throw err;
+            pool.query(sql, ID).then ( function ( result) {
                 // return the last inserted id. if there is no error
                 console.log('inserted pharmacist successfully....');
+                return ;
+            }).catch(function(err){
+                throw err ;
             });
 
 
         }
-        return;
+    
 
     }
 
