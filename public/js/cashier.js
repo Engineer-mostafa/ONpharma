@@ -396,6 +396,12 @@ $("#cash").on("click", function () {
                     var total = ((JSON.parse(data)));
                     console.log(total);
                     $("#order").empty();
+                     Swal.fire({
+                        icon: 'success',
+                        title: 'Invoice',
+                         text: `Total Cash = ${totalCash}`,
+
+                    });
                 },
                 error: function (xhr, status, error) {
                     Swal.fire({
