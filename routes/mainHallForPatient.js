@@ -15,6 +15,7 @@ var aspc = new ASPC();
 router.get('/',  (request, Response) => {
     console.log("in Main Hall Get");
 
+    console.log(request.session.user);
 
     Response.render('mainHallForPatient', {
         title: "Main Hall",
