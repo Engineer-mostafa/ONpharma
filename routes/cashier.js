@@ -8,14 +8,15 @@ router.get('/', (request, Response) => {
     if (typeof (request.session.user) == "undefined") {
         Response.redirect('home');
     }
-
-    Response.render('cashier', {
-        title: "Cashier",
-        css: "cashier",
-        js: "cashier",
-        img: "money-bag.png"
+    else {
+        Response.render('cashier', {
+            title: "Cashier",
+            css: "cashier",
+            js: "cashier",
+            img: "money-bag.png"
+        }
+        );
     }
-    );
 });
 
 

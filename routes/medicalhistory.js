@@ -15,13 +15,15 @@ router.get('/', (request, Response) => {
     if (typeof (request.session.user) == "undefined") {
         Response.redirect('home');
     }
-Response.render('medicalhistory', {
-        title: "Medical History",
-        css: "medicalhistory",
-        js: "medicalhistory",
-        img:"patient.png"
+    else {
+        Response.render('medicalhistory', {
+            title: "Medical History",
+            css: "medicalhistory",
+            js: "medicalhistory",
+            img: "patient.png"
+        }
+        );
     }
-    );
 });
 
 

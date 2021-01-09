@@ -1,25 +1,26 @@
 
 const router = require('express').Router();
-const pool = require('../core/Pool');
-const { request } = require('express');
 const ASPC = require('../core/patient_ASPC');
 var aspc = new ASPC();
 
 
 router.get('/', (req, res) => {
 
-    if (typeof (request.session.user) == "undefined") {
-        Response.redirect('home');
-    }
-    
-    res.render('pharmacistview', {
-        title: "Pharmacy",
-        css: "pharmacistview",
-        js: "pharmacistview",
-        img: "pharmacistv.png"
+    console.log("in Pharmacist v");
 
+    if (typeof (req.session.user) == "undefined") {
+        res.redirect('home');
     }
-    );
+    else {
+        res.render('pharmacistview', {
+            title: "Pharmacy",
+            css: "pharmacistview",
+            js: "pharmacistview",
+            img: "pharmacistv.png"
+
+        }
+        );
+    }
 });
 
 
