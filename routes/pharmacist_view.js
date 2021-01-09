@@ -7,6 +7,11 @@ var aspc = new ASPC();
 
 
 router.get('/', (req, res) => {
+
+    if (typeof (request.session.user) == "undefined") {
+        Response.redirect('home');
+    }
+    
     res.render('pharmacistview', {
         title: "Pharmacy",
         css: "pharmacistview",

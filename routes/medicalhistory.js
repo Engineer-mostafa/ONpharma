@@ -12,7 +12,9 @@ router.get('/', (request, Response) => {
 
     console.log("in medical get");
 
-
+    if (typeof (request.session.user) == "undefined") {
+        Response.redirect('home');
+    }
 Response.render('medicalhistory', {
         title: "Medical History",
         css: "medicalhistory",

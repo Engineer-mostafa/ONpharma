@@ -321,10 +321,10 @@ $("#patients").on("click", function () {
                         $('#getmePatients').append(
                             "<tr>" +
                             "<td>" +
-                            element.Patient_acc_ID +
+                            element.Fname +
                             "</td>" +
                             "<td>" +
-                            element.Patient_smoking_status.data +
+                            element.Lname +
                             "</td>" +
                             "</tr>");
                     }

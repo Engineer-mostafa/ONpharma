@@ -15,14 +15,18 @@ var aspc = new ASPC();
 router.get('/',  (request, Response) => {
     console.log("in Main Hall Get");
 
-    console.log(request.session.user);
+    console.log(request.session.user + " " + typeof (request.session.user));
 
+    if (typeof(request.session.user) == "undefined") {
+        Response.redirect('home');
+    }
     Response.render('mainHallForPatient', {
         title: "Main Hall",
         css: "mainHallForPatient",
         js: "mainHallForPatient",
         img: "checklist.png",
-        add:""
+        add: "",
+        type: request.session.user.User_type,
 
     });
 });

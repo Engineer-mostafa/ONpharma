@@ -5,13 +5,15 @@ var aspc = new ASPC();
 router.get('/', (request, Response) => {
 
     console.log("in cashier get");
-
+    if (typeof (request.session.user) == "undefined") {
+        Response.redirect('home');
+    }
 
     Response.render('cashier', {
         title: "Cashier",
         css: "cashier",
         js: "cashier",
-        img: ""
+        img: "money-bag.png"
     }
     );
 });
