@@ -45,12 +45,11 @@ CREATE TABLE Pharmacist
 (
     PRIMARY KEY(Pharmacist_acc_ID),
 
-    Pharmacist_acc_ID int UNIQUE,
+    Pharmacist_acc_ID int ,
 
     Pharmacist_pharmacy_ID int ,
 
     FOREIGN KEY (Pharmacist_acc_ID) REFERENCES Account(acc_ID) ON DELETE CASCADE
-
 );
 
 /*----------------------------------------------------------------*/
@@ -191,15 +190,25 @@ VALUES
 (9,"Doctoral Degree","Neurosurgery","Ap #985-7283 Placerat Avenue"),(10,"Bachelor's Degree","Thoracic surgery","Ap #249-718 Enim. Ave"),
 (13,"Bachelor's Degree","Thoracic surgery","P.O. Box 484, 6129 Cras St."),(14,"Master's Degree","Radiation oncology","9832 Sed St."),
 (17,"Doctoral Degree","Neurosurgery","5116 Varius. Avenue"),(18,"Doctoral Degree","Neurosurgery","3355 Elit, Avenue");
-/*Pharmacist*/
-INSERT INTO `Pharmacist` (`Pharmacist_acc_ID`,`Pharmacist_pharmacy_ID`)
+/*Pharmacist*/ -- ADD Pharmacist_pharmacy_ID
+INSERT INTO `Pharmacist` (`Pharmacist_acc_ID`) 
 VALUES
-(3,"3"),(4,"4"),
-(7,"7"),(8,"8"),
-(11,"11"),(12,"12"),
-(15,"15"),(16,"16"),
-(19,"19"),(20,"20");
-/**/
+(3),(4),
+(7),(8),
+(11),(12),
+(15),(16),
+(19),(20);
+/*Pharmaceutical_Item*/
+INSERT INTO `Pharmaceutical_Item` (`item_id_barcode`,`item_name`,`item_type`,`item_price`) 
+VALUES 
+(1,"augmentin 1g","Medical",88),(2,"vatika oil","Beauty",74),
+(3,"augmentin 500mg","Medical",58),(4,"ceftriaxone 1g","Medical",84),
+(5,"head and shoulders shampoo","Beauty",41),(6,"ceftriaxone 500mg","Medical",12),
+(7,"cefotaxime 1g","Medical",21),(8,"alphintern","Medical",77),
+(9,"panadol 500mg","Medical",91),(10,"panadol cold and flu","Medical",81),
+(11,"burfen","Medical",91),(12,"dolac","Medical",81);
+
+
 
 
 /*
