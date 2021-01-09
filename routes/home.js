@@ -107,7 +107,7 @@ router.post('/',
             else {
                 gender = 0;
             }
-             
+
             var s = request.body.Bdate;
             var userInput = {
                 email: request.body.Emailaddressp,
@@ -118,7 +118,7 @@ router.post('/',
                 gender: gender,
                 Birthdate: s,
                 phoneNum: request.body.Mobilep,
-                usertype : type 
+                usertype: type
 
             };
 
@@ -129,13 +129,13 @@ router.post('/',
                     if (await lastID) {
                         console.log(lastID);
                         switch (request.body.type) {
-                            
+
                             case "Doctor":
-                                var doctor_input= {
-                                doc_id : lastID,
-                                doc_special:request.body.Doc_special,
-                                doc_degree : request.body.Doc_deg,
-                                doc_address: request.body.Doc_address
+                                var doctor_input = {
+                                    doc_id: lastID,
+                                    doc_special: request.body.Doc_special,
+                                    doc_degree: request.body.Doc_deg,
+                                    doc_address: request.body.Doc_address
                                 }
                                 user.CreateDoctor(doctor_input);
                                 break;
@@ -146,6 +146,15 @@ router.post('/',
 
 
                         };
+                        user.find_id(lastID).then(function (user) {
+
+                            if (user) {
+                                request.session.user = user;
+                                request.session.opp = 0;
+
+                            }
+
+                        })
                     }
 
                 }
@@ -153,22 +162,11 @@ router.post('/',
                     response.status(400).send(error);
 
                 }
-                user.find_id(lastID).then(function (user) {
-
-                    if (user) {
-                        request.session.user = user;
-                        request.session.opp = 0;
-                        console.log(request.session.user);
-                    }
-
-                })
-
-               
-                    Response.redirect('/home');
-                    
-                
 
 
+               if (user.session.user){
+                Response.redirect('/home');
+               }
 
             })
         } else {
@@ -192,8 +190,9 @@ router.post('/',
                     return Response.status(400).send('Username or Password incorrect!');
                 }
 
-
-                if (request.session.user)
+                if (request.session.user.User_type =="Pharmacist")
+                     Response.redirect('/pharmacist-v')
+                else (request.session.user)
                     Response.redirect('/main-hall');
 
 
