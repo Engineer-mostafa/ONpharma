@@ -190,7 +190,7 @@ VALUES
 (9,"Doctoral Degree","Neurosurgery","Ap #985-7283 Placerat Avenue"),(10,"Bachelor's Degree","Thoracic surgery","Ap #249-718 Enim. Ave"),
 (13,"Bachelor's Degree","Thoracic surgery","P.O. Box 484, 6129 Cras St."),(14,"Master's Degree","Radiation oncology","9832 Sed St."),
 (17,"Doctoral Degree","Neurosurgery","5116 Varius. Avenue"),(18,"Doctoral Degree","Neurosurgery","3355 Elit, Avenue");
-/*Pharmacist*/ -- ADD Pharmacist_pharmacy_ID
+/*Pharmacist*/
 INSERT INTO `Pharmacist` (`Pharmacist_acc_ID`) 
 VALUES
 (3),(4),
@@ -198,6 +198,25 @@ VALUES
 (11),(12),
 (15),(16),
 (19),(20);
+/*Pharmacy*/
+INSERT INTO `Pharmacy` (`pharmacy_ID`,`pharmacy_manager_ID`,`pharmacy_name`,`pharmacy_address`) 
+VALUES 
+(3,3,"Sed Pede Nec LLC","Ap #695-3176 Facilisis, St."),(4,4,"Mi Pede Nonummy Corporation","9412 Nunc St."),
+(7,7,"Nullam PC","Ap #971-7657 Nullam Rd."),(8,8,"Lorem Eget Company","5612 Urna. Ave"),
+(11,11,"Enim Etiam Associates","7617 Tincidunt Street"),(12,12,"Ut Nec Urna Inc.","6128 Ipsum Street"),
+(15,15,"Aliquet Corp.","1931 Proin St."),(16,16,"Cras Vehicula Aliquet Corp.","P.O. Box 405, 7740 A, Avenue"),
+(19,19,"Egestas Urna Justo Industries","683-8049 Arcu. Rd."),(20,20,"Vitae Semper Egestas LLC","5551 Ornare Rd.");
+/*Pharmacist*/ -- ADD Pharmacist_pharmacy_ID
+UPDATE Pharmacist SET Pharmacist_pharmacy_ID= 3 WHERE Pharmacist_acc_ID= 3;
+UPDATE Pharmacist SET Pharmacist_pharmacy_ID= 4 WHERE Pharmacist_acc_ID= 4;
+UPDATE Pharmacist SET Pharmacist_pharmacy_ID= 7 WHERE Pharmacist_acc_ID= 7;
+UPDATE Pharmacist SET Pharmacist_pharmacy_ID= 8 WHERE Pharmacist_acc_ID= 8;
+UPDATE Pharmacist SET Pharmacist_pharmacy_ID= 11 WHERE Pharmacist_acc_ID= 11;
+UPDATE Pharmacist SET Pharmacist_pharmacy_ID= 12 WHERE Pharmacist_acc_ID= 12;
+UPDATE Pharmacist SET Pharmacist_pharmacy_ID= 15 WHERE Pharmacist_acc_ID= 15;
+UPDATE Pharmacist SET Pharmacist_pharmacy_ID= 16 WHERE Pharmacist_acc_ID= 16;
+UPDATE Pharmacist SET Pharmacist_pharmacy_ID= 19 WHERE Pharmacist_acc_ID= 19;
+UPDATE Pharmacist SET Pharmacist_pharmacy_ID= 20 WHERE Pharmacist_acc_ID= 20;
 /*Pharmaceutical_Item*/
 INSERT INTO `Pharmaceutical_Item` (`item_id_barcode`,`item_name`,`item_type`,`item_price`) 
 VALUES 
