@@ -17,8 +17,8 @@ CREATE TABLE Account
     Mname varchar(255) NOT NULL,
     Lname varchar(255) NOT NULL,
      
-    -- 0 for men and 1 for women 
-    gender bit NOT NULL,
+    -- M for men and F for women 
+    gender char NOT NULL,
     Bdate date NOT NULL,
 
     phoneNum bigint NOT NULL UNIQUE,
