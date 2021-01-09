@@ -242,3 +242,4 @@ INSERT INTO `Prescription` (`Prescription_ID`,`Prescription_diagnosis`,`Prescrip
 
 INSERT INTO `Analysis` (`Analysis_Name`,`Analysis_Date`,`Result`,`Patient_acc_ID`) VALUES ("CRP","2020-12-09","CRP.png","3"),("Thyroid panel","2020-10-31","thyroid.jpg","4"),("Troponin","2020-10-01","troponin.png","7")
 
+--
