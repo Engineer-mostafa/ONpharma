@@ -226,9 +226,25 @@ VALUES
 (7,"cefotaxime 1g","Medical",21),(8,"alphintern","Medical",77),
 (9,"panadol 500mg","Medical",91),(10,"panadol cold and flu","Medical",81),
 (11,"burfen","Medical",91),(12,"dolac","Medical",81);
-
-
-
+/*Pharmacy_Repository*/
+INSERT INTO `Pharmacy_Repository` (`pharmacy_ID`,`item_id`,`item_quantity`)
+VALUES
+(3,1,4),(3,2,4),(3,3,2),
+(4,1,30),(4,12,5),(4,5,5),
+(7,11,1),(7,1,9),(7,2,10),
+(8,10,1),(8,7,8),(8,6,20),
+(11,4,2),(11,2,4),(11,3,2),
+(12,5,3),(12,7,10),(12,8,2),
+(15,10,5),(15,12,9),(15,9,12),
+(16,9,6),(16,2,4),(16,3,13),
+(19,2,7),(19,5,5),(19,7,5),
+(20,11,2),(20,6,4),(20,7,4);
+/*Prescription*/
+INSERT INTO `Prescription` (`Prescription_ID`,`Prescription_diagnosis`,`Prescription_date`,`Patient_acc_ID`,`doctor_acc_ID`,`pres_status`) VALUES (1,"1.png","2020-12-04",3,1,"1"),(2,"2.jpeg","2020-10-14",4,2,"0"),(3,"3.jpg","2020-10-06",7,5,"1"),(4,"4.jpeg","2019-12-31",8,6,"1"),(5,"5.png","2019-11-14",11,9,"0"),(6,"6.png","2020-12-04",6,10,"0");
+/*Analysis*/
+INSERT INTO `Analysis` (`Analysis_Name`,`Analysis_Date`,`Result`,`Patient_acc_ID`) VALUES ("CRP","2020-12-09","CRP.png","3"),("Thyroid panel","2020-10-31","thyroid.jpg","4"),("Troponin","2020-10-01","troponin.png","7");
+/*Chronic_Disease*/
+INSERT INTO `Chronic_Disease` (`Disease_Name`,`Disease_Date`,`Patient_acc_ID`) VALUES ("Alzheimer","2020-12-09","3"),("Depression","2020-10-31","4"),("Heart failure","2020-10-01","19"),("Chronic kidney disease","2019-12-22","8"),("Diabetes","2019-11-10","20");
 
 /*
 INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_id_barcode`,`item_name`, `item_type`, `item_price`) VALUES (1,'bro', 'beauty', 10);
@@ -256,9 +272,3 @@ INSERT INTO `pharmacy_app_db`.`scan` (`Scan_Name`, `Scan_Date`, `Result`, `Patie
 --
 */
 
-
-INSERT INTO `Prescription` (`Prescription_ID`,`Prescription_diagnosis`,`Prescription_date`,`Patient_acc_ID`,`doctor_acc_ID`,`pres_status`) VALUES (1,"1.png","2020-12-04",3,1,"1"),(2,"2.jpeg","2020-10-14",4,2,"0"),(3,"3.jpg","2020-10-06",7,5,"1"),(4,"4.jpeg","2019-12-31",8,6,"1"),(5,"5.png","2019-11-14",11,9,"0"),(6,"6.png","2020-12-04",6,10,"0");
-
-INSERT INTO `Analysis` (`Analysis_Name`,`Analysis_Date`,`Result`,`Patient_acc_ID`) VALUES ("CRP","2020-12-09","CRP.png","3"),("Thyroid panel","2020-10-31","thyroid.jpg","4"),("Troponin","2020-10-01","troponin.png","7");
-
-INSERT INTO `Chronic_Disease` (`Disease_Name`,`Disease_Date`,`Patient_acc_ID`) VALUES ("Alzheimer","2020-12-09","3"),("Depression","2020-10-31","4"),("Heart failure","2020-10-01","19"),("Chronic kidney disease","2019-12-22","8"),("Diabetes","2019-11-10","20");
