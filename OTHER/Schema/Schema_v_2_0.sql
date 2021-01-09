@@ -118,19 +118,6 @@ CREATE TABLE Prescription
     FOREIGN KEY (Patient_acc_ID) REFERENCES Account(acc_ID) ON DELETE CASCADE,
     FOREIGN KEY (doctor_acc_ID) references doctor(doctor_acc_ID) 
 );
-
-CREATE TABLE Prescription_Medicines
-(
-    PRIMARY KEY (Prescription_ID, Item_id),
-
-    Quantity int default 0,
-    Item_id int,
-    Prescription_ID int  auto_increment,
-
-    FOREIGN KEY (Item_id) REFERENCES Pharmaceutical_Item(item_id_barcode),
-    FOREIGN KEY (Prescription_ID) REFERENCES Prescription(Prescription_ID)
-);
-
 CREATE TABLE Analysis
 (
     PRIMARY key(Analysis_Name, Analysis_Date, Patient_acc_ID),
