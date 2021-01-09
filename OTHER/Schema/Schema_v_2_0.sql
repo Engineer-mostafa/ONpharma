@@ -259,6 +259,6 @@ INSERT INTO `pharmacy_app_db`.`scan` (`Scan_Name`, `Scan_Date`, `Result`, `Patie
 
 INSERT INTO `Prescription` (`Prescription_ID`,`Prescription_diagnosis`,`Prescription_date`,`Patient_acc_ID`,`doctor_acc_ID`,`pres_status`) VALUES (1,"1.png","2020-12-04",3,1,"1"),(2,"2.jpeg","2020-10-14",4,2,"0"),(3,"3.jpg","2020-10-06",7,5,"1"),(4,"4.jpeg","2019-12-31",8,6,"1"),(5,"5.png","2019-11-14",11,9,"0"),(6,"6.png","2020-12-04",6,10,"0");
 
-INSERT INTO `Analysis` (`Analysis_Name`,`Analysis_Date`,`Result`,`Patient_acc_ID`) VALUES ("CRP","2020-12-09","CRP.png","3"),("Thyroid panel","2020-10-31","thyroid.jpg","4"),("Troponin","2020-10-01","troponin.png","7")
+INSERT INTO `Analysis` (`Analysis_Name`,`Analysis_Date`,`Result`,`Patient_acc_ID`) VALUES ("CRP","2020-12-09","CRP.png","3"),("Thyroid panel","2020-10-31","thyroid.jpg","4"),("Troponin","2020-10-01","troponin.png","7");
 
---
+INSERT INTO `Chronic_Disease` (`Disease_Name`,`Disease_Date`,`Patient_acc_ID`) VALUES ("Alzheimer","2020-12-09","3"),("Depression","2020-10-31","4"),("Heart failure","2020-10-01","19"),("Chronic kidney disease","2019-12-22","8"),("Diabetes","2019-11-10","20");
