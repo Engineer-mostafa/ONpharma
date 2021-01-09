@@ -47,7 +47,6 @@ CREATE TABLE Pharmacist
 
     Pharmacist_acc_ID int UNIQUE,
 
-    Pharmacist_salary int,
     Pharmacist_pharmacy_ID int ,
 
     FOREIGN KEY (Pharmacist_acc_ID) REFERENCES Account(acc_ID) ON DELETE CASCADE
@@ -192,7 +191,16 @@ VALUES
 (9,"Doctoral Degree","Neurosurgery","Ap #985-7283 Placerat Avenue"),(10,"Bachelor's Degree","Thoracic surgery","Ap #249-718 Enim. Ave"),
 (13,"Bachelor's Degree","Thoracic surgery","P.O. Box 484, 6129 Cras St."),(14,"Master's Degree","Radiation oncology","9832 Sed St."),
 (17,"Doctoral Degree","Neurosurgery","5116 Varius. Avenue"),(18,"Doctoral Degree","Neurosurgery","3355 Elit, Avenue");
+/*Pharmacist*/
+INSERT INTO `Pharmacist` (`Pharmacist_acc_ID`,`Pharmacist_pharmacy_ID`)
+VALUES
+(3,"3"),(4,"4"),
+(7,"7"),(8,"8"),
+(11,"11"),(12,"12"),
+(15,"15"),(16,"16"),
+(19,"19"),(20,"20");
 /**/
+
 
 /*
 INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_id_barcode`,`item_name`, `item_type`, `item_price`) VALUES (1,'bro', 'beauty', 10);
