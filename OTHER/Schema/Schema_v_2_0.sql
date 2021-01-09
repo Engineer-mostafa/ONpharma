@@ -72,7 +72,7 @@ CREATE TABLE Pharmacy
 
     FOREIGN KEY (pharmacy_manager_ID) REFERENCES Pharmacist(Pharmacist_acc_ID) ON DELETE SET NULL
 );
-ALTER TABLE pharmacist ADD FOREIGN KEY (Pharmacist_pharmacy_ID) REFERENCES Pharmacy(pharmacy_ID) ON DELETE SET NULL;
+ALTER TABLE Pharmacist ADD FOREIGN KEY (Pharmacist_pharmacy_ID) REFERENCES Pharmacy(pharmacy_ID) ON DELETE SET NULL;
 
 CREATE TABLE Pharmaceutical_Item
 (
@@ -163,22 +163,22 @@ CREATE TABLE Chronic_Disease
 /*Account*/ 
 INSERT INTO `Account` (`acc_ID`,`acc_email`,`acc_password`,`Fname`,`Mname`,`Lname`,`gender`,`Bdate`,`phoneNum`,`User_type`)
 VALUES 
-(1,"Cras.pellentesque@Duisat.co.uk","$2b$10$k0GSKjYaSx4yZXEYbc/xI.lkj9F6U/G6cIQAqDj1aYDH7FIjxLfK2","Jeanette","Bradley","Upton","1","2000-10-20","01141471252","doctor"),(2,"tincidunt@malesuadaut.co.uk","$2b$10$l3IHLEH0lzHXrJANk75gz.EaLRD9Bi4W3SFYxdswfdgVWK8yUyx7m","Steven","Armand","Austin","0","2012-10-15","01145192746","doctor"),
-(3,"Donec.tempus.lorem@consectetuer.edu","$2b$10$QOgyQrTBsGdSfk4MhPnCO.SwozduF/b.2riT1.sRFrdRjCD/uKsVi","Medge","Zane","Felix","0","1990-07-05","01144839760","pharmacist"),(4,"convallis.dolor@sed.edu","$2b$10$kay7uWKwVnM63k4k13MrDee8RbstIL7EjHKk9fx1lfjs2TCPrWhY.","Georgia","Maxwell","Levi","0","2000-10-20","01147281337","pharmacist"),
-(5,"turpis.Nulla@dolordapibus.net","$2b$10$ePp40k7ereyPiMhZuuvjCeppQPjq/f2hMar7en6Lrzyn90OawddJG","Colorado","Nicholas","Owen","1","2012-10-15","01143432303","doctor"),(6,"Aliquam.erat@nequevenenatislacus.org","$2b$10$Yravge9cgBcuz1PA57kEiOLLfzXJpb4GC1/wGnxGhykmOXmgtQmy2","Levi","Kane","Reuben","1","1990-07-05","01140928218","doctor"),
-(7,"sed@nequeNullam.com","$2b$10$TmwcIwFWjUQ4.CeVJRROeOo3TwsAlDqPIpp13Csi2/K5EQMqqtSHe","Chantale","Rashad","Oliver","0","2000-10-20","01143262171","pharmacist"),(8,"neque@semper.ca","$2b$10$xuCoZXcOxiHaidRrmpzTFe1unp.vIxRV4oi11rzCeccLYsxHaoEm6","Ferris","Octavius","Orlando","1","2012-10-15","01147867519","pharmacist"),
-(9,"non.sapien@quisurna.ca","$2b$10$GjITEZL8UmOqHCN4cLemWe.X9AmR4MixHlpQIsQ.mfYl6SbVSoSXG","Knox","Arsenio","Thaddeus","0","1990-07-05","01146557968","doctor"),(10,"neque.Nullam.nisl@liberoProinmi.co.uk","$2b$10$5NcacwxG2MyIWEdEIa3hFOwwRbQn943wtBjoGXb.Qo7bm.Q1X9ApK","Ori","Bevis","Grady","1","2000-10-20","01149554281","doctor");
+(1,"Cras.pellentesque@Duisat.co.uk","$2b$10$k0GSKjYaSx4yZXEYbc/xI.lkj9F6U/G6cIQAqDj1aYDH7FIjxLfK2","Jeanette","Bradley","Upton","1","2000-10-20","01141471252","Doctor"),(2,"tincidunt@malesuadaut.co.uk","$2b$10$l3IHLEH0lzHXrJANk75gz.EaLRD9Bi4W3SFYxdswfdgVWK8yUyx7m","Steven","Armand","Austin","0","2012-10-15","01145192746","Doctor"),
+(3,"Donec.tempus.lorem@consectetuer.edu","$2b$10$QOgyQrTBsGdSfk4MhPnCO.SwozduF/b.2riT1.sRFrdRjCD/uKsVi","Medge","Zane","Felix","0","1990-07-05","01144839760","Pharmacist"),(4,"convallis.dolor@sed.edu","$2b$10$kay7uWKwVnM63k4k13MrDee8RbstIL7EjHKk9fx1lfjs2TCPrWhY.","Georgia","Maxwell","Levi","0","2000-10-20","01147281337","Pharmacist"),
+(5,"turpis.Nulla@dolordapibus.net","$2b$10$ePp40k7ereyPiMhZuuvjCeppQPjq/f2hMar7en6Lrzyn90OawddJG","Colorado","Nicholas","Owen","1","2012-10-15","01143432303","Doctor"),(6,"Aliquam.erat@nequevenenatislacus.org","$2b$10$Yravge9cgBcuz1PA57kEiOLLfzXJpb4GC1/wGnxGhykmOXmgtQmy2","Levi","Kane","Reuben","1","1990-07-05","01140928218","Doctor"),
+(7,"sed@nequeNullam.com","$2b$10$TmwcIwFWjUQ4.CeVJRROeOo3TwsAlDqPIpp13Csi2/K5EQMqqtSHe","Chantale","Rashad","Oliver","0","2000-10-20","01143262171","Pharmacist"),(8,"neque@semper.ca","$2b$10$xuCoZXcOxiHaidRrmpzTFe1unp.vIxRV4oi11rzCeccLYsxHaoEm6","Ferris","Octavius","Orlando","1","2012-10-15","01147867519","Pharmacist"),
+(9,"non.sapien@quisurna.ca","$2b$10$GjITEZL8UmOqHCN4cLemWe.X9AmR4MixHlpQIsQ.mfYl6SbVSoSXG","Knox","Arsenio","Thaddeus","0","1990-07-05","01146557968","Doctor"),(10,"neque.Nullam.nisl@liberoProinmi.co.uk","$2b$10$5NcacwxG2MyIWEdEIa3hFOwwRbQn943wtBjoGXb.Qo7bm.Q1X9ApK","Ori","Bevis","Grady","1","2000-10-20","01149554281","Doctor");
 INSERT INTO `Account` (`acc_ID`,`acc_email`,`acc_password`,`Fname`,`Mname`,`Lname`,`gender`,`Bdate`,`phoneNum`,`User_type`)
 VALUES
-(11,"felis@mattis.co.uk","$2b$10$vCxw7tr7LXaW5X756ERycOCUCdZ2wzo2EQVawNyixQ9c9eMZKWgBa","Tanya","Wing","Barry","1","2012-10-15","01140350883","pharmacist"),(12,"quam@cursusinhendrerit.net","$2b$10$EnIUD8ogqS80Gi1MSPY.NebxEsEPDCpD/bytmONdEYu9pp.rcYOwm","Lysandra","Baxter","Flynn","1","1990-07-05","01140494902","pharmacist"),
-(13,"aliquam@euplacerat.edu","$2b$10$g4IQbPqxPmmlELoy1phDeu2aqLqgpRep4cVAiu9/Inm8.wwpj60Na","Chava","Erasmus","Yuli","1","2000-10-20","01146798042","doctor"),(14,"ipsum.Suspendisse@elementumloremut.ca","$2b$10$3u0QUuojYH7SEbHe8FPmG.a9G.U34pmGJ.By7DTeEmNb8b2DmKf.e","Geraldine","Louis","Gannon","1","2012-10-15","01141705158","doctor"),
-(15,"malesuada.ut@faucibusleo.com","$2b$10$3iBke2mYUNQLqWdHeWVzL.wi1tsQ/a2CAWPhxayiyQXiNm/jXHBM6","Ali","Demetrius","Kenneth","1","1990-07-05","01141407102","pharmacist"),(16,"porttitor.eros@placerat.edu","$2b$10$0hkhTTgpJ9jUF6Mmz.TwneoJOwGSF2sNBg0tZtatUWUs0VIv7aXrS","Julie","Todd","Brennan","1","2000-10-20","01149980737","pharmacist"),
-(17,"urna@magnatellus.net","$2b$10$qLkIdXBs0nD0gHiJHVxYg.xMGQXGCbuG/rcbBn9bFO7EwvoIrZ92C","Hayfa","Abdul","Walker","0","2012-10-15","01146789606","doctor"),(18,"mollis.Integer@Lorem.net","$2b$10$/CqF.3zvfyhvTqu8Nrkaw.F5qcFmjRL9U1BsFfnBv.F0Dcd.0H4fK","Talon","Magee","Baxter","1","1990-07-05","01145028532","doctor"),
-(19,"vitae.erat@at.edu","$2b$10$9Hl/H46sxAoypvPW/vmz9O3whA5Bmiajo4SfDfJLxSRte6sk8O0gW","Sydney","Moses","Demetrius","0","2000-10-20","01147634461","pharmacist"),(20,"neque@adipiscingelit.net","$2b$10$KZdro4oqxWgLD3gedXhsn.VsiVtZKzOVUoE.Ny49xpPLjw2AwUsPe","Derek","Barclay","Francis","1","2012-10-15","01141507664","pharmacist");
+(11,"felis@mattis.co.uk","$2b$10$vCxw7tr7LXaW5X756ERycOCUCdZ2wzo2EQVawNyixQ9c9eMZKWgBa","Tanya","Wing","Barry","1","2012-10-15","01140350883","Pharmacist"),(12,"quam@cursusinhendrerit.net","$2b$10$EnIUD8ogqS80Gi1MSPY.NebxEsEPDCpD/bytmONdEYu9pp.rcYOwm","Lysandra","Baxter","Flynn","1","1990-07-05","01140494902","Pharmacist"),
+(13,"aliquam@euplacerat.edu","$2b$10$g4IQbPqxPmmlELoy1phDeu2aqLqgpRep4cVAiu9/Inm8.wwpj60Na","Chava","Erasmus","Yuli","1","2000-10-20","01146798042","Doctor"),(14,"ipsum.Suspendisse@elementumloremut.ca","$2b$10$3u0QUuojYH7SEbHe8FPmG.a9G.U34pmGJ.By7DTeEmNb8b2DmKf.e","Geraldine","Louis","Gannon","1","2012-10-15","01141705158","Doctor"),
+(15,"malesuada.ut@faucibusleo.com","$2b$10$3iBke2mYUNQLqWdHeWVzL.wi1tsQ/a2CAWPhxayiyQXiNm/jXHBM6","Ali","Demetrius","Kenneth","1","1990-07-05","01141407102","Pharmacist"),(16,"porttitor.eros@placerat.edu","$2b$10$0hkhTTgpJ9jUF6Mmz.TwneoJOwGSF2sNBg0tZtatUWUs0VIv7aXrS","Julie","Todd","Brennan","1","2000-10-20","01149980737","Pharmacist"),
+(17,"urna@magnatellus.net","$2b$10$qLkIdXBs0nD0gHiJHVxYg.xMGQXGCbuG/rcbBn9bFO7EwvoIrZ92C","Hayfa","Abdul","Walker","0","2012-10-15","01146789606","Doctor"),(18,"mollis.Integer@Lorem.net","$2b$10$/CqF.3zvfyhvTqu8Nrkaw.F5qcFmjRL9U1BsFfnBv.F0Dcd.0H4fK","Talon","Magee","Baxter","1","1990-07-05","01145028532","Doctor"),
+(19,"vitae.erat@at.edu","$2b$10$9Hl/H46sxAoypvPW/vmz9O3whA5Bmiajo4SfDfJLxSRte6sk8O0gW","Sydney","Moses","Demetrius","0","2000-10-20","01147634461","Pharmacist"),(20,"neque@adipiscingelit.net","$2b$10$KZdro4oqxWgLD3gedXhsn.VsiVtZKzOVUoE.Ny49xpPLjw2AwUsPe","Derek","Barclay","Francis","1","2012-10-15","01141507664","Pharmacist");
 INSERT INTO `Account` (`acc_ID`,`acc_email`,`acc_password`,`Fname`,`Mname`,`Lname`,`gender`,`Bdate`,`phoneNum`,`User_type`)
 VALUES
-(21,"felisMoo@mattis.co.uk","$2b$10$UYKydRWNkF1yl3/urz1bWeVBKzCCNnv09QIgRUgTVMSCaXNRwT3Ca","Tanya","Wing","Barry","1","2012-10-15","01140355883","patient"),(22,"qneuam@cursusinhendrerit.net","$2b$10$qZCQNPTvE9Rt5A3ii.MVJe2T5HEoMRJShbNfLZRmEA7zIsOWRdCPy","Lysandra","Baxter","Flynn","1","1990-07-05","01140484902","patient"),
-(23,"feik@mattis.co.uk","$2b$10$4TCycT8NKerolBwchh5DduLGsXzdxl2H5T.MKxytPXAFcxxZ0fhTC","Tanya","Wing","Barry","1","2012-10-15","01140350887","patient"),(24,"moquam@cursusinhendrerit.net","$2b$10$5Npo0T3fE9TpEGTu3P5lv.jg5Cbqo2fQ/E.WeD/mzu/XZZhLKPvd2","Lysandra","Baxter","Flynn","1","1990-07-05","01140694902","patient");
+(21,"felisMoo@mattis.co.uk","$2b$10$UYKydRWNkF1yl3/urz1bWeVBKzCCNnv09QIgRUgTVMSCaXNRwT3Ca","Tanya","Wing","Barry","1","2012-10-15","01140355883","Patient"),(22,"qneuam@cursusinhendrerit.net","$2b$10$qZCQNPTvE9Rt5A3ii.MVJe2T5HEoMRJShbNfLZRmEA7zIsOWRdCPy","Lysandra","Baxter","Flynn","1","1990-07-05","01140484902","Patient"),
+(23,"feik@mattis.co.uk","$2b$10$4TCycT8NKerolBwchh5DduLGsXzdxl2H5T.MKxytPXAFcxxZ0fhTC","Tanya","Wing","Barry","1","2012-10-15","01140350887","Patient"),(24,"moquam@cursusinhendrerit.net","$2b$10$5Npo0T3fE9TpEGTu3P5lv.jg5Cbqo2fQ/E.WeD/mzu/XZZhLKPvd2","Lysandra","Baxter","Flynn","1","1990-07-05","01140694902","Patient");
 /*Doctor*/
 INSERT INTO `Doctor` (`doctor_acc_ID`,`doctor_degree`,`doctor_specialization`,`doctor_address`)
 VALUES
@@ -258,7 +258,7 @@ VALUES
 INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_id_barcode`,`item_name`, `item_type`, `item_price`) VALUES (1,'bro', 'beauty', 10);
 INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_id_barcode`,`item_name`, `item_type`, `item_price`) VALUES (2,'med', 'medicine', 12);
 --
-INSERT INTO `pharmacy_app_db`.`pharmacist` (`Pharmacist_acc_ID`) VALUES ('2');
+INSERT INTO `pharmacy_app_db`.`Pharmacist` (`Pharmacist_acc_ID`) VALUES ('2');
 --
 INSERT INTO `pharmacy_app_db`.`pharmacy` (`pharmacy_manager_ID`, `pharmacy_name`, `pharmacy_address`) VALUES (2, 'brother', 'shobra');
 --
