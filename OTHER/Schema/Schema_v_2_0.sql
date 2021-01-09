@@ -2,7 +2,12 @@ DROP DATABASE IF EXISTS Pharmacy_App_DB;
 CREATE DATABASE Pharmacy_App_DB;
 
 use Pharmacy_App_DB;
-
+/*
+Notes on the ID
+Doctors --> 1, 2, 5, 6, ..., 17, 18
+Pharmacists --> 3, 4, 7, 8, ..., 19, 20
+Patients --> 21, 22, 23, 24
+*/
 /*-------------------------------------------------------Creating Tables---------------------------------------------------------------------*/
 /*This TABLE IS responsible for holding the common information among the system users*/
 CREATE TABLE Account
@@ -154,6 +159,7 @@ CREATE TABLE Chronic_Disease
     FOREIGN KEY (Patient_acc_ID) REFERENCES Account(acc_ID)
 );
 /********************************************************************/
+/*-------------------------------------------------------Filling Tables---------------------------------------------------------------------*/
 /*Account*/ 
 INSERT INTO `Account` (`acc_ID`,`acc_email`,`acc_password`,`Fname`,`Mname`,`Lname`,`gender`,`Bdate`,`phoneNum`,`User_type`)
 VALUES 
@@ -169,6 +175,10 @@ VALUES
 (15,"malesuada.ut@faucibusleo.com","YXH26CTL4CV","Ali","Demetrius","Kenneth","1","1990-07-05","01141407102","pharmacist"),(16,"porttitor.eros@placerat.edu","KHF97CQJ9ZX","Julie","Todd","Brennan","1","2000-10-20","01149980737","pharmacist"),
 (17,"urna@magnatellus.net","XEW35LYA0UA","Hayfa","Abdul","Walker","0","2012-10-15","01146789606","doctor"),(18,"mollis.Integer@Lorem.net","TJY87WLS9PT","Talon","Magee","Baxter","1","1990-07-05","01145028532","doctor"),
 (19,"vitae.erat@at.edu","IJT43MJK0QN","Sydney","Moses","Demetrius","0","2000-10-20","01147634461","pharmacist"),(20,"neque@adipiscingelit.net","RAB18JMG2GI","Derek","Barclay","Francis","1","2012-10-15","01141507664","pharmacist");
+INSERT INTO `Account` (`acc_ID`,`acc_email`,`acc_password`,`Fname`,`Mname`,`Lname`,`gender`,`Bdate`,`phoneNum`,`User_type`)
+VALUES
+(21,"felisMoo@mattis.co.uk","CQH55PPZ7EF","Tanya","Wing","Barry","1","2012-10-15","01140355883","patient"),(22,"qneuam@cursusinhendrerit.net","ZQF95PRY6OD","Lysandra","Baxter","Flynn","1","1990-07-05","01140484902","patient"),
+(23,"feik@mattis.co.uk","CQH55PPZ7EF","Tanya","Wing","Barry","1","2012-10-15","01140350887","patient"),(24,"moquam@cursusinhendrerit.net","ZQF95PRY6OD","Lysandra","Baxter","Flynn","1","1990-07-05","01140694902","patient");
 /*Doctor*/
 INSERT INTO `Doctor` (`doctor_acc_ID`,`doctor_degree`,`doctor_specialization`,`doctor_address`)
 VALUES
@@ -227,11 +237,22 @@ VALUES
 (19,2,7),(19,5,5),(19,7,5),
 (20,11,2),(20,6,4),(20,7,4);
 /*Prescription*/
-INSERT INTO `Prescription` (`Prescription_ID`,`Prescription_diagnosis`,`Prescription_date`,`Patient_acc_ID`,`doctor_acc_ID`,`pres_status`) VALUES (1,"1.png","2020-12-04",3,1,"1"),(2,"2.jpeg","2020-10-14",4,2,"0"),(3,"3.jpg","2020-10-06",7,5,"1"),(4,"4.jpeg","2019-12-31",8,6,"1"),(5,"5.png","2019-11-14",11,9,"0"),(6,"6.png","2020-12-04",6,10,"0");
+INSERT INTO `Prescription` (`Prescription_ID`,`Prescription_diagnosis`,`Prescription_date`,`Patient_acc_ID`,`doctor_acc_ID`,`pres_status`)
+VALUES
+(1,"1.png","2020-12-04",3,1,"1"),(2,"2.jpeg","2020-10-14",1,2,"0"),
+(3,"3.jpg","2020-10-06",21,5,"1"),(4,"4.jpeg","2019-12-31",22,6,"1"),
+(5,"5.png","2019-11-14",23,9,"0"),(6,"6.png","2020-12-04",24,10,"0");
 /*Analysis*/
-INSERT INTO `Analysis` (`Analysis_Name`,`Analysis_Date`,`Result`,`Patient_acc_ID`) VALUES ("CRP","2020-12-09","CRP.png","3"),("Thyroid panel","2020-10-31","thyroid.jpg","4"),("Troponin","2020-10-01","troponin.png","7");
+INSERT INTO `Analysis` (`Analysis_Name`,`Analysis_Date`,`Result`,`Patient_acc_ID`) 
+VALUES 
+("CRP","2020-12-09","CRP.png","2"),("Thyroid panel","2020-10-31","thyroid.jpg","4"),
+("Troponin","2020-10-01","troponin.png","21");
 /*Chronic_Disease*/
-INSERT INTO `Chronic_Disease` (`Disease_Name`,`Disease_Date`,`Patient_acc_ID`) VALUES ("Alzheimer","2020-12-09","3"),("Depression","2020-10-31","4"),("Heart failure","2020-10-01","19"),("Chronic kidney disease","2019-12-22","8"),("Diabetes","2019-11-10","20");
+INSERT INTO `Chronic_Disease` (`Disease_Name`,`Disease_Date`,`Patient_acc_ID`) 
+VALUES 
+("Alzheimer","2020-12-09","2"),("Depression","2020-10-31","4"),
+("Heart failure","2020-10-01","21"),("Chronic kidney disease","2019-12-22","23"),
+("Diabetes","2019-11-10","22");
 
 /*
 INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_id_barcode`,`item_name`, `item_type`, `item_price`) VALUES (1,'bro', 'beauty', 10);
