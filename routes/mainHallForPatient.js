@@ -71,36 +71,6 @@ router.post('/', (req, res) => {
         case "search_for_Medicines":
             aspc.search_for_Medicines(req.body.searchField, res.end);
             break;
-
-        case "barcode":
-            // console.log("i will send");
-            // console.log(req.body.barcode);
-            // var transporter = nodemailer.createTransport({
-            //     service: 'gmail',
-            //     auth: {
-            //         user: 'mostafamagdi999.mm@gmail.com',
-            //         pass: 'Mosstafalover999'
-            //     }
-            // });
-            // // <svg class='barcode' jsbarcode-format='upc' jsbarcode-value='123456789012' jsbarcode-textmargin='0' jsbarcode- fontoptions='bold' displayValue='false' > </svg >
-            // var mailOptions = {
-            //     from: 'mostafamagdi999.mm@gmail.com',
-            //     to: 'mostafamagdy999.mm@gmail.com',
-            //     subject: 'Sending Email using Node.js',
-            //     attachDataUrls: true,//to accept base64 content in messsage
-            //     html: 'wow <img class="barcode" src="' + req.body.barcode + '">' 
-            // };
-
-            // transporter.sendMail(mailOptions, function (error, info) {
-            //     if (error) {
-            //         console.log(error);
-            //     } else {
-            //         console.log('Email sent: ' + info.response);
-            //     }
-            // });
-
-            break;
-
         default:
            
             console.log("i Will Download File default");

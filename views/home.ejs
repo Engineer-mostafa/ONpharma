@@ -5,14 +5,14 @@
     <div class="body-inner">
 
 
-      
+
 
         <div>
 
             <div class="road" style="    margin-top: 7%;
-"> 
+">
                 <div class="character" style="    margin-top: 103%;">
-            
+
                 </div>
             </div>
             <!-- links that open the modals of registeration for all types of users -->
@@ -26,7 +26,6 @@
                 style="position: fixed;width: 13%;height: 2%;top: 45.5%;left: 2%;"></a>
             <a data-target="#modal-5" data-toggle="modal" href="#"
                 style="position: fixed;width: 13%;height: 2%;top: 49.5%;left: 2%;"></a>
-
 
 
 
@@ -48,69 +47,101 @@
                                     value="Patient">
                             </div>
                             <div class="modal-body">
-                                <div class="form-row">
+                                <%if(errors=="") {%>
 
-                                    <div class="form-group col-md-6">
-                                        <label for="FirstNamep">First Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="FirstNamepatient" class="form-control" name="FirstNamep"
-                                            placeholder="Enter first name" required>
+                                    <% } %>
+                                        <%if(errors.length && typeof(type) !="undefined" && type=="Patient" ) {%>
+                                            <% errors.forEach(function(error){ %>
+                                                <div class="form-row">
+                                                    <div class="alert col-md-12 alert-warning alert-dismissible fade show"
+                                                        role="alert">
+                                                        <%= error.msg%>
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                    </div>
+                                                </div>
+                                                <% }); %>
+                                                    <% } %>
+                                                        <div class="form-row">
 
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="FirstNamep">Min Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="Mnamepatient" class="form-control" name="MNamep"
-                                            placeholder="Enter Minname name" required>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="FirstNamep">First Name<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="FirstNamepatient"
+                                                                    class="form-control" name="FirstNamep"
+                                                                    placeholder="Enter first name" required>
 
-                                    </div>
-                                </div>
-                                <div class="form-row">
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="FirstNamep">Min Name<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="Mnamepatient"
+                                                                    class="form-control" name="MNamep"
+                                                                    placeholder="Enter Minname name" required>
 
-                                    <div class="form-group col-md-6">
-                                        <label for="LastNamep">Last Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="LastNamelpatient" class="form-control" name="LastNamep"
-                                            placeholder="Enter second name" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
 
-                                    </div>
-                                    <div class="form-group col-md-6">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="LastNamep">Last Name<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="LastNamelpatient"
+                                                                    class="form-control" name="LastNamep"
+                                                                    placeholder="Enter second name" required>
+
+                                                            </div>
+                                                            <div class="form-group col-md-6">
 
 
 
 
-                                        <label for="bd">Birth Date<span class="text-danger">*</span></label>
-                                        <input type="date" id="bdpatient" class="form-control" name="Bdate"
-                                            placeholder="Enter second name" required>
+                                                                <label for="bd">Birth Date<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="date" id="bdpatient" class="form-control"
+                                                                    name="Bdate" placeholder="Enter second name"
+                                                                    required>
 
 
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="Emailaddressp">Email address<span
-                                                class="text-danger">*</span></label>
-                                        <input type="email" id="Emailaddressp" class="form-control" name="Emailaddressp"
-                                            placeholder="Enter your email" required>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="Passwordp">Password<span class="text-danger">*</span></label>
-                                        <input type="password" id="Passwordp" class="form-control" name="Passwordp"
-                                            placeholder="Password" required>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="Genderp">Gender<span class="text-danger">*</span></label>
-                                        <select class="form-control" id="Genderp" name="Genderp" required>
-                                            <option value=-1>Select your gender</option>
-                                            <option value=0>Male</option>
-                                            <option value=1>Female</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="mobilep">Mobile<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="Mobilep" type="number" name="Mobilep"
-                                            placeholder="Enter your Mobile number" required>
-                                    </div>
-                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="Emailaddressp">Email address<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="email" id="Emailaddressp"
+                                                                    class="form-control" name="Emailaddressp"
+                                                                    placeholder="Enter your email" required>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="Passwordp">Password<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="password" id="Passwordp"
+                                                                    class="form-control" name="Passwordp"
+                                                                    placeholder="Password" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="Genderp">Gender<span
+                                                                        class="text-danger">*</span></label>
+                                                                <select class="form-control" id="Genderp" name="Genderp"
+                                                                    required>
+                                                                    <option value=-1>Select your gender</option>
+                                                                    <option value=0>Male</option>
+                                                                    <option value=1>Female</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="mobilep">Mobile<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input class="form-control" id="Mobilep" type="number"
+                                                                    name="Mobilep"
+                                                                    placeholder="Enter your Mobile number" required>
+                                                            </div>
+                                                        </div>
                             </div>
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
@@ -125,14 +156,14 @@
 
 
 
-
+            <svg id="barcode"></svg>
+            <img class="barcode" src="" alt="">
 
             <!--Doctor Form Regesteration-->
             <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
             <form id="registrationFormDoctor" class="form-validate" method="POST">
-
                 <div class="modal fade" id="modal-2" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
                     aria-hidden="true">
                     <div class="modal-dialog modal-md modal-dialog-centered">
@@ -140,101 +171,143 @@
                             <div class="modal-header">
 
                                 <h4 id="modal-label-3" class="modal-title">Register As A Doctor</h4>
+
+
                                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+
+
                                 <!-- this hidden field for definnig the type of regestirtion in backend -->
 
                                 <input aria-hidden="true" type="text" class="hidden" name="type" value="Doctor">
                             </div>
                             <div class="modal-body">
-                                <div class="form-row">
+                                <%if(errors=="") {%>
 
-                                    <div class="form-group col-md-6">
-                                        <label for="FirstNamep">First Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="FirstNamedoctor" class="form-control" name="FirstNamep"
-                                            placeholder="Enter first name" required>
+                                    <% } %>
+                                        <%if(errors.length && typeof(type) !="undefined" && type=="Doctor" ) {%>
+                                            <% errors.forEach(function(error){ %>
+                                                <div class="form-row">
+                                                    <div class="alert col-md-12 alert-warning alert-dismissible fade show"
+                                                        role="alert">
+                                                        <%= error.msg%>
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                    </div>
+                                                </div>
+                                                <% }); %>
+                                                    <% } %>
+                                                        <div class="form-row">
 
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="FirstNamep">Min Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="Mnamedoctor" class="form-control" name="MNamep"
-                                            placeholder="Enter Minname name" required>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="FirstNamep">First Name<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="FirstNamedoctor"
+                                                                    class="form-control" name="FirstNamep"
+                                                                    placeholder="Enter first name" required>
 
-                                    </div>
-                                </div>
-                                <div class="form-row">
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="FirstNamep">Min Name<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="Mnamedoctor" class="form-control"
+                                                                    name="MNamep" placeholder="Enter Minname name"
+                                                                    required>
 
-                                    <div class="form-group col-md-6">
-                                        <label for="LastNamep">Last Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="LastNameldoctor" class="form-control" name="LastNamep"
-                                            placeholder="Enter second name" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
 
-                                    </div>
-                                    <div class="form-group col-md-6">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="LastNamep">Last Name<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="LastNameldoctor"
+                                                                    class="form-control" name="LastNamep"
+                                                                    placeholder="Enter second name" required>
+
+                                                            </div>
+                                                            <div class="form-group col-md-6">
 
 
 
 
-                                        <label for="bd">Birth Date<span class="text-danger">*</span></label>
-                                        <input type="date" id="bddoctor" class="form-control" name="Bdate"
-                                            placeholder="Enter second name" required>
+                                                                <label for="bd">Birth Date<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="date" id="bddoctor" class="form-control"
+                                                                    name="Bdate" placeholder="Enter second name"
+                                                                    required>
 
 
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="Emailaddressd">Email address<span
-                                                class="text-danger">*</span></label>
-                                        <input type="email" id="Emailaddressd" class="form-control" name="Emailaddressp"
-                                            placeholder="Enter your email" required>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="Passwordd">Password<span class="text-danger">*</span></label>
-                                        <input type="password" id="Passwordd" class="form-control" name="Passwordp"
-                                            placeholder="Password" required>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="Genderd">Gender<span class="text-danger">*</span></label>
-                                        <select class="form-control" id="Genderd" name="Genderp" required>
-                                            <option value>Select your gender</option>
-                                            <option value="0">Male</option>
-                                            <option value="1">Female</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="Mobiled">Mobile<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="Mobiled" type="number" name="Mobilep"
-                                            placeholder="Enter your Mobile number" required>
-                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="Emailaddressd">Email address<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="email" id="Emailaddressd"
+                                                                    class="form-control" name="Emailaddressp"
+                                                                    placeholder="Enter your email" required>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="Passwordd">Password<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="password" id="Passwordd"
+                                                                    class="form-control" name="Passwordp"
+                                                                    placeholder="Password" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="Genderd">Gender<span
+                                                                        class="text-danger">*</span></label>
+                                                                <select class="form-control" id="Genderd" name="Genderp"
+                                                                    required>
+                                                                    <option value>Select your gender</option>
+                                                                    <option value="0">Male</option>
+                                                                    <option value="1">Female</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="Mobiled">Mobile<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input class="form-control" id="Mobiled" type="number"
+                                                                    name="Mobilep"
+                                                                    placeholder="Enter your Mobile number" required>
+                                                            </div>
 
-                                </div>
-                                <div class="form-row">
+                                                        </div>
+                                                        <div class="form-row">
 
-                                    <div class="form-group col-md-6">
-                                        <label for="degree">Degree<span class="text-danger">*</span></label>
-                                        <input type="text" id="Doc_degree" class="form-control" name="Doc_deg"
-                                            placeholder="Enter your degree" required>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="degree">Degree<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="Doc_degree" class="form-control"
+                                                                    name="Doc_deg" placeholder="Enter your degree"
+                                                                    required>
 
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="special">Specialization<span class="text-danger">*</span></label>
-                                        <input type="text" id="Doc_specialization" class="form-control" name="Doc_special"
-                                            placeholder="Enter your specialization" required>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="special">Specialization<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="Doc_specialization"
+                                                                    class="form-control" name="Doc_special"
+                                                                    placeholder="Enter your specialization" required>
 
-                                    </div>
-                                </div>
-                                <div class="form-row">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
 
-                                   
-                                    <div class="form-group col-md-6">
-                                        <label for="special">Address<span class="text-danger">*</span></label>
-                                        <input type="text" id="address" class="form-control" name="Doc_address"
-                                            placeholder="Enter your Address" required>
 
-                                    </div>
-                                </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="special">Address<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="address" class="form-control"
+                                                                    name="Doc_address" placeholder="Enter your Address"
+                                                                    required>
+
+                                                            </div>
+                                                        </div>
                             </div>
 
                             <div class="modal-footer">
@@ -244,6 +317,7 @@
                         </div>
                     </div>
                 </div>
+
             </form>
 
 
@@ -271,74 +345,169 @@
 
                             </div>
                             <div class="modal-body">
-                                <div class="form-row">
+                                <%if(errors=="") {%>
 
-                                    <div class="form-group col-md-6">
-                                        <label for="FirstNamep">First Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="FirstNamepharmacist" class="form-control"
-                                            name="FirstNamep" placeholder="Enter first name" required>
+                                    <% } %>
+<%if(errors.length && typeof(type) !="undefined" && type=="Pharmacist" ) {%>                                            <% errors.forEach(function(error){ %>
+                                                <div class="form-row">
+                                                    <div class="alert col-md-12 alert-warning alert-dismissible fade show"
+                                                        role="alert">
+                                                        <%= error.msg%>
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                    </div>
+                                                </div>
+                                                <% }); %>
+                                                    <% } %>
+                                                        <div class="form-row">
 
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="FirstNamep">Min Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="pharmacist" class="form-control" name="MNamep"
-                                            placeholder="Enter Minname name" required>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="FirstNamep">First Name<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="FirstNamepharmacist"
+                                                                    class="form-control" name="FirstNamep"
+                                                                    placeholder="Enter first name" required>
 
-                                    </div>
-                                </div>
-                                <div class="form-row">
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="FirstNamep">Min Name<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="pharmacist" class="form-control"
+                                                                    name="MNamep" placeholder="Enter Minname name"
+                                                                    required>
 
-                                    <div class="form-group col-md-6">
-                                        <label for="LastNamep">Last Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="LastNamelpharmacist" class="form-control"
-                                            name="LastNamep" placeholder="Enter second name" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
 
-                                    </div>
-                                    <div class="form-group col-md-6">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="LastNamep">Last Name<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="LastNamelpharmacist"
+                                                                    class="form-control" name="LastNamep"
+                                                                    placeholder="Enter second name" required>
+
+                                                            </div>
+                                                            <div class="form-group col-md-6">
 
 
 
 
-                                        <label for="bd">Birth Date<span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control" name="Bdate"
-                                            placeholder="Enter second name" required>
+                                                                <label for="bd">Birth Date<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="date" class="form-control" name="Bdate"
+                                                                    placeholder="Enter second name" required>
 
 
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="Emailaddresst">Email address<span
-                                                class="text-danger">*</span></label>
-                                        <input type="email" id="Emailaddresst" class="form-control" name="Emailaddressp"
-                                            placeholder="Enter your email" required>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="Passwordt">Password<span class="text-danger">*</span></label>
-                                        <input type="password" id="Passwordt" class="form-control" name="Passwordp"
-                                            placeholder="Password" required>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="Gendert">Gender<span class="text-danger">*</span></label>
-                                        <select class="form-control" id="Gendert" name="Genderp" required>
-                                            <option value>Select your gender</option>
-                                            <option value="0">Male</option>
-                                            <option value="1">Female</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="Mobilet">Mobile<span class="text-danger">*</span></label>
-                                        <input class="form-control" id="Mobilet" type="number" name="Mobilep"
-                                            placeholder="Enter your Mobile number" required>
-                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="Emailaddresst">Email address<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="email" id="Emailaddresst"
+                                                                    class="form-control" name="Emailaddressp"
+                                                                    placeholder="Enter your email" required>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="Passwordt">Password<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="password" id="Passwordt"
+                                                                    class="form-control" name="Passwordp"
+                                                                    placeholder="Password" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="Gendert">Gender<span
+                                                                        class="text-danger">*</span></label>
+                                                                <select class="form-control" id="Gendert" name="Genderp"
+                                                                    required>
+                                                                    <option value>Select your gender</option>
+                                                                    <option value="0">Male</option>
+                                                                    <option value="1">Female</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="Mobilet">Mobile<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input class="form-control" id="Mobilet" type="number"
+                                                                    name="Mobilep"
+                                                                    placeholder="Enter your Mobile number" required>
+                                                            </div>
 
-                                </div>
+                                                        </div>
                             </div>
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
                                 <button class="btn btn-b" type="submit">Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+            <!--Login Form-->
+            <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+            <form id="Login" class="form-validate" method="POST" action="home">
+                <input aria-hidden="true" type="text" class="hidden" name="type" value="not">
+
+
+                <div class="modal fade" id="modal-4" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+
+                                <h4 id="modal-label-3" class="modal-title">Login</h4>
+                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <%if(errors=="") {%>
+                                
+                                    <% } %>
+                                        <%if(errors.length && typeof(type) !="undefined" && type=="Login" ) {%>
+                                            <% errors.forEach(function(error){ %>
+                                                <div class="form-row">
+                                                    <div class="alert col-md-12 alert-warning alert-dismissible fade show" role="alert">
+                                                        <%= error%>
+                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                    </div>
+                                                </div>
+                                                <% }); %>
+                                                    <% } %>
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-12">
+                                        <label for="Emaill">Email<span class="text-danger">*</span></label>
+                                        <input type="text" id="Emaill" class="form-control" name="Emaill"
+                                            placeholder="Enter Your Email" required>
+
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="Passwordl">Password<span class="text-danger">*</span></label>
+                                        <input type="password" id="Passwordl" class="form-control" name="Passwordl"
+                                            placeholder="password" required>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
+                                <button class="btn btn-b" type="submit">Login</button>
                             </div>
                         </div>
                     </div>
@@ -353,93 +522,33 @@
 
 
 
-
-
-            <!--Login Form-->
+            <!--Guide Form-->
             <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
-           
-                <form id="Login" class="form-validate" method="POST" action="home">
-                    <input aria-hidden="true" type="text" class="hidden" name="type" value="not">
+            <form id="guide" class="form-validate text-center" method="POST">
 
+                <div class="modal fade" id="modal-5" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-md modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h2 class="modal-title">Hello, our <strong>Clients</strong></h2>
 
-                    <div class="modal fade" id="modal-4" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-sm modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
+                            </div>
 
-                                    <h4 id="modal-label-3" class="modal-title">Login</h4>
-                                    <button aria-hidden="true" data-dismiss="modal" class="close"
-                                        type="button">×</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-row">
+                            <div class="text-center">
 
-                                        <div class="form-group col-md-12">
-                                            <label for="Emaill">Email<span class="text-danger">*</span></label>
-                                            <input type="text" id="Emaill" class="form-control" name="Emaill"
-                                                placeholder="Enter Your Email" required>
+                                <strong>Write The Guides</strong>
 
-                                        </div>
-
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-12">
-                                            <label for="Passwordl">Password<span class="text-danger">*</span></label>
-                                            <input type="password" id="Passwordl" class="form-control" name="Passwordl"
-                                                placeholder="password" required>
-                                        </div>
-
-                                    </div>
-
-                                </div>
 
                                 <div class="modal-footer">
-                                    <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
-                                    <button class="btn btn-b" type="submit">Login</button>
+                                    <button data-dismiss="modal" class="btn btn-b" type="button">Got it</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </form>
-
-
-
-
-
-
-
-
-
-                <!--Guide Form-->
-                <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
-
-                <form id="guide" class="form-validate text-center" method="POST">
-
-                    <div class="modal fade" id="modal-5" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-md modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header text-center">
-                                    <h2 class="modal-title">Hello, our <strong>Clients</strong></h2>
-
-                                </div>
-
-                                <div class="text-center">
-
-                                    <strong>Write The Guides</strong>
-
-
-                                    <div class="modal-footer">
-                                        <button data-dismiss="modal" class="btn btn-b" type="button">Got it</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </form>
+            </form>
 
 
 
@@ -481,12 +590,44 @@
 
     </div>
 
+    <% if( typeof(type) !="undefined" && type=="Doctor" ) {%>
+        <script>
+            window.addEventListener('load', (event) => {
+                $("#modal-2").modal('show');
+            });
+        </script>
+        <%}%>
 
-    <%- include('layout/footer')%>
+            <% if( typeof(type) !="undefined" && type=="Patient" ) {%>
+                <script>
+                    window.addEventListener('load', (event) => {
+                        $("#modal-1").modal('show');
+                    });
+                </script>
+                <%}%>
 
-        <!-- 
+                    <% if( typeof(type) !="undefined" && type=="Pharmacist" ) {%>
+                        <script>
+                            window.addEventListener('load', (event) => {
+                                $("#modal-3").modal('show');
+                            });
+                        </script>
+                        <%}%>
+                    <% if( typeof(type) !="undefined" && type=="Login" ) {%>
+                        <script>
+                            window.addEventListener('load', (event) => {
+                                $("#modal-4").modal('show');
+                            });
+                        </script>
+                        <%}%>
+
+                            <%- include('layout/footer')%>
+
+
+
+                                <!-- 
 <div class = "road"> runner-->
-        <!--  <div class = "character" > 
+                                <!--  <div class = "character" > 
 
      </div>
 </div>

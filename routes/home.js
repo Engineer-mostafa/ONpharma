@@ -6,28 +6,155 @@ const User = require('../core/user');
 
 const { response, request } = require('express');
 
+var nodemailer = require('nodemailer');
+var qr = require('qr-image')
+var fs = require('fs');
 
 const user = new User();
 
 
 router.get('/', (request, Response) => {
 
-    let user = request.session.user;
-    // If there is a session named user that means the use is logged in
-    //so we redirect him to home page by using /home route below
-
-    if (user) {
-        Response.redirect('/main-hall');
+    if (typeof (request.session.user) == "undefined" || typeof (request.session.user.opp) == "undefined") {
+        console.log("render Home");
+        Response.render('home', {
+            title: "Home",
+            css: "home",
+            js: "home",
+            img: "heart-rate.png",
+            open: 1,
+            errors: "",
+            type: ""
+        }
+        );
+        return;
     }
+    else if (request.session.user.opp == 0 && request.session.user.User_type == "Doctor" || request.session.user.User_type == "Patient") {
+        console.log("p-D");
+        console.log(request.session.user.opp)
 
-    Response.render('home', {
-        title: "Home",
-        css: "home",
-        js: "home",
-        img: "heart-rate.png",
+        function coord2offset(x, y, size) {
+            return (size + 1) * y + x + 1;
+        }
 
+        function customize(bitmap) {
+            const size = bitmap.size;
+            const data = bitmap.data;
+
+            for (let x = 0; x < size; x++) {
+                for (let y = 0; y < x; y++) {
+                    const offset = coord2offset(x, y, size);
+                    // If it's white change it's color
+                    if (data[offset]) {
+                        data[offset] = 255 - Math.abs(x - y);
+                    }
+                }
+            }
+        }
+        qr.image(request.session.user.acc_ID, {
+            type: 'png',
+            customize
+        }).pipe(
+            fs.createWriteStream('F:/Mostafa/CMP 2/semester 1/DB-MS/Pharmacy App/public/images/custom.png')
+        );
+
+        console.log("i will send");
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'mostafamagdi999.mm@gmail.com',
+                pass: 'Mosstafalover999'
+            }
+        });
+        // <svg class='barcode' jsbarcode-format='upc' jsbarcode-value='123456789012' jsbarcode-textmargin='0' jsbarcode- fontoptions='bold' displayValue='false' > </svg >
+        var mailOptions = {
+            from: 'mostafamagdi999.mm@gmail.com',
+            to: 'yousif.lasheen60@gmail.com',
+            subject: 'Sending Email using Node.js',
+            //to accept base64 content in messsage
+            attachments: [{   // stream as an attachment
+                filename: 'image.jpg',
+                content: fs.createReadStream('F:/Mostafa/CMP 2/semester 1/DB-MS/Pharmacy App/public/images/custom.png')
+            }]
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+        Response.redirect('main-Hall');
     }
-    );
+    else if (request.session.user.opp == 0) {
+        console.log("in pharma");
+        function coord2offset(x, y, size) {
+            return (size + 1) * y + x + 1;
+        }
+
+        function customize(bitmap) {
+            const size = bitmap.size;
+            const data = bitmap.data;
+
+            for (let x = 0; x < size; x++) {
+                for (let y = 0; y < x; y++) {
+                    const offset = coord2offset(x, y, size);
+                    // If it's white change it's color
+                    if (data[offset]) {
+                        data[offset] = 255 - Math.abs(x - y);
+                    }
+                }
+            }
+        }
+        qr.image(request.session.user.acc_ID, {
+            type: 'png',
+            customize
+        }).pipe(
+            fs.createWriteStream('F:/Mostafa/CMP 2/semester 1/DB-MS/Pharmacy App/public/images/custom.png')
+        );
+
+        console.log("i will send");
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'mostafamagdi999.mm@gmail.com',
+                pass: 'Mosstafalover999'
+            }
+        });
+        // <svg class='barcode' jsbarcode-format='upc' jsbarcode-value='123456789012' jsbarcode-textmargin='0' jsbarcode- fontoptions='bold' displayValue='false' > </svg >
+        var mailOptions = {
+            from: 'mostafamagdi999.mm@gmail.com',
+            to: 'yousif.lasheen60@gmail.com',
+            subject: 'Sending Email using Node.js',
+            //to accept base64 content in messsage
+            attachments: [{   // stream as an attachment
+                filename: 'image.jpg',
+                content: fs.createReadStream('F:/Mostafa/CMP 2/semester 1/DB-MS/Pharmacy App/public/images/custom.png')
+            }]
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+        Response.redirect('pharmacist-v');
+    }
+    else {
+        Response.render('home', {
+            title: "Home",
+            css: "home",
+            js: "home",
+            img: "heart-rate.png",
+            open: 1,
+            errors: "",
+            type: ""
+        }
+        );
+    }
 
 });
 
@@ -96,8 +223,18 @@ router.post('/',
             const errors = validationResult(request);
             if (!errors.isEmpty()) {
                 console.log(errors.array());
+                Response.render('home', {
+                    title: "Home",
+                    css: "home",
+                    js: "home",
+                    img: "heart-rate.png",
+                    errors: errors.array(),
+                    open: 1,
+                    type: type,
+                }
+                );
 
-                return Response.status(400).json({ errors: errors.array() });
+                return;
             }
             //getting user information from user
             var gender = -1
@@ -149,8 +286,12 @@ router.post('/',
                         user.find_id(lastID).then(function (user) {
 
                             if (user) {
+                                console.log("after create")
                                 request.session.user = user;
                                 request.session.opp = 0;
+                                console.log("befor redirect");
+                                console.log("i will redirect soon");
+                                Response.redirect('home');
 
                             }
 
@@ -162,49 +303,70 @@ router.post('/',
                     response.status(400).send(error);
 
                 }
-
-
-               if (user.session.user){
-                Response.redirect('/home');
-               }
-
             })
-        } else {
+        }
+        else {
 
-            user.login(request.body.Emaill, request.body.Passwordl, async function (result) {
+            user.login(request.body.Emaill, request.body.Passwordl, function (result) {
 
                 console.log('home');
+                console.log(result);
+                
 
-                if (await result) {
-
+                if (result) {
+                    console.log('home in result');
+                     console.log(result);
 
                     request.session.user = result;
                     request.session.opp = 1
 
                     console.log("Sucssefully .....Login " + result.acc_email);
+                    if (request.session.user.User_type == "Pharmacist") {
+                        return Response.redirect('pharmacist-v');
 
 
+                    }
+                    else if (request.session.user) {
+                        return Response.redirect('main-hall');
+
+                    }
+                    else {
+                        console.log("else Home");
+                        Response.render('home', {
+                            title: "Home",
+                            css: "home",
+                            js: "home",
+                            img: "heart-rate.png",
+                            open: 0,
+                            errors: "",
+                            type: ""
+                        }
+                        );
+                        return;
+                    }
 
                 } else {
 
-                    return Response.status(400).send('Username or Password incorrect!');
+                  return  Response.render('home', {
+                        title: "Home",
+                        css: "home",
+                        js: "home",
+                        img: "heart-rate.png",
+                        errors: ["Email or Password is incorrect"],
+                        open: 1,
+                        type: "Login"
+                    }
+                    );
+
+                    ;
                 }
-
-                if (request.session.user.User_type =="Pharmacist")
-                     Response.redirect('/pharmacist-v')
-                else (request.session.user)
-                    Response.redirect('/main-hall');
-
-
+              
+               
             })
 
 
 
         }
-
-
-
-
 
 
     });

@@ -410,3 +410,9 @@ $("#edititemtomystock").on("click", function () {
 
  
 
+
+
+//destroy session
+$("#submitForm").on("click",function () {
+    $("#destroyForm").submit();
+})

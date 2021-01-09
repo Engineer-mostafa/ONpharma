@@ -26,6 +26,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 
+    console.log(req.body);
     try {
     
 
@@ -48,6 +49,13 @@ router.post('/', (req, res) => {
                 break;
             case "edititemtomystock":
                 aspc.edit_item__mystock(req.body.name, 1, req.body.Quantity,res.end);
+                break;
+            case "destroy":
+                  console.log("Destroy")
+                req.session.destroy(function () {
+                    res.redirect('home');
+                    });
+                
                 break;
 
         }

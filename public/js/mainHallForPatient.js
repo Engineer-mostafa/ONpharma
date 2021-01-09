@@ -1,54 +1,7 @@
 
 
-// ----------------------------------------generate QR Code with html svg-----------------------------------------------
-// $(function () {
-
-//     JsBarcode("#barcode", "156161", {
-//         font: "fantasy",
-//         displayValue: false
-//     });
 
 
-//     var svg = $("#barcode")[0];
-//     console.log("svg =" + svg);
-//     var xml = new XMLSerializer().serializeToString(svg);
-
-//     console.log("xml =" + xml);
-//     var base64 = 'data:image/svg+xml;base64,' + btoa(xml);
-//     console.log("base64 =" + base64);
-//     var img = $(".barcode")[0];
-//     img.src = base64;
-//     $.ajax(
-//         {
-//             method: "POST",
-//              url: "main-Hall",
-//             data: {
-//                 type: "barcode",
-//                 barcode: base64
-//             },
-//             success: function (data, status) {
-//                 console.log("suc");
-
-
-
-//             },
-//             error: function (xhr, status, error) {
-//                 console.log("fialed");
-
-//                 console.log(xhr);
-//                 console.log(status);
-//                 console.log(error);
-
-//             },
-
-//         }
-//     );
-// });
-
-
-
-
-//---------------------------------------------------------------------------------------------------------------------
 
 //ajax search fetch scans / pres / analysis / chronic 
 // *******************************************************

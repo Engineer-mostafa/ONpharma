@@ -125,7 +125,7 @@ User.prototype = {
 
             }
             // if the username/password is wrong then return null.
-            {
+          else {
                 callback(null);
 
             }
