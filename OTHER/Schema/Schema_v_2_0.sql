@@ -24,7 +24,7 @@ CREATE TABLE Account
     phoneNum bigint NOT NULL UNIQUE,
 
     -- user type 
-    User_type varchar(255) NOT Null 
+    User_type varchar(255) NOT NULL 
 );
 /*---------------------Users-------------------------*/
 
@@ -53,7 +53,6 @@ CREATE TABLE Pharmacist
     FOREIGN KEY (Pharmacist_acc_ID) REFERENCES Account(acc_ID) ON DELETE CASCADE
 
 );
-
 
 /*----------------------------------------------------------------*/
 /*------------------Related to the pharmacy----------------------*/
@@ -171,11 +170,9 @@ CREATE TABLE Chronic_Disease
 );
 /********************************************************************/
 /**/
-INSERT INTO `pharmacy_app_db`.`account` ( `acc_email`, `acc_password`, `Fname`, `Mname`, `Lname`, `gender`, `Bdate`, `phoneNum`) VALUES ( 'm@m.com', 'm ', 'dg', 'd', 'sf', 0, '2000-10-20', 015);
-INSERT INTO `pharmacy_app_db`.`account` ( `acc_email`, `acc_password`, `Fname`, `Mname`, `Lname`, `gender`, `Bdate`, `phoneNum`) VALUES ( 'mo@m.com', 'm ', 'dg', 'd', 'sf', 0, '2000-10-20', 0156);
-INSERT INTO `pharmacy_app_db`.`account` ( `acc_email`, `acc_password`, `Fname`, `Mname`, `Lname`, `gender`, `Bdate`, `phoneNum`) VALUES ( 'moo@m.com', 'm ', 'dg', 'd', 'sf', 0, '2000-10-20', 0157);
-/**/
-INSERT INTO `pharmacy_app_db`.`patient` (`Patient_acc_ID`, `Patient_smoking_status`) VALUES (1, 0);
+INSERT INTO `pharmacy_app_db`.`account` ( `acc_email`, `acc_password`, `Fname`, `Mname`, `Lname`, `gender`, `Bdate`, `phoneNum`, `User_type`) VALUES ( 'm@m.com', 'm ', 'dg', 'd', 'sf', 0, '2000-10-20', 015, 'Doctor');
+INSERT INTO `pharmacy_app_db`.`account` ( `acc_email`, `acc_password`, `Fname`, `Mname`, `Lname`, `gender`, `Bdate`, `phoneNum`, `User_type`) VALUES ( 'mo@m.com', 'm ', 'dg', 'd', 'sf', 0, '2000-10-20', 0156,'pharmacist');
+INSERT INTO `pharmacy_app_db`.`account` ( `acc_email`, `acc_password`, `Fname`, `Mname`, `Lname`, `gender`, `Bdate`, `phoneNum`, `User_type`) VALUES ( 'moo@m.com', 'm ', 'dg', 'd', 'sf', 0, '2000-10-20', 0157, 'Doctor');
 /**/
 INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_id_barcode`,`item_name`, `item_type`, `item_price`) VALUES (1,'bro', 'beauty', 10);
 INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_id_barcode`,`item_name`, `item_type`, `item_price`) VALUES (2,'med', 'medicine', 12);
