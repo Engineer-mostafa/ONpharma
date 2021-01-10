@@ -239,9 +239,9 @@ VALUES
 /*Prescription*/
 INSERT INTO `Prescription` (`Prescription_ID`,`Prescription_diagnosis`,`Prescription_date`,`Patient_acc_ID`,`doctor_acc_ID`,`pres_status`)
 VALUES
-(1,"1.png","2020-12-04",3,1,"1"),(2,"2.jpeg","2020-10-14",1,2,"0"),
-(3,"3.jpg","2020-10-06",21,5,"1"),(4,"4.jpeg","2019-12-31",22,6,"1"),
-(5,"5.png","2019-11-14",23,9,"0"),(6,"6.png","2020-12-04",24,10,"0");
+(1,"1.png","2020-12-04",3,1,"1"),(2,"2.png","2020-10-14",1,2,"0"),
+(3,"3.jpeg","2020-10-06",21,5,"1"),(4,"4.jpeg","2019-12-31",22,6,"1"),
+(5,"5.jpg","2019-11-14",23,9,"0"),(6,"6.png","2020-12-04",24,10,"0");
 /*Analysis*/
 INSERT INTO `Analysis` (`Analysis_Name`,`Analysis_Date`,`Result`,`Patient_acc_ID`) 
 VALUES 
