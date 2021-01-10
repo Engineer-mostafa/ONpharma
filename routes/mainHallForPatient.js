@@ -39,10 +39,16 @@ router.get('/',  (request, Response) => {
 
 router.post('/', (req, res) => {
 
-    console.log("in medical Post");
+    console.log("in main hall Post");
     var result;
     console.log(req.body);
-
+    if (typeof (req.session.user) == "undefined") {
+        res.redirect('home');
+        return;
+    }
+    var result;
+    console.log(req.body.type);
+    var id = req.session.user.acc_ID;
     switch (req.body.type  /*data i get from ajax object*/) {
         case "search":
             aspc.getScan(req.body.phone, res.end);
@@ -54,8 +60,7 @@ router.post('/', (req, res) => {
         case "Prescriptions":
             aspc.getPrescriptions(req.body.phone, res.end);
             break;
-
-
+        
         case "getMyPatients":
             aspc.getMyPatient(1,res.end);
             break;
@@ -69,6 +74,7 @@ router.post('/', (req, res) => {
             break;
 
         case "search_for_Medicines":
+            console.log(req.body.searchField);
             aspc.search_for_Medicines(req.body.searchField, res.end);
             break;
         default:
@@ -104,7 +110,7 @@ router.post('/', (req, res) => {
 
                         break;
                     case "2":
-                        pool.query("INSERT INTO prescription (`Prescription_diagnosis`, `Prescription_date`, `Patient_acc_ID`, `doctor_acc_ID`) VALUES ('" + files.filetoupload.name + "','" + fields.dateofsubmition + "','" + fields.searchField + "' , 3);", (error, rows) => {
+                        pool.query("INSERT INTO prescription (`Prescription_diagnosis`, `Prescription_date`, `Patient_acc_ID`, `doctor_acc_ID`) VALUES ('" + files.filetoupload.name + "','" + fields.dateofsubmition + "','" + fields.searchField + "' ,"+ id +" );", (error, rows) => {
                             if (error)
                                 throw error;
                             else {

@@ -153,11 +153,8 @@ get.prototype = {
   },
 
 
-
-
-
-  all_med_in_app: function (pharmacyId = 1, callback) {
-    pool.query("SELECT item_name FROM pharmaceutical_item pp  where pp.item_name not in ( SELECT item_name FROM	pharmaceutical_item pi, pharmacy_repository pr, pharmacy p  where 	p.pharmacy_ID = pr.pharmacy_ID and pi.item_id_barcode = pr.item_id and p.pharmacy_ID = '"+pharmacyId+"'); ", (error, rows) => {
+  all_med_in_app: function (myId, callback) {
+    pool.query("SELECT item_name FROM pharmaceutical_item pp  where pp.item_name not in ( SELECT item_name FROM	pharmaceutical_item pi, pharmacy_repository pr, pharmacy p  where 	p.pharmacy_ID = pr.pharmacy_ID and pi.item_id_barcode = pr.item_id and p.pharmacy_ID = (SELECT pharmacy_ID FROM pharmacy p , account a  where a.acc_ID = p.pharmacy_manager_ID and a.acc_ID = '"+ myId+"')); ", (error, rows) => {
       if (error)
         throw error;
       else {
@@ -171,10 +168,8 @@ get.prototype = {
   },
 
 
-
-
-  all_med_in_mystock: function (pharmacyId = 1, callback) {
-    pool.query("SELECT item_name,item_price,item_id_barcode,item_quantity FROM pharmaceutical_item pi , pharmacy_repository pr , pharmacy p where p.pharmacy_ID = pr.pharmacy_ID and pi.item_id_barcode = pr.item_id and p.pharmacy_ID = '"+pharmacyId+"'", (error, rows) => {
+  all_med_in_mystock: function (myId, callback) {
+    pool.query("SELECT item_name,item_price,item_id_barcode,item_quantity FROM pharmaceutical_item pi , pharmacy_repository pr , pharmacy p where p.pharmacy_ID = pr.pharmacy_ID and pi.item_id_barcode = pr.item_id and p.pharmacy_ID = (SELECT pharmacy_ID FROM pharmacy p , account a  where a.acc_ID = p.pharmacy_manager_ID and a.acc_ID = '" + myId +"')", (error, rows) => {
       if (error)
         throw error;
       else {
@@ -188,14 +183,8 @@ get.prototype = {
   },
 
 
-
-
-
-
-
-
-  specific_med_in_mystock: function (pharmacyId = 1, item_name, callback) {
-    pool.query("SELECT item_name,item_price,item_quantity FROM pharmaceutical_item pi , pharmacy_repository pr , pharmacy p where p.pharmacy_ID = pr.pharmacy_ID and pi.item_name='"+item_name+"' and pi.item_id_barcode = pr.item_id and p.pharmacy_ID = '"+pharmacyId+"'", (error, rows) => {
+  specific_med_in_mystock: function (myId, item_name, callback) {
+    pool.query("SELECT item_name,item_price,item_quantity FROM pharmaceutical_item pi , pharmacy_repository pr , pharmacy p where p.pharmacy_ID = pr.pharmacy_ID and pi.item_name='" + item_name + "' and pi.item_id_barcode = pr.item_id and p.pharmacy_ID = (SELECT pharmacy_ID FROM pharmacy p , account a  where a.acc_ID = p.pharmacy_manager_ID and a.acc_ID = '" + myId +"')", (error, rows) => {
       if (error)
         throw error;
       else {
@@ -210,8 +199,8 @@ get.prototype = {
 
 
 
-  add_to_my_stock: function (name, Quantity,callback) {
-    pool.query("INSERT INTO pharmacy_repository (`pharmacy_ID`, `item_id`, `item_quantity`) VALUES(1,(SELECT item_id_barcode from pharmaceutical_item where item_name = '" + name + "'),'" + Quantity + "'); ", (error, rows) => {
+  add_to_my_stock: function (myId, name, Quantity,callback) {
+    pool.query("INSERT INTO pharmacy_repository (`pharmacy_ID`, `item_id`, `item_quantity`) VALUES((SELECT pharmacy_ID FROM pharmacy p , account a  where a.acc_ID = p.pharmacy_manager_ID and a.acc_ID = '" + myId +"'),(SELECT item_id_barcode from pharmaceutical_item where item_name = '" + name + "'),'" + Quantity + "'); ", (error, rows) => {
       if (error)
         throw error;
       else {
@@ -225,24 +214,8 @@ get.prototype = {
   },
 
 
-  load_my_items: function (pharmacyId = 1,callback) {
-    pool.query("SELECT * FROM pharmaceutical_item pi , pharmacy_repository pr , pharmacy p where p.pharmacy_ID = pr.pharmacy_ID and pi.item_id_barcode = pr.item_id and pr.pharmacy_ID = '" + pharmacyId + "' ", (error, rows) => {
-      if (error)
-        throw error;
-      else {
-
-        result = JSON.stringify(rows);
-       callback(
-          result
-        );
-      }
-    });
-  },
-
-
-
-  search_in_my_pharmacy: function (item_name ,pharmacyId = 1,callback) {
-    pool.query("SELECT item_name,item_price,item_id_barcode,item_quantity FROM pharmaceutical_item pi , pharmacy_repository pr , pharmacy p where p.pharmacy_ID = pr.pharmacy_ID and p.pharmacy_ID='" + pharmacyId + "' and pi.item_id_barcode = pr.item_id and pi.item_name ='" + item_name + "'", (error, rows) => {
+  load_my_items: function (myId,callback) {
+    pool.query("SELECT * FROM pharmaceutical_item pi , pharmacy_repository pr , pharmacy p where p.pharmacy_ID = pr.pharmacy_ID and pi.item_id_barcode = pr.item_id and pr.pharmacy_ID = (SELECT pharmacy_ID FROM pharmacy p , account a  where a.acc_ID = p.pharmacy_manager_ID and a.acc_ID = '" + myId +"') ", (error, rows) => {
       if (error)
         throw error;
       else {
@@ -257,8 +230,24 @@ get.prototype = {
 
 
 
-  edit_item__mystock: function (item_name, pharmacyId = 1, Quantity , callback) {
-    pool.query("Update pharmacy_repository pr set item_quantity = '" + Quantity + "' where pr.item_id = (select item_id_barcode from pharmaceutical_item where pr.pharmacy_ID='" + pharmacyId + "' and pharmaceutical_item.item_name =  '" +  item_name + "');", (error, rows) => {
+  search_in_my_pharmacy: function (item_name ,myId,callback) {
+    pool.query("SELECT item_name,item_price,item_id_barcode,item_quantity FROM pharmaceutical_item pi , pharmacy_repository pr , pharmacy p where p.pharmacy_ID = pr.pharmacy_ID and p.pharmacy_ID= (SELECT pharmacy_ID FROM pharmacy p , account a  where a.acc_ID = p.pharmacy_manager_ID and a.acc_ID = '"+ myId+"') and pi.item_id_barcode = pr.item_id and pi.item_name ='" + item_name + "'", (error, rows) => {
+      if (error)
+        throw error;
+      else {
+
+        result = JSON.stringify(rows);
+       callback(
+          result
+        );
+      }
+    });
+  },
+
+
+
+  edit_item__mystock: function (item_name, myId, Quantity , callback) {
+    pool.query("Update pharmacy_repository pr set item_quantity = '" + Quantity + "' where pr.item_id = (select item_id_barcode from pharmaceutical_item where pr.pharmacy_ID=(SELECT pharmacy_ID FROM pharmacy p , account a  where a.acc_ID = p.pharmacy_manager_ID and a.acc_ID = '" + myId +"') and pharmaceutical_item.item_name =  '" +  item_name + "');", (error, rows) => {
       if (error)
         throw error;
       else {
@@ -274,8 +263,8 @@ get.prototype = {
 
 
 
-  cash: function (pharmacyId = 1, totalCash , callback) {
-    pool.query(`INSERT INTO purchase_operation (pharmacy_ID,operation_cash) values(${pharmacyId},${totalCash});`, (error, rows) => {
+  cash: function (myId, totalCash , callback) {
+    pool.query(`INSERT INTO purchase_operation (pharmacy_ID,operation_cash) values((SELECT pharmacy_ID FROM pharmacy p , account a  where a.acc_ID = p.pharmacy_manager_ID and a.acc_ID = ${myId}),${totalCash});`, (error, rows) => {
       if (error)
         throw error;
       else {

@@ -25,7 +25,13 @@ router.get('/', (request, Response) => {
 router.post('/', (req, res) => {
 
     console.log("in cash Post");
-   console.log(req.body);
+
+    if (typeof (req.session.user) == "undefined") {
+        res.redirect('home');
+        return;
+    }
+    console.log(req.body.type);
+    var id = req.session.user.acc_ID;
 
     switch (req.body.type  /*data i get from ajax object*/) {
         case "Prescriptions":
@@ -38,13 +44,14 @@ router.post('/', (req, res) => {
            aspc.toggleStatus_Prescription(req.body.id,res.end)
             break;
         case "getItem":
-           aspc.specific_med_in_mystock(1,req.body.name,res.end)
+           aspc.specific_med_in_mystock(id,req.body.name,res.end)
             break;
+        
         case "updateQuantity":
-            aspc.edit_item__mystock(req.body.name,1, req.body.quantity,res.end)
+            aspc.edit_item__mystock(req.body.name,id, req.body.quantity,res.end)
             break;
         case "cash":
-            aspc.cash(1,req.body.total,res.end)
+            aspc.cash(id,req.body.total,res.end)
             break;
     }
     });

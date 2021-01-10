@@ -29,25 +29,29 @@ router.get('/', (request, Response) => {
 
 router.post('/', (req, res) => {
 
+    if (typeof (req.session.user) == "undefined") {
+        res.redirect('home');
+        return;
+    }
     console.log("in medical Post");
     var result;
     console.log(req.body.type);
+    var id = req.session.user.acc_ID;
    //should modified for current user id 
     switch (req.body.type  /*data i get from ajax object*/) {
         case "Scan":
-            aspc.getScan(1, res.end);
+            aspc.getScan(id, res.end);
             break;
         case "Analysis":
-            aspc.getAnalysis(1, res.end);
+            aspc.getAnalysis(id, res.end);
 
             break;  
         case "Prescriptions":
-            aspc.getPrescriptions(1, res.end);
+            aspc.getPrescriptions(id, res.end);
 
             break;
         default:
-            aspc.getCoronicDisease(1, res.end);
-
+            aspc.getCoronicDisease(id, res.end);
             break;
 
     }

@@ -29,16 +29,16 @@ function reloadStock() {
                             element.item_price +
                             "</td>" +
                             "<td>" +
-                            `<svg class=${element.item_name}></svg>` +
+                            `<svg class=${element.item_type+element.item_id_barcode}></svg>` +
                             "</td>" +
                             "</tr>");
 
-                        JsBarcode(`.${element.item_name}`, element.item_id_barcode, {
+                        JsBarcode(`.${element.item_type + element.item_id_barcode}`, element.item_id_barcode, {
                             font: "fantasy",
                             displayValue: false
                         });
 
-                        var svg = $(`.${element.item_name}`)[0];
+                        var svg = $(`.${element.item_type + element.item_id_barcode}`)[0];
                         console.log("svg =" + svg);
                         var xml = new XMLSerializer().serializeToString(svg);
                     }
@@ -228,16 +228,16 @@ $(".search").on("click", function () {
                                 element.item_price +
                                 "</td>" +
                                 "<td>" +
-                                `<svg class=${element.item_name}></svg>` +
+                                `<svg class=${element.item_type + element.item_id_barcode}></svg>` +
                                 "</td>" +
                                 "</tr>");
 
-                            JsBarcode(`.${element.item_name}`, element.item_id_barcode, {
+                            JsBarcode(`.${element.item_type + element.item_id_barcode}`, element.item_id_barcode, {
                                 font: "cooper black",
                                 displayValue: false
                             });
 
-                            var svg = $(`.${element.item_name}`)[0];
+                            var svg = $(`.${element.item_type + element.item_id_barcode}`)[0];
                             console.log("svg =" + svg);
                             var xml = new XMLSerializer().serializeToString(svg);
 
