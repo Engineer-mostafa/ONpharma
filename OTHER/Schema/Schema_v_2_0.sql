@@ -182,11 +182,11 @@ VALUES
 /*Doctor*/
 INSERT INTO `Doctor` (`doctor_acc_ID`,`doctor_degree`,`doctor_specialization`,`doctor_address`)
 VALUES
-(1,"Bachelor's Degree","Thoracic surgery","Ap #317-2414 Duis Rd."),(2,"Bachelor's Degree","Thoracic surgery","2139 Tincidunt Avenue"),
-(5,"Master's Degree","Radiation oncology","5029 Non, Rd."),(6,"Master's Degree","Radiation oncology","P.O. Box 232, 192 Fringilla St."),
-(9,"Doctoral Degree","Neurosurgery","Ap #985-7283 Placerat Avenue"),(10,"Bachelor's Degree","Thoracic surgery","Ap #249-718 Enim. Ave"),
-(13,"Bachelor's Degree","Thoracic surgery","P.O. Box 484, 6129 Cras St."),(14,"Master's Degree","Radiation oncology","9832 Sed St."),
-(17,"Doctoral Degree","Neurosurgery","5116 Varius. Avenue"),(18,"Doctoral Degree","Neurosurgery","3355 Elit, Avenue");
+(1,'Master','Thoracic surgery','Ap #317-2414 Duis Rd.'),(2,'Master','Thoracic surgery','2139 Tincidunt Avenue'),
+(5,'Master','Radiation oncology','5029 Non, Rd.'),(6,'Bachelor','Radiation oncology','P.O. Box 232, 192 Fringilla St.'),
+(9,'Doctoral','Neurosurgery','Ap #985-7283 Placerat Avenue'),(10,'Bachelor','Thoracic surgery','Ap #249-718 Enim. Ave'),
+(13,'Bachelor','Thoracic surgery','P.O. Box 484, 6129 Cras St.'),(14,'Master','Radiation oncology','9832 Sed St.'),
+(17,'Bachelor','Neurosurgery','5116 Varius. Avenue'),(18,'Bachelor','Neurosurgery','3355 Elit, Avenue');
 /*Pharmacist*/
 INSERT INTO `Pharmacist` (`Pharmacist_acc_ID`) 
 VALUES
@@ -245,14 +245,17 @@ VALUES
 /*Analysis*/
 INSERT INTO `Analysis` (`Analysis_Name`,`Analysis_Date`,`Result`,`Patient_acc_ID`) 
 VALUES 
-("CRP","2020-12-09","CRP.png","2"),("Thyroid panel","2020-10-31","thyroid.jpg","4"),
-("Troponin","2020-10-01","troponin.png","21");
+("CRP","2020-10-06","CRP.png",'2'),("Thyroid panel","2020-10-31","thyroid.jpg",'20'),
+("CRP","2020-10-07","CRP.png",'22'),("Thyroid panel","2020-10-31","thyroid.jpg",'6'),
+("CRP","2020-10-10","CRP.png",'2'),("Thyroid panel","2019-11-30","thyroid.jpg","22"),
+("Troponin","2020-10-01","troponin.png",'21');
 /*Chronic_Disease*/
 INSERT INTO `Chronic_Disease` (`Disease_Name`,`Disease_Date`,`Patient_acc_ID`) 
 VALUES 
-("Alzheimer","2020-12-09","2"),("Depression","2020-10-31","4"),
+("Alzheimer","2020-12-09","2"),("Diabetes","2020-10-31","4"),
+("Heart failure","2020-12-09","2"),("Depression","2020-10-31","4"),
 ("Heart failure","2020-10-01","21"),("Chronic kidney disease","2019-12-22","23"),
-("Diabetes","2019-11-10","22");
+("Chronic kidney disease","2020-12-02","24"),("Diabetes","2019-11-10","22");
 
 /*
 INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_id_barcode`,`item_name`, `item_type`, `item_price`) VALUES (1,'bro', 'beauty', 10);
