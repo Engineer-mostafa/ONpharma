@@ -4,7 +4,8 @@ CREATE DATABASE Pharmacy_App_DB;
 use Pharmacy_App_DB;
 /*
 Notes on the ID
-Doctors --> 1, 2, 5, 6, ..., 17, 18
+Admin --> 1
+Doctors -->  2, 5, 6, ..., 17, 18
 Pharmacists --> 3, 4, 7, 8, ..., 19, 20
 Patients --> 21, 22, 23, 24
 */
@@ -163,7 +164,7 @@ CREATE TABLE Chronic_Disease
 /*Account*/ 
 INSERT INTO `Account` (`acc_ID`,`acc_email`,`acc_password`,`Fname`,`Mname`,`Lname`,`gender`,`Bdate`,`phoneNum`,`User_type`)
 VALUES 
-(1,"Cras.pellentesque@Duisat.co.uk","$2b$10$k0GSKjYaSx4yZXEYbc/xI.lkj9F6U/G6cIQAqDj1aYDH7FIjxLfK2","Jeanette","Bradley","Upton","1","2000-10-20","01141471252","Doctor"),(2,"tincidunt@malesuadaut.co.uk","$2b$10$l3IHLEH0lzHXrJANk75gz.EaLRD9Bi4W3SFYxdswfdgVWK8yUyx7m","Steven","Armand","Austin","0","2012-10-15","01145192746","Doctor"),
+(1,"admin@admin","$2b$10$k0GSKjYaSx4yZXEYbc/xI.lkj9F6U/G6cIQAqDj1aYDH7FIjxLfK2","admin","admin","admin","1","2000-10-20","01141471252","Admin"),(2,"tincidunt@malesuadaut.co.uk","$2b$10$l3IHLEH0lzHXrJANk75gz.EaLRD9Bi4W3SFYxdswfdgVWK8yUyx7m","Steven","Armand","Austin","0","2012-10-15","01145192746","Doctor"),
 (3,"Donec.tempus.lorem@consectetuer.edu","$2b$10$QOgyQrTBsGdSfk4MhPnCO.SwozduF/b.2riT1.sRFrdRjCD/uKsVi","Medge","Zane","Felix","0","1990-07-05","01144839760","Pharmacist"),(4,"convallis.dolor@sed.edu","$2b$10$kay7uWKwVnM63k4k13MrDee8RbstIL7EjHKk9fx1lfjs2TCPrWhY.","Georgia","Maxwell","Levi","0","2000-10-20","01147281337","Pharmacist"),
 (5,"turpis.Nulla@dolordapibus.net","$2b$10$ePp40k7ereyPiMhZuuvjCeppQPjq/f2hMar7en6Lrzyn90OawddJG","Colorado","Nicholas","Owen","1","2012-10-15","01143432303","Doctor"),(6,"Aliquam.erat@nequevenenatislacus.org","$2b$10$Yravge9cgBcuz1PA57kEiOLLfzXJpb4GC1/wGnxGhykmOXmgtQmy2","Levi","Kane","Reuben","1","1990-07-05","01140928218","Doctor"),
 (7,"sed@nequeNullam.com","$2b$10$TmwcIwFWjUQ4.CeVJRROeOo3TwsAlDqPIpp13Csi2/K5EQMqqtSHe","Chantale","Rashad","Oliver","0","2000-10-20","01143262171","Pharmacist"),(8,"neque@semper.ca","$2b$10$xuCoZXcOxiHaidRrmpzTFe1unp.vIxRV4oi11rzCeccLYsxHaoEm6","Ferris","Octavius","Orlando","1","2012-10-15","01147867519","Pharmacist"),
