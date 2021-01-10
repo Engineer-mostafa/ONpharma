@@ -258,6 +258,12 @@ VALUES
 ("Heart failure","2020-10-01","21"),("Chronic kidney disease","2019-12-22","23"),
 ("Chronic kidney disease","2020-12-02","24"),("Diabetes","2019-11-10","22");
 
+INSERT INTO `Scan` (`Scan_Name`,`Scan_Date`,`Result`,`Patient_acc_ID`) 
+VALUES 
+("Hands X-ray","2020-06-06","xray1.jpg",'22'),("Chest X-ray","2020-07-31","xray2.jpg",'21'),
+("Leg X-ray","2020-10-19","xray3.jpg",'6'),("Leg X-ray","2020-03-16","xray4.jpg",'4'),
+("Hand X-ray","2020-01-10","xray5.jpg",'24');
+
 /*
 INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_id_barcode`,`item_name`, `item_type`, `item_price`) VALUES (1,'bro', 'beauty', 10);
 INSERT INTO `pharmacy_app_db`.`pharmaceutical_item` (`item_id_barcode`,`item_name`, `item_type`, `item_price`) VALUES (2,'med', 'medicine', 12);
