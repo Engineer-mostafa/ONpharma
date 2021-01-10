@@ -1,7 +1,9 @@
 
 
 
-
+$("#submitForm").on("click", function () {
+    $("#destroyForm").submit();
+})
 
 //ajax search fetch scans / pres / analysis / chronic 
 // *******************************************************
@@ -238,6 +240,21 @@ $(".search").on("click", function () {
 
 
 
+
+
+
+$(document).on('click', "#typeoftheaddeditem", function () {
+    console.log($(this).val())
+
+    if ($(this).val() == 3) {
+        $("#pdftohide").addClass("hidden");
+        $("#ddd").html("Detected At <span class='text-danger'>*</span>");
+    }
+    else {
+        $("#pdftohide").removeClass("hidden");
+        $("#ddd").html("Date<span class='text-danger'>*</span>");
+    }
+});
 
 
 
@@ -504,7 +521,8 @@ $("#searchfor").on("click", function () {
 //add item to patient
 $("#additemtopatient").on("click", function () {
     
-    if ($("#NameOfItemToAdd").val() && $("#dateofsubmition").val() && $(".searchfield").val() && $("#filetoupload").val()) {
+    if ($("#typeoftheaddeditem").val() != 3) {
+          if ($("#NameOfItemToAdd").val() && $("#dateofsubmition").val() && $(".searchfield").val() && $("#filetoupload").val() ) {
         var tot = $("#typeoftheaddeditem").val();
         Swal.fire({
             title: `Are You Sure You Want To Add ${$("#NameOfItemToAdd").val()} ${tot=="0"?"Scan":tot=="1"?"Analysis":"Prescription"}?`,
@@ -535,6 +553,41 @@ $("#additemtopatient").on("click", function () {
             text: 'You Should Fill All Input Fields!',
         });
     }
+    }
+    else {
+        if ($("#NameOfItemToAdd").val() && $("#dateofsubmition").val() && $(".searchfield").val()) {
+            var tot = $("#typeoftheaddeditem").val();
+            Swal.fire({
+                title: `Are You Sure You Want To Add ${$("#NameOfItemToAdd").val()} ${tot == "0" ? "Scan" : tot == "1" ? "Analysis" : "Prescription"}?`,
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Save`,
+                denyButtonText: `Don't save`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    console.log($("#typeoftheaddeditem").val());
+                    console.log("#Confirmed");
+
+                    Swal.fire('Added Successfully!', '', 'success');
+                    $("#addform").submit();
+
+
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
+                }
+            })
+        }
+        else {
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You Should Fill All Input Fields!',
+            });
+        }
+    }
+  
 });
 
 

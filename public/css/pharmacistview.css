@@ -58,6 +58,8 @@
     text-transform: uppercase;
 }
 
+
+
 #dock-container li:hover span {
     display: block;
     color: #fff;

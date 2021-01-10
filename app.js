@@ -23,6 +23,7 @@ const medicalhistoryRoute = require('./routes/medicalhistory');
 const PharmacyRoute = require('./routes/pharmacist_view');
 const mainHallForPatients = require('./routes/mainHallForPatient');
 const cashier = require('./routes/cashier');
+const profile = require('./routes/profile');
 
 //local host
 const port = process.env.PORT || 3000;
@@ -30,6 +31,7 @@ const port = process.env.PORT || 3000;
 //default path to access the files in the server not locally
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
+
 
 //virtual engine that allow us to write code in html files(views) like for loops
 app.set("view engine", 'ejs');
@@ -59,6 +61,7 @@ app.use('/medical-history', medicalhistoryRoute);
 app.use('/pharmacist-v', PharmacyRoute);
 app.use('/main-Hall', mainHallForPatients);
 app.use('/cashier', cashier);
+app.use('/profile', profile);
 
 
 

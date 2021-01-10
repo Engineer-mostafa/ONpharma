@@ -49,6 +49,7 @@ router.post('/', (req, res) => {
     var result;
     console.log(req.body.type);
     var id = req.session.user.acc_ID;
+
     switch (req.body.type  /*data i get from ajax object*/) {
         case "search":
             aspc.getScan(req.body.phone, res.end);
@@ -121,8 +122,24 @@ router.post('/', (req, res) => {
                             }
                         });
                         break;
+                    case "3":
+                        pool.query("INSERT INTO chronic_disease (`Disease_Name`, `Disease_Date`, `Patient_acc_ID`) VALUES ('" + fields.nameoftheitem + "','" + fields.dateofsubmition + "','" + fields.searchField + "');", (error, rows) => {
+                            if (error)
+                                throw error;
+                            else {
+
+                                result = JSON.stringify(rows);
+
+                                console.log("added to dis succ");
+                                res.redirect('/main-Hall');
+
+                            }
+                        });
+                        break;
                 }
-                var oldpath = files.filetoupload.path;
+
+                if (fields.typeoftheaddeditem != 3) {
+                     var oldpath = files.filetoupload.path;
                 //new path to save in our files
                 var newpath = 'F:/Mostafa/CMP 2/semester 1/DB-MS/Pharmacy App/public/pdfs/' + files.filetoupload.name;
 
@@ -131,6 +148,8 @@ router.post('/', (req, res) => {
                     res.redirect('/main-Hall');
 
                 });
+                }
+               
             });
 
             break;

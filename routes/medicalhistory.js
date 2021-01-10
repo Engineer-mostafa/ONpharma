@@ -42,6 +42,7 @@ router.post('/', (req, res) => {
         case "Scan":
             aspc.getScan(id, res.end);
             break;
+        
         case "Analysis":
             aspc.getAnalysis(id, res.end);
 

@@ -12,38 +12,65 @@
 
 
         <!------------------------------------- bottom bar ------------------------------------------------------------------->
-        <% if( type=="Doctor" ) {%>
-            <div id="dock-container">
-                <%  }  %>
-                    <%  if (type=="Patient") { %>
-                        <div id="dock-container" class="hidden">
+       
+              
+                        <div id="dock-container">
 
-                            <%}%>
-                                <ul>
-                                    <li>
-                                        <a id="Explore" data-target="#modal-1" data-toggle="modal" href="#">
-                                            <span>Explore</span>
-                                            <img src="/images/checklist.png" /></a>
-                                    </li>
-                                    <li>
-                                        <a id="patients" data-target="#modal-2" data-toggle="modal" href="#">
-                                            <span>Patients</span>
-                                            <img src="/images/patient.png" /></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span>Help desk</span>
-                                            <img src="/images/customer-service.png" /></a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span>Call us</span>
+                            <ul>
+                                <% if( type=="Doctor" ) {%>
+                                <li>
+                                    <a id="Explore" data-target="#modal-1" data-toggle="modal" href="#">
+                                        <span>Explore</span>
+                                        <img src="/images/patient.png" /></a>
+                                </li>
+                                
+                                <!-- <li>
+                                    <a id="patients" data-target="#modal-2" data-toggle="modal" href="#">
+                                        <span>Patients</span>
+                                        <img src="/images/patient.png" /></a>
+                                </li> -->
+                                
+                                <li>
+                                    <a href="profile">
+                                        <span>Profile</span>
+                                        <img src="/images/checklist.png" /></a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span>Help desk</span>
+                                        <img src="/images/customer-service.png" /></a>
+                                </li>
+                                <li>
+                                    <form id="destroyForm" action="pharmacist-v" method="POST">
+                                        <a href="#" id="submitForm">
+                                            <span>Log Out</span>
                                             <img src="/images/phone.png" /></a>
-                                    </li>
-                                </ul>
-                                <div class="menu-perspective" style="width: 100%;">
-                                    <div class="menu-board metal-gradient" style="min-width: 512px;"></div>
-                                </div>
+                                        <input type="text" class="hidden" name="type" value="destroy">
+                                    </form>
+
+                                </li>
+                        <% } %>
+                        <% if (type=="Patient" ) { %>
+                        <li>
+                            <a  href="profile">
+                                <span>Profile</span>
+                                <img src="/images/patient.png" /></a>
+                        </li>
+                            <li>
+                                <form id="destroyForm" action="pharmacist-v" method="POST">
+                                    <a href="#" id="submitForm">
+                                        <span>Log Out</span>
+                                        <img src="/images/phone.png" /></a>
+                                    <input type="text" class="hidden" name="type" value="destroy">
+                                </form>
+                            
+                            </li>
+                            <%}%>
+
+                            </ul>
+                            <div class="menu-perspective" style="width: 100%;">
+                                <div class="menu-board metal-gradient" style="min-width: 512px;"></div>
+                            </div>
                         </div>
 
 
@@ -240,7 +267,8 @@
 
                                                 <div class="form-group col-md-3">
 
-                                                    <label for="bd">Date<span class="text-danger">*</span></label>
+                                                    <label for="bd" id="ddd">Date<span
+                                                            class="text-danger">*</span></label>
                                                     <input type="date" id="dateofsubmition" class="form-control"
                                                         name="dateofsubmition" placeholder="Enter second name" required>
 
@@ -254,14 +282,15 @@
                                                         <option value="0">Scan</option>
                                                         <option value="1">Analysis</option>
                                                         <option value="2">Prescreption</option>
+                                                        <option value="3">chronicDisease</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-md-3">
+                                                <div class="form-group col-md-3" id="pdftohide">
 
                                                     <label for="LastNamep">Choose PDF file<span
                                                             class="text-danger">*</span></label>
                                                     <input type="file" id="filetoupload" class="form-control"
-                                                        name="filetoupload" placeholder="Enter second name" required>
+                                                        name="filetoupload" placeholder="choose file">
 
                                                 </div>
 
@@ -295,7 +324,7 @@
 
 
 
-                        <!---------------------------------------------------- Patient modal in the bottom bar ------------------------------------------------->
+                        <!----------------------------------------- Patient modal in the bottom bar -------------------------------------->
                         <div class="modal fade" id="modal-2" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
                             aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -342,17 +371,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-                        <!-- -------------------------------------------QR Code------------------------------------------------------------------------- -->
-
-    <!-- <svg class="barcode" jsbarcode-format="upc" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold" displayValue ="false">
-    </svg> -->
-
-                        <!-- <svg id="barcode"></svg>
-        <img class="barcode" src="" alt=""> -->
-                        <!-- --------------------------------------------------------------------------------------------------------------------- -->
 
 
 
@@ -462,7 +480,7 @@
                 height: 100%;
                 object-fit: fill;
                 z-index: -10000000000000;">
-            </div>
+    </div>
 
 
-            <%- include('layout/footer')%>
+    <%- include('layout/footer')%>

@@ -1,0 +1,121 @@
+<%- include('layout/header')%>
+
+    <section id="page-content" class="sidebar-right" style="transform: none;">
+        <div class="container" style="transform: none;">
+            <div class="row" style="transform: none;">
+                <!-- Left Side Bar -->
+                <div class="sidebar col-lg-3">
+
+                    <div class="widget">
+                        <h4 class="widget-title"><%=name%></h4>
+                        <hr>
+                        <div class="embed-responsive embed-responsive-4by3" id="emb">
+                            <embed class="embed-responsive-item" src="/images/<%=img%>">
+                            </embed>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- Middile Content -->
+                <div class="content col-lg-6">
+
+                    <div id="blog" class="single-post">
+
+                        <div class="post-item">
+                            <div class="post-item-wrap">
+                                <div class="post-image">
+
+                                </div>
+                                <div class="post-item-description">
+                                    <h2>Profile</h2>
+                                    <div class="post-meta">
+                                        <span class="post-meta-date" id="currentdate"></span>
+                                        <div class="post-meta-share">
+                                            <a class="btn btn-xs btn-slide btn-facebook" href="#">
+                                                <i class="fab fa-facebook-f"></i>
+                                                <span>Facebook</span>
+                                            </a>
+                                            <a class="btn btn-xs btn-slide btn-twitter" href="#" data-width="100">
+                                                <i class="fab fa-twitter"></i>
+                                                <span>Twitter</span>
+                                            </a>
+                                            <a class="btn btn-xs btn-slide btn-instagram" href="#" data-width="118">
+                                                <i class="fab fa-instagram"></i>
+                                                <span>Instagram</span>
+                                            </a>
+                                            <a class="btn btn-xs btn-slide btn-googleplus" href="#"
+                                                data-width="80">
+                                            <i class="fas fa-envelope"></i>
+
+                                                <span>Mail</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Middile content -->
+                                    <div class="row">
+                                        <div class="content col-lg-9">                                    
+                                            <h4>Information</h4>
+                                            <div class="panel-group" id="accordion">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                                                                Email</a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse1" class="panel-collapse collapse in">
+                                                        <div class="panel-body"><%=email%></div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                                                                Birth Date</a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse2" class="panel-collapse collapse">
+                                                        <div class="panel-body"><%=bd.substring(0,10)%></div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                                                                Phone</a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapse3" class="panel-collapse collapse">
+                                                        <div class="panel-body">0<%= phone %></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    
+                                    
+                                           
+                                    
+                                    
+                                            
+                                    
+                                    
+                                           
+                                    
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <%- include('layout/footer')%>

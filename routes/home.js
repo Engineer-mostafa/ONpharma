@@ -15,7 +15,9 @@ const user = new User();
 
 router.get('/', (request, Response) => {
 
-    if (typeof (request.session.user) == "undefined" || typeof (request.session.user.opp) == "undefined") {
+    console.log(typeof request.session.user);
+
+    if ( !(request.session.user)) {
         console.log("render Home");
         Response.render('home', {
             title: "Home",
@@ -29,9 +31,9 @@ router.get('/', (request, Response) => {
         );
         return;
     }
-    else if (request.session.user.opp == 0 && request.session.user.User_type == "Doctor" || request.session.user.User_type == "Patient") {
+    else if (request.session.opp == 0 && request.session.user.User_type == "Doctor" || request.session.user.User_type == "Patient") {
         console.log("p-D");
-        console.log(request.session.user.opp)
+        console.log(request.session.opp);
 
         function coord2offset(x, y, size) {
             return (size + 1) * y + x + 1;
@@ -66,10 +68,10 @@ router.get('/', (request, Response) => {
                 pass: 'Mosstafalover999'
             }
         });
-        // <svg class='barcode' jsbarcode-format='upc' jsbarcode-value='123456789012' jsbarcode-textmargin='0' jsbarcode- fontoptions='bold' displayValue='false' > </svg >
+   
         var mailOptions = {
             from: 'mostafamagdi999.mm@gmail.com',
-            to: 'yousif.lasheen60@gmail.com',
+            to: `${request.session.user.acc_email}`,
             subject: 'Sending Email using Node.js',
             //to accept base64 content in messsage
             attachments: [{   // stream as an attachment
@@ -87,7 +89,7 @@ router.get('/', (request, Response) => {
         });
         Response.redirect('main-Hall');
     }
-    else if (request.session.user.opp == 0) {
+    else if (request.session.opp == 0 && request.session.user.User_type == "Pharmacist") {
         console.log("in pharma");
         function coord2offset(x, y, size) {
             return (size + 1) * y + x + 1;
@@ -122,10 +124,10 @@ router.get('/', (request, Response) => {
                 pass: 'Mosstafalover999'
             }
         });
-        // <svg class='barcode' jsbarcode-format='upc' jsbarcode-value='123456789012' jsbarcode-textmargin='0' jsbarcode- fontoptions='bold' displayValue='false' > </svg >
+       
         var mailOptions = {
             from: 'mostafamagdi999.mm@gmail.com',
-            to: 'yousif.lasheen60@gmail.com',
+            to: `${request.session.user.acc_email}`,
             subject: 'Sending Email using Node.js',
             //to accept base64 content in messsage
             attachments: [{   // stream as an attachment
@@ -143,18 +145,7 @@ router.get('/', (request, Response) => {
         });
         Response.redirect('pharmacist-v');
     }
-    else {
-        Response.render('home', {
-            title: "Home",
-            css: "home",
-            js: "home",
-            img: "heart-rate.png",
-            open: 1,
-            errors: "",
-            type: ""
-        }
-        );
-    }
+  
 
 });
 
@@ -200,12 +191,13 @@ router.post('/',
         .withMessage('Last name length should at least 3'),
     //mobile number - validation
     body("Mobilep", "This phone-number already in use")
-        .isLength({ max: 11 }, { min: 11 })
+        .isLength({ max: 11 })
+        .withMessage("The phone number lenght should be 11-number ")
+        .isLength({ min: 11 })
         .withMessage("The phone number lenght should be 11-number ")
         .custom((value) => {
             return user.find_mobile_phone(value).then(function (user) {
                 if (user) {
-
                     return Promise.reject("This phone-number already in use");
                 }
 
@@ -327,11 +319,11 @@ router.post('/',
 
                     }
                     else if (request.session.user) {
-                        return Response.redirect('main-hall');
+                        return Response.redirect('main-Hall');
 
                     }
                     else {
-                        console.log("else Home");
+                        console.log("render Home");
                         Response.render('home', {
                             title: "Home",
                             css: "home",

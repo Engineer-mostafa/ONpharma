@@ -4,8 +4,10 @@
     <div class="body-inner">
 
 
-        <div id="dock-container" style="    left: 25%;
-    width: 49%;">
+        <div id="dock-container" style="   
+    left: 22%;
+    width: 54%;
+    ">
             <ul>
                 <li>
                     <a id="add" data-target="#modal-1" data-toggle="modal" href="#" onclick="reloadStock()">
@@ -13,7 +15,7 @@
                         <img src="/images/stock.png" /></a>
                 </li>
                 <li>
-                    <a id="Cashier"  href="/cashier" target="_blank">
+                    <a id="Cashier" href="/cashier" target="_blank">
                         <span>Cashier</span>
                         <img src="/images/pharmacist.png" /></a>
                 </li>
@@ -21,6 +23,11 @@
                     <a id="Branch" data-target="#modal-3" data-toggle="modal" href="#">
                         <span>Create New Branch</span>
                         <img src="/images/pharmacy.png" /></a>
+                </li>
+                <li>
+                    <a href="profile">
+                        <span>Profile</span>
+                        <img src="/images/checklist.png" /></a>
                 </li>
                 <li>
                     <a id="medH" href="/medical-history">
@@ -32,15 +39,17 @@
                         <span>Help desk</span>
                         <img src="/images/customer-service.png" /></a>
                 </li>
-                <form id="destroyForm" action="pharmacist-v" method="POST" >
-                      <li>
-                    <a href="#" id ="submitForm">
-                        <span>Log Out</span>
-                        <img src="/images/phone.png" /></a>
-                        <input type="text" class = "hidden" name = "type" value="destroy">
+
+                <li>
+                    <form id="destroyForm" action="pharmacist-v" method="POST">
+                        <a href="#" id="submitForm">
+                            <span>Log Out</span>
+                            <img src="/images/phone.png" /></a>
+                        <input type="text" class="hidden" name="type" value="destroy">
+                    </form>
+
                 </li>
-                </form>
-              
+
             </ul>
             <div class="menu-perspective" style="width: 100%;">
                 <div class="menu-board metal-gradient" style="min-width: 512px;"></div>
