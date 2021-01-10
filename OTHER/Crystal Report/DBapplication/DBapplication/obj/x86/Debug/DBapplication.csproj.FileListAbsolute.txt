@@ -1,0 +1,44 @@
+E:\TA\Database\DB 2018\Labs\Lab4\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.csprojResolveAssemblyReference.cache
+E:\TA\Database\DB 2018\Labs\Lab4\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.Supplier.resources
+E:\TA\Database\DB 2018\Labs\Lab4\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.Properties.Resources.resources
+E:\TA\Database\DB 2018\Labs\Lab4\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.csproj.GenerateResource.Cache
+E:\TA\Database\DB 2018\Labs\Lab4\Code\DBapplication\DBapplication\bin\Debug\DBapplication.exe
+E:\TA\Database\DB 2018\Labs\Lab4\Code\DBapplication\DBapplication\bin\Debug\DBapplication.pdb
+E:\TA\Database\DB 2018\Labs\Lab4\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.exe
+E:\TA\Database\DB 2018\Labs\Lab4\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.pdb
+D:\College\Work\Assistant Professor\2020-2021\Fall2020\Database\Material\Labs\Lab4 Accessing DB from C# - Part1\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.exe
+D:\College\Work\Assistant Professor\2020-2021\Fall2020\Database\Material\Labs\Lab4 Accessing DB from C# - Part1\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.pdb
+D:\College\Work\Assistant Professor\2020-2021\Fall2020\Database\Material\Labs\Lab4 Accessing DB from C# - Part1\Code\DBapplication\DBapplication\bin\Debug\DBapplication.exe
+D:\College\Work\Assistant Professor\2020-2021\Fall2020\Database\Material\Labs\Lab4 Accessing DB from C# - Part1\Code\DBapplication\DBapplication\bin\Debug\DBapplication.pdb
+D:\College\Work\Assistant Professor\2020-2021\Fall2020\Database\Material\Labs\Lab4 Accessing DB from C# - Part1\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.csprojResolveAssemblyReference.cache
+D:\College\Work\Assistant Professor\2020-2021\Fall2020\Database\Material\Labs\Lab4 Accessing DB from C# - Part1\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.Supplier.resources
+D:\College\Work\Assistant Professor\2020-2021\Fall2020\Database\Material\Labs\Lab4 Accessing DB from C# - Part1\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.Properties.Resources.resources
+D:\College\Work\Assistant Professor\2020-2021\Fall2020\Database\Material\Labs\Lab4 Accessing DB from C# - Part1\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.csproj.GenerateResource.Cache
+E:\CMP 2\Databases\labs\Lab4 Accessing DB from C# - Part1-Semester\Code\DBapplication\DBapplication\bin\Debug\DBapplication.exe
+E:\CMP 2\Databases\labs\Lab4 Accessing DB from C# - Part1-Semester\Code\DBapplication\DBapplication\bin\Debug\DBapplication.pdb
+E:\CMP 2\Databases\labs\Lab4 Accessing DB from C# - Part1-Semester\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.csprojAssemblyReference.cache
+E:\CMP 2\Databases\labs\Lab4 Accessing DB from C# - Part1-Semester\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.Supplier.resources
+E:\CMP 2\Databases\labs\Lab4 Accessing DB from C# - Part1-Semester\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.Properties.Resources.resources
+E:\CMP 2\Databases\labs\Lab4 Accessing DB from C# - Part1-Semester\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.csproj.GenerateResource.cache
+E:\CMP 2\Databases\labs\Lab4 Accessing DB from C# - Part1-Semester\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.csproj.CoreCompileInputs.cache
+E:\CMP 2\Databases\labs\Lab4 Accessing DB from C# - Part1-Semester\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.exe
+E:\CMP 2\Databases\labs\Lab4 Accessing DB from C# - Part1-Semester\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.pdb
+E:\CMP 2\Databases\labs\Lab4\Code\DBapplication\DBapplication\bin\Debug\DBapplication.exe.config
+E:\CMP 2\Databases\labs\Lab4\Code\DBapplication\DBapplication\bin\Debug\DBapplication.exe
+E:\CMP 2\Databases\labs\Lab4\Code\DBapplication\DBapplication\bin\Debug\DBapplication.pdb
+E:\CMP 2\Databases\labs\Lab4\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.csprojAssemblyReference.cache
+E:\CMP 2\Databases\labs\Lab4\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.Supplier.resources
+E:\CMP 2\Databases\labs\Lab4\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.Properties.Resources.resources
+E:\CMP 2\Databases\labs\Lab4\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.csproj.GenerateResource.cache
+E:\CMP 2\Databases\labs\Lab4\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.csproj.CoreCompileInputs.cache
+E:\CMP 2\Databases\labs\Lab4\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.exe
+E:\CMP 2\Databases\labs\Lab4\Code\DBapplication\DBapplication\obj\x86\Debug\DBapplication.pdb
+E:\CMP 2\Databases\Project\Pharmacy-App\OTHER\Crystal Report\DBapplication\DBapplication\bin\Debug\DBapplication.exe.config
+E:\CMP 2\Databases\Project\Pharmacy-App\OTHER\Crystal Report\DBapplication\DBapplication\bin\Debug\DBapplication.exe
+E:\CMP 2\Databases\Project\Pharmacy-App\OTHER\Crystal Report\DBapplication\DBapplication\bin\Debug\DBapplication.pdb
+E:\CMP 2\Databases\Project\Pharmacy-App\OTHER\Crystal Report\DBapplication\DBapplication\obj\x86\Debug\DBapplication.csprojAssemblyReference.cache
+E:\CMP 2\Databases\Project\Pharmacy-App\OTHER\Crystal Report\DBapplication\DBapplication\obj\x86\Debug\DBapplication.Properties.Resources.resources
+E:\CMP 2\Databases\Project\Pharmacy-App\OTHER\Crystal Report\DBapplication\DBapplication\obj\x86\Debug\DBapplication.csproj.GenerateResource.cache
+E:\CMP 2\Databases\Project\Pharmacy-App\OTHER\Crystal Report\DBapplication\DBapplication\obj\x86\Debug\DBapplication.csproj.CoreCompileInputs.cache
+E:\CMP 2\Databases\Project\Pharmacy-App\OTHER\Crystal Report\DBapplication\DBapplication\obj\x86\Debug\DBapplication.exe
+E:\CMP 2\Databases\Project\Pharmacy-App\OTHER\Crystal Report\DBapplication\DBapplication\obj\x86\Debug\DBapplication.pdb
