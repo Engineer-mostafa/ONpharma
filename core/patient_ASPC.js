@@ -108,7 +108,7 @@ get.prototype = {
   },
 
   getMyPatient: function (myid = 1, callback) {
-    pool.query("SELECT * FROM account where User_type = Patient;", (error, rows) => {
+    pool.query("SELECT * FROM account where User_type = 'Patient';", (error, rows) => {
       if (error)
         throw error;
       else {
