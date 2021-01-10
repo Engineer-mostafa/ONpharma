@@ -1,5 +1,6 @@
 <%- include('layout/header')%>
 
+
     <section id="page-content" class="sidebar-right" style="transform: none;">
         <div class="container" style="transform: none;">
             <div class="row" style="transform: none;">
@@ -7,15 +8,16 @@
                 <div class="sidebar col-lg-3">
 
                     <div class="widget">
-                        <h4 class="widget-title"><%=name%></h4>
+                        <h4 class="widget-title">
+                            <%= name %>
+                        </h4>
                         <hr>
                         <div class="embed-responsive embed-responsive-4by3" id="emb">
-                            <embed class="embed-responsive-item" src="/images/<%=img%>">
-                            </embed>
+                            <embed class="embed-responsive-item" src="/images/checklist.png">
+
                         </div>
                     </div>
                 </div>
-
 
 
 
@@ -32,7 +34,9 @@
                                 <div class="post-item-description">
                                     <h2>Profile</h2>
                                     <div class="post-meta">
-                                        <span class="post-meta-date" id="currentdate"></span>
+                                        <span class="post-meta-date" id="currentdate"><i class="fa fa-calendar"></i>Sun
+                                            Jan
+                                            10 2021 20:20:30 ,</span>
                                         <div class="post-meta-share">
                                             <a class="btn btn-xs btn-slide btn-facebook" href="#">
                                                 <i class="fab fa-facebook-f"></i>
@@ -46,25 +50,49 @@
                                                 <i class="fab fa-instagram"></i>
                                                 <span>Instagram</span>
                                             </a>
-                                            <a class="btn btn-xs btn-slide btn-googleplus" href="#"
-                                                data-width="80">
-                                            <i class="fas fa-envelope"></i>
+                                            <a class="btn btn-xs btn-slide btn-googleplus" href="#" data-width="80">
+                                                <i class="fas fa-envelope"></i>
 
                                                 <span>Mail</span>
                                             </a>
                                         </div>
                                     </div>
 
-                                    <!-- Middile content -->
-                                    <div class="row">
-                                        <div class="content col-lg-9">                                    
-                                            <h4>Information</h4>
+
+
+
+
+
+
+                                    <%if( type == "Admin" ){%>
+                                    <form action="" method="POST">
+                                        <div class="contaner">
+                                            <div class="row">
+                                                <div class="content col-lg-6">
+
+                                                    <input id="newadmin" name="newadminId" type="number"
+                                                        class="form-control" style="font-family: cooper black;"
+                                                        placeholder="Enter Id Of User" required="">
+                                                </div>
+
+                                                <div class="content col-lg-6">
+                                                    <button class="btn" id="cna" type="button">Make
+                                                        Admin</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <%}%>
+
+
+
+                                    <%if(type != "Admin") {%>
+                                        <div class="container">
                                             <div class="panel-group" id="accordion">
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">
-                                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                                                                Email</a>
+                                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Email</a>
                                                         </h4>
                                                     </div>
                                                     <div id="collapse1" class="panel-collapse collapse in">
@@ -74,48 +102,76 @@
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">
-                                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                                                                Birth Date</a>
+                                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Birth Date</a>
                                                         </h4>
                                                     </div>
                                                     <div id="collapse2" class="panel-collapse collapse">
-                                                        <div class="panel-body"><%=bd.substring(0,10)%></div>
+                                                        <div class="panel-body"><%= bd.substring(0,10)%></div>
                                                     </div>
                                                 </div>
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">
-                                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                                                                Phone</a>
+                                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Phone</a>
                                                         </h4>
                                                     </div>
                                                     <div id="collapse3" class="panel-collapse collapse">
-                                                        <div class="panel-body">0<%= phone %></div>
+                                                        <div class="panel-body">0<%=phone%></div>
                                                     </div>
                                                 </div>
                                             </div>
-                                    
-                                    
-                                           
-                                    
-                                    
-                                            
-                                    
-                                    
-                                           
-                                    
-                                            
                                         </div>
-                                    </div>
+
+                                    <%}%>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!------------------------------- Right Side Bar ------------------------------->
+                <div class="sidebar  col-lg-3"
+                    style="position: relative;overflow: visible;box-sizing: border-box;min-height: 1px;">
+                    <div class="theiaStickySidebar"
+                        style="padding-top: 0px; padding-bottom: 1px; position: static; transform: none;">
+                        <div class="widget  widget-newsletter" style="margin-bottom: 8px;padding-bottom: 21px;">
+                            <form id="destroyForm" action="pharmacist-v" method="POST">
+
+                                <div class="row">
+                                    <h4 class="col-md-10">Password Options</h4>
+                                    <i id="signout" class="fas fa-sign-out-alt col-md-2"
+                                        style="position: relative;float: right;     margin-top: 0.5em; cursor: pointer;"></i>
+                                                                            <input type="text" class="hidden" name="type" value="destroy">
+
+                                </div>
+                            </form>
+
+                        </div>
+
+
+
+
+
+                        <!----------------------------------- Cash The Order ---------------------------------------->
+                        <div class="widget widget-tweeter" data-username="envato" data-limit="2">
+                            <input type="password" aria-required="true" name="q" id="newpasswordfield"
+                                class="form-control widget-search-form" placeholder="New Password"
+                                style="margin-bottom: 1em;">
+                            <button type="button" class="btn btn-primary btn-lg btn-block" id="cash">Change
+                                Password</button>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
+
+
+
+
+
+
+
     </section>
-
-
 
     <%- include('layout/footer')%>

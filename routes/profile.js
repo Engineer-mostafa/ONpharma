@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const ASPC = require('../core/patient_ASPC');
 var aspc = new ASPC();
+const { body, validationResult } = require('express-validator');
 
 router.get('/', (request, Response) => {
 
@@ -18,9 +19,32 @@ router.get('/', (request, Response) => {
             email: request.session.user.acc_email,
             bd: request.session.user.Bdate,
             phone: request.session.user.phoneNum,
+            type: request.session.user.User_type,
 
         }
         );
+    }
+});
+
+router.post('/', (req, res) => {
+
+    // create New Admin
+    switch (req.body.type) {
+        case "ifone":
+            aspc.ifOne(req.body.id, res.end);
+            break;
+        case "createadmin":
+            aspc.createAdmin(req.body.id, res.end);
+            break;
+        case "password":
+            aspc.changePass(req.session.user.acc_ID,req.body.pass, res.end);
+            break;
+        case "destroy":
+            console.log("Destroy")
+            req.session.destroy(function () {
+                res.redirect('home');
+            });
+            break;
     }
 });
 

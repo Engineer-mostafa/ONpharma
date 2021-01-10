@@ -87,7 +87,7 @@ router.get('/', (request, Response) => {
                 console.log('Email sent: ' + info.response);
             }
         });
-        Response.redirect('main-Hall');
+        return Response.redirect('main-Hall');
     }
     else if (request.session.opp == 0 && request.session.user.User_type == "Pharmacist") {
         console.log("in pharma");
@@ -143,7 +143,7 @@ router.get('/', (request, Response) => {
                 console.log('Email sent: ' + info.response);
             }
         });
-        Response.redirect('pharmacist-v');
+        return Response.redirect('pharmacist-v');
     }
   
 
@@ -162,9 +162,7 @@ router.post('/',
     body("Emailaddressp", "E-mail already in use").custom((value) => {
 
         return user.find_mail_for_one(value).then(function (user) {
-
             if (user) {
-
                 return Promise.reject("E-mail already in use");
             }
 
@@ -225,7 +223,6 @@ router.post('/',
                     type: type,
                 }
                 );
-
                 return;
             }
             //getting user information from user
@@ -283,7 +280,7 @@ router.post('/',
                                 request.session.opp = 0;
                                 console.log("befor redirect");
                                 console.log("i will redirect soon");
-                                Response.redirect('home');
+                                return Response.redirect('home');
 
                             }
 
@@ -318,8 +315,12 @@ router.post('/',
 
 
                     }
-                    else if (request.session.user) {
+                    else if (request.session.user && request.session.user.User_type != "Admin") {
                         return Response.redirect('main-Hall');
+
+                    }
+                    else if (request.session.user) {
+                        return Response.redirect('profile');
 
                     }
                     else {
