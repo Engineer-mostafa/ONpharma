@@ -31,7 +31,7 @@ router.get('/', (request, Response) => {
         );
         return;
     }
-    else if (request.session.opp == 0 && request.session.user.User_type == "Doctor" || request.session.user.User_type == "Patient") {
+    else if ((request.session.opp === 0) && (request.session.user.User_type == "Doctor" || request.session.user.User_type == "Patient")) {
         console.log("p-D");
         console.log(request.session.opp);
 
@@ -89,7 +89,7 @@ router.get('/', (request, Response) => {
         });
         return Response.redirect('main-Hall');
     }
-    else if (request.session.opp == 0 && request.session.user.User_type == "Pharmacist") {
+    else if (request.session.opp === 0 && request.session.user.User_type == "Pharmacist") {
         console.log("in pharma");
         function coord2offset(x, y, size) {
             return (size + 1) * y + x + 1;
@@ -144,6 +144,9 @@ router.get('/', (request, Response) => {
             }
         });
         return Response.redirect('pharmacist-v');
+    }
+    else {
+        Response.redirect('main-Hall')
     }
   
 
