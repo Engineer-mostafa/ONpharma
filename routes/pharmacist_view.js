@@ -7,7 +7,8 @@ var aspc = new ASPC();
 router.get('/', (req, res) => {
 
     console.log("in Pharmacist v");
-
+    console.log(req.session.user);
+    
     if (typeof (req.session.user) == "undefined") {
         res.redirect('home');
     }

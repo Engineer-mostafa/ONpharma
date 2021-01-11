@@ -61,6 +61,12 @@ router.post('/', (req, res) => {
         case "search":
             aspc.getScan(req.body.phone, res.end);
             break;
+        case "destroy":
+            console.log("Destroy")
+            req.session.destroy(function () {
+                res.redirect('home');
+            });
+            break;
         case "Analysis":
             aspc.getAnalysis(req.body.phone, res.end);
             break;

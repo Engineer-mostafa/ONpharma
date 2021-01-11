@@ -28,6 +28,7 @@ router.get('/', (request, Response) => {
 
 router.post('/', (req, res) => {
 
+    console.log(req.body);
     // create New Admin
     switch (req.body.type) {
         case "ifone":
@@ -37,13 +38,23 @@ router.post('/', (req, res) => {
             aspc.createAdmin(req.body.id, res.end);
             break;
         case "password":
-            aspc.changePass(req.session.user.acc_ID,req.body.pass, res.end);
+            aspc.changePass(req.session.user.acc_ID, req.body.pass, res.end);
             break;
         case "destroy":
-            console.log("Destroy")
-            req.session.destroy(function () {
-                res.redirect('home');
-            });
+            console.log("Destroy" + req.session.user.User_type)
+            if (req.session.user.User_type == "Pharmacist") {
+                console.log("pharma");
+                req.session.destroy(function () {
+                    res.redirect('pharmacist-v');
+                });
+                break;
+            }
+            else {
+                req.session.destroy(function () {
+                    res.redirect('main-Hall');
+                });
+            }
+
             break;
     }
 });
