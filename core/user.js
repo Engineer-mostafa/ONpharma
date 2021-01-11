@@ -1,4 +1,4 @@
-const pool = require('./Pool');
+const pool = require('./pool');
 const bcrypt = require('bcrypt');
 const { request, response } = require('express');
 var nodemailer = require('nodemailer');
