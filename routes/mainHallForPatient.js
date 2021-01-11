@@ -28,6 +28,7 @@ router.get('/',  (request, Response) => {
         img: "checklist.png",
         add: "",
         type: request.session.user.User_type,
+        opp: request.session.opp,
 
     });
 }

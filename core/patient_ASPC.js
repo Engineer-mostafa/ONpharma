@@ -1,5 +1,6 @@
 const pool = require('./Pool');
 const { request } = require('express');
+const bcrypt = require('bcrypt');
 
 
 
@@ -263,8 +264,57 @@ get.prototype = {
 
 
 
+  createAdmin: function ( userId, callback) {
+    pool.query("Update account set User_type = 'Admin' where acc_ID = '" +userId+ "' ;", (error, rows) => {
+      if (error)
+        throw error;
+      else {
+
+        result = JSON.stringify(rows);
+       callback(
+          result
+        );
+      }
+    });
+  },
+
+
+  ifOne: function ( userId, callback) {
+    pool.query("SELECT * From account where acc_ID = '" +userId+ "' ;", (error, rows) => {
+      if (error)
+        throw error;
+      else {
+
+        result = JSON.stringify(rows);
+       callback(
+          result
+        );
+      }
+    });
+  },
+
+
+
+
   cash: function (myId, totalCash , callback) {
     pool.query(`INSERT INTO purchase_operation (pharmacy_ID,operation_cash) values((SELECT pharmacy_ID FROM pharmacy p , account a  where a.acc_ID = p.pharmacy_manager_ID and a.acc_ID = ${myId}),${totalCash});`, (error, rows) => {
+      if (error)
+        throw error;
+      else {
+
+        result = JSON.stringify(rows);
+       callback(
+          result
+        );
+      }
+    });
+  },
+
+
+
+  changePass: function ( myId,pass, callback) {
+    var p = bcrypt.hashSync(pass, 10);
+    pool.query(`UPDATE account set acc_password = '${p}' where acc_ID = ${myId}`, (error, rows) => {
       if (error)
         throw error;
       else {
