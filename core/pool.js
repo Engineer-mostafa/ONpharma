@@ -4,7 +4,7 @@ var mysql      = require('mysql');
 const pool = mysql.createPool({
   host     : 'localhost',
   user     : 'root',
-  password : 'Mosstafalover999',
+  password : '@23198631yousif@',
   database : 'pharmacy_app_db'
 });
  

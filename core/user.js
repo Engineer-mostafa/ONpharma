@@ -1,7 +1,7 @@
 const pool = require('./Pool');
 const bcrypt = require('bcrypt');
 const { request, response } = require('express');
-
+var nodemailer = require('nodemailer');
 
 function User() { };
 
@@ -21,60 +21,60 @@ User.prototype = {
         let sql_query = `SELECT * FROM account where  ${field}  = ? `;
 
 
-        return pool.query(sql_query, user).then (function (result) {
-           
-                if (result.length > 0) {
-                    callback(result[0]);
-                } else {
-                    callback(null);
-                }
+        return pool.query(sql_query, user).then(function (result) {
+
+            if (result.length > 0) {
+                callback(result[0]);
+            } else {
+                callback(null);
             }
-        ).catch(function(err){
-              throw err ;
+        }
+        ).catch(function (err) {
+            throw err;
         });
     },
     find_mobile_phone: function (mobile = null) {
-        
+
         if (mobile) {
-            let sql_query =`SELECT * FROM account where  phoneNum  = ? `
+            let sql_query = `SELECT * FROM account where  phoneNum  = ? `
 
 
-           return pool.query(sql_query , mobile ).then( function(result){
-               return result[0];
-            }).catch(function(err){
-                throw err ;
+            return pool.query(sql_query, mobile).then(function (result) {
+                return result[0];
+            }).catch(function (err) {
+                throw err;
             });
-           
+
         }
     },
     find_id: function (id = null) {
-        
+
         if (id) {
-            let sql_query =`SELECT * FROM account where  acc_ID  = ? `
+            let sql_query = `SELECT * FROM account where  acc_ID  = ? `
 
 
-           return pool.query(sql_query , id ).then( function(result){
-               return result[0];
-            }).catch(function(err){
-                throw err ;
+            return pool.query(sql_query, id).then(function (result) {
+                return result[0];
+            }).catch(function (err) {
+                throw err;
             });
-           
+
         }
     },
-   find_mail_for_one :function(mobile =null){
-    if (mobile) {
-        let sql_query = `SELECT * FROM account where  acc_email  = ? `;
+    find_mail_for_one: function (mobile = null) {
+        if (mobile) {
+            let sql_query = `SELECT * FROM account where  acc_email  = ? `;
 
-       return pool.query(sql_query , mobile ).then( function(result){
-           return result[0];
-        }).catch(function(err){
-            throw err ;
-        });
-        
+            return pool.query(sql_query, mobile).then(function (result) {
+                return result[0];
+            }).catch(function (err) {
+                throw err;
+            });
 
-    }
 
-   },
+        }
+
+    },
     // This function will insert data into the database. (create a new user)
     // body is an object 
     create: function (body, callback) {
@@ -91,16 +91,16 @@ User.prototype = {
 
             bind.push(body[prop]);
         }
-       
+
         // prepare the sql query
         let sql = `INSERT INTO account (acc_email,acc_password,Fname,Mname,Lname,gender,Bdate,phoneNum , User_type ) VALUES (?,?,?,?,?,?,?,?,?) `;
         // call the query give it the sql string and the values (bind array)
-        pool.query(sql, bind).then ( function ( result) {
+        pool.query(sql, bind).then(function (result) {
 
             callback(result.insertId);
 
-        }).catch(function(err){
-            throw err ;
+        }).catch(function (err) {
+            throw err;
         });
 
     },
@@ -125,7 +125,7 @@ User.prototype = {
 
             }
             // if the username/password is wrong then return null.
-          else {
+            else {
                 callback(null);
 
             }
@@ -134,45 +134,103 @@ User.prototype = {
         });
 
     },
-   
-    
+
+
     CreateDoctor: function (user) {
         if (user) {
 
-            
+
             let sql = `INSERT INTO Doctor ( doctor_acc_ID , doctor_degree , doctor_specialization , doctor_address ) VALUES ( ${user.doc_id} , '${user.doc_degree}' , '${user.doc_special}' , '${user.doc_address}' )`;
-            
+
             // call the query give it the sql string and the values (bind array)
-            pool.query(sql).then( function( result) {
+            pool.query(sql).then(function (result) {
 
                 console.log('inserted Doctor successfully....');
-                return ;
-            }).catch(function(err){
-                throw err ;
+                return;
+            }).catch(function (err) {
+                throw err;
             });
-          
+
         }
-        
+
     },
 
-    CreatePharmacist: function (user ) {
+    CreatePharmacist: function (user) {
         if (user) {
             var ID = user
             let sql = `INSERT INTO Pharmacist (Pharmacist_acc_ID) VALUES ( ?)`;
             // call the query give it the sql string and the values (bind array)
-            pool.query(sql, ID).then ( function ( result) {
+            pool.query(sql, ID).then(function (result) {
                 // return the last inserted id. if there is no error
                 console.log('inserted pharmacist successfully....');
-                return ;
-            }).catch(function(err){
-                throw err ;
+                return;
+            }).catch(function (err) {
+                throw err;
             });
 
 
         }
+
+
+    },
+
+    forget_mypassword: function (mail = null,callback) {
+        this.find(email, function(result){
+          if (result)
+          {
+
+            console.log("i will send");
+            var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'mostafamagdi999.mm@gmail.com',
+                    pass: 'Mosstafalover999'
+                }
+            });
+       
+            var mailOptions = {
+                from: 'mostafamagdi999.mm@gmail.com',
+                to: `${request.session.user.acc_email}`,
+                subject: 'Sending Email to reset Password',
+                //here should redirect him to reset form 
+                //to accept base64 content in messsage
+                
+            };
     
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+          }
+          else
+          {
+              callback ("EMAIL NOT FOUND");
+          }
+
+        })
+    },
+    resetmypassword : function (mail = null , newpassword)
+    {
+        /*string query = "UPDATE Employee  "
+                + " SET Salary ='" + salary + "' Where  SSN ='" + G_SSN + "';";*/
+                newpassword = bcrypt.hashSync(newpassword, 10);
+
+           let sql ="UPPDATE account  SET acc_password =  '"+ newpassword + "'  where acc_email = '"+mail+"';'" ;     
+
+           pool.query(sql ,function(result , err){
+               if (err)  throw  err
+
+               return;
+
+           })
+
 
     }
+
+
 
 
 }

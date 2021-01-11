@@ -72,7 +72,7 @@ router.get('/', (request, Response) => {
         var mailOptions = {
             from: 'mostafamagdi999.mm@gmail.com',
             to: `${request.session.user.acc_email}`,
-            subject: 'Sending Email using Node.js',
+            subject: 'Sending Email For ONpaharma QRcode',
             //to accept base64 content in messsage
             attachments: [{   // stream as an attachment
                 filename: 'image.jpg',

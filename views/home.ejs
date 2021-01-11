@@ -32,7 +32,7 @@
 
             <!--Patient Form Regesteration-->
             <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-            <form id="registrationFormPatient" class="form-validate" method="POST" >
+            <form id="registrationFormPatient" class="form-validate" method="POST">
 
                 <div class="modal fade" id="modal-1" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
                     aria-hidden="true">
@@ -348,7 +348,8 @@
                                 <%if(errors=="") {%>
 
                                     <% } %>
-<%if(errors.length && typeof(type) !="undefined" && type=="Pharmacist" ) {%>                                            <% errors.forEach(function(error){ %>
+                                        <%if(errors.length && typeof(type) !="undefined" && type=="Pharmacist" ) {%>
+                                            <% errors.forEach(function(error){ %>
                                                 <div class="form-row">
                                                     <div class="alert col-md-12 alert-warning alert-dismissible fade show"
                                                         role="alert">
@@ -470,38 +471,44 @@
                             </div>
                             <div class="modal-body">
                                 <%if(errors=="") {%>
-                                
+
                                     <% } %>
                                         <%if(errors.length && typeof(type) !="undefined" && type=="Login" ) {%>
                                             <% errors.forEach(function(error){ %>
                                                 <div class="form-row">
-                                                    <div class="alert col-md-12 alert-warning alert-dismissible fade show" role="alert">
+                                                    <div class="alert col-md-12 alert-warning alert-dismissible fade show"
+                                                        role="alert">
                                                         <%= error%>
-                                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                     </div>
                                                 </div>
                                                 <% }); %>
                                                     <% } %>
-                                <div class="form-row">
+                                                        <div class="form-row">
 
-                                    <div class="form-group col-md-12">
-                                        <label for="Emaill">Email<span class="text-danger">*</span></label>
-                                        <input type="text" id="Emaill" class="form-control" name="Emaill"
-                                            placeholder="Enter Your Email" required>
+                                                            <div class="form-group col-md-12">
+                                                                <label for="Emaill">Email<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="Emaill" class="form-control"
+                                                                    name="Emaill" placeholder="Enter Your Email"
+                                                                    required>
 
-                                    </div>
+                                                            </div>
 
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label for="Passwordl">Password<span class="text-danger">*</span></label>
-                                        <input type="password" id="Passwordl" class="form-control" name="Passwordl"
-                                            placeholder="password" required>
-                                    </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="Passwordl">Password<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="password" id="Passwordl"
+                                                                    class="form-control" name="Passwordl"
+                                                                    placeholder="password" required>
+                                                            </div>
 
-                                </div>
+                                                        </div>
 
                             </div>
 
@@ -514,6 +521,62 @@
                 </div>
             </form>
 
+
+            <!--RESET PASSWORD FORM---------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+            <form id="RESETPASSWORD" class="form-validate" method="POST" action="home">
+                <input aria-hidden="true" type="text" class="hidden" name="type" value="not">
+
+
+                <div class="modal fade" id="modal-4" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+
+                                <h4 id="modal-label-3" class="modal-title">Reset Password</h4>
+                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <%if(errors=="") {%>
+
+                                    <% } %>
+                                        <%if(errors.length && typeof(type) !="undefined" && type=="Reset" ) {%>
+                                            <% errors.forEach(function(error){ %>
+                                                <div class="form-row">
+                                                    <div class="alert col-md-12 alert-warning alert-dismissible fade show"
+                                                        role="alert">
+                                                        <%= error%>
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                    </div>
+                                                </div>
+                                                <% }); %>
+                                                    <% } %>
+
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="Passwordl">New Password<span class="text-danger">*</span></label>
+                                        <input type="password" id="Passwordn" class="form-control" name="Passwordn"
+                                            placeholder="password" required>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
+                                <button class="btn btn-b" type="submit">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
 
 
@@ -613,21 +676,21 @@
                             });
                         </script>
                         <%}%>
-                    <% if( typeof(type) !="undefined" && type=="Login" ) {%>
-                        <script>
-                            window.addEventListener('load', (event) => {
-                                $("#modal-4").modal('show');
-                            });
-                        </script>
-                        <%}%>
+                            <% if( typeof(type) !="undefined" && type=="Login" ) {%>
+                                <script>
+                                    window.addEventListener('load', (event) => {
+                                        $("#modal-4").modal('show');
+                                    });
+                                </script>
+                                <%}%>
 
-                            <%- include('layout/footer')%>
+                                    <%- include('layout/footer')%>
 
 
 
-                                <!-- 
+                                        <!-- 
 <div class = "road"> runner-->
-                                <!--  <div class = "character" > 
+                                        <!--  <div class = "character" > 
 
      </div>
 </div>
