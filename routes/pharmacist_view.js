@@ -11,16 +11,21 @@ router.get('/', (req, res) => {
     if (typeof (req.session.user) == "undefined") {
         res.redirect('home');
     }
-    else {
+    else if ((req.session.user.User_type == "Doctor" || req.session.user.User_type == "Patient")) {
+        console.log("render main doc-pati");
+        res.redirect('main-Hall');
+    }
+    else if (req.session.user.User_type == "Pharmacist") {
+        console.log("render pharma")
         res.render('pharmacistview', {
             title: "Pharmacy",
             css: "pharmacistview",
             js: "pharmacistview",
             img: "pharmacistv.png"
 
-        }
-        );
+        });
     }
+
 });
 
 

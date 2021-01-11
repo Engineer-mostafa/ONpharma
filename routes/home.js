@@ -16,8 +16,10 @@ const user = new User();
 router.get('/', (request, Response) => {
 
     console.log(typeof request.session.user);
+    console.log("before Come Back");
+    if (!(request.session.user)) {
+        console.log("In Come Back");
 
-    if ( !(request.session.user)) {
         console.log("render Home");
         Response.render('home', {
             title: "Home",
@@ -33,7 +35,7 @@ router.get('/', (request, Response) => {
     }
     else if ((request.session.opp === 0) && (request.session.user.User_type == "Doctor" || request.session.user.User_type == "Patient")) {
         console.log("p-D");
-        console.log(request.session.opp);
+        console.log(request.session.user.Fname);
 
         function coord2offset(x, y, size) {
             return (size + 1) * y + x + 1;
@@ -68,12 +70,12 @@ router.get('/', (request, Response) => {
                 pass: 'Mosstafalover999'
             }
         });
-   
+
         var mailOptions = {
             from: 'mostafamagdi999.mm@gmail.com',
             to: `${request.session.user.acc_email}`,
-            subject: 'Sending Email For ONpaharma QRcode',
-            //to accept base64 content in messsage
+            subject: 'From ONpaharma Your QRcode',
+            text: `Dear, ${request.session.user.Fname} We hope you are safe and Well congratulation on being a part of ONpharma keep your QrCode`,
             attachments: [{   // stream as an attachment
                 filename: 'image.jpg',
                 content: fs.createReadStream('F:/Mostafa/CMP 2/semester 1/DB-MS/Pharmacy App/public/images/custom.png')
@@ -89,7 +91,8 @@ router.get('/', (request, Response) => {
         });
         return Response.redirect('main-Hall');
     }
-    else if (request.session.opp === 0 && request.session.user.User_type == "Pharmacist") {
+    else if ((request.session.opp === 0 ) && (request.session.user.User_type == "Pharmacist")) {
+
         console.log("in pharma");
         function coord2offset(x, y, size) {
             return (size + 1) * y + x + 1;
@@ -124,12 +127,12 @@ router.get('/', (request, Response) => {
                 pass: 'Mosstafalover999'
             }
         });
-       
+
         var mailOptions = {
             from: 'mostafamagdi999.mm@gmail.com',
             to: `${request.session.user.acc_email}`,
-            subject: 'Sending Email using Node.js',
-            //to accept base64 content in messsage
+            subject: 'From ONpaharma Your QRcode',
+            text: `Dear, ${request.session.user.Fname} We hope you are safe and Well congratulation on being a part of ONpharma keep your QrCode`,
             attachments: [{   // stream as an attachment
                 filename: 'image.jpg',
                 content: fs.createReadStream('F:/Mostafa/CMP 2/semester 1/DB-MS/Pharmacy App/public/images/custom.png')
@@ -148,7 +151,7 @@ router.get('/', (request, Response) => {
     else {
         Response.redirect('main-Hall')
     }
-  
+
 
 });
 
@@ -175,19 +178,19 @@ router.post('/',
     //first name - validation
     body("FirstNamep")
         .isString()
-        .withMessage("First name must be string with min lenght 2")
+        .withMessage("First name must be string ")
         .isLength({ min: 3 })
         .withMessage('First name length should at least 3'),
     //min name - validation 
     body("MNamep")
         .isString()
-        .withMessage("Min Name must be string with min lenght 2")
+        .withMessage("Min Name must be string ")
         .isLength({ min: 3 })
         .withMessage('Min Name length should at least 3'),
     //last name - validation
     body("LastNamep")
         .isString()
-        .withMessage("Last name must be string with min lenght 2")
+        .withMessage("Last name must be string")
         .isLength({ min: 3 })
         .withMessage('Last name length should at least 3'),
     //mobile number - validation
@@ -303,11 +306,11 @@ router.post('/',
 
                 console.log('home');
                 console.log(result);
-                
+
 
                 if (result) {
                     console.log('home in result');
-                     console.log(result);
+                    console.log(result);
 
                     request.session.user = result;
                     request.session.opp = 1
@@ -343,7 +346,7 @@ router.post('/',
 
                 } else {
 
-                  return  Response.render('home', {
+                    return Response.render('home', {
                         title: "Home",
                         css: "home",
                         js: "home",
@@ -356,8 +359,8 @@ router.post('/',
 
                     ;
                 }
-              
-               
+
+
             })
 
 

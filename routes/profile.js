@@ -9,6 +9,7 @@ router.get('/', (request, Response) => {
         Response.redirect('home');
     }
     else {
+        console.log("render profile");
         Response.render('profile', {
             title: "Profile",
             css: "profile",

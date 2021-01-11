@@ -11,28 +11,35 @@ var aspc = new ASPC();
 
 
 
-router.get('/',  (request, Response) => {
+router.get('/', (request, Response) => {
     console.log("in Main Hall Get");
 
     console.log(typeof (request.session.user));
 
-    if (typeof(request.session.user) == "undefined") {
+    if (typeof (request.session.user) == "undefined") {
         Response.redirect('home');
     }
-    else {
+    else if ((request.session.user.User_type == "Doctor" || request.session.user.User_type == "Patient")) {
+        console.log("render main doc-pati");
+
         Response.render('mainHallForPatient', {
-        title: "Main Hall",
-        css: "mainHallForPatient",
-        js: "mainHallForPatient",
-        img: "checklist.png",
-        add: "",
-        type: request.session.user.User_type,
-        opp: request.session.opp,
+            title: "Main Hall",
+            css: "mainHallForPatient",
+            js: "mainHallForPatient",
+            img: "checklist.png",
+            add: "",
+            type: request.session.user.User_type,
+            opp: request.session.opp,
 
-    });
-}
+        });
 
-    
+    }
+    else if (request.session.user.User_type == "Pharmacist") {
+        console.log("render pharma")
+        Response.redirect('pharmacist-v');
+    }
+
+
 });
 
 
@@ -61,9 +68,9 @@ router.post('/', (req, res) => {
         case "Prescriptions":
             aspc.getPrescriptions(req.body.phone, res.end);
             break;
-        
+
         case "getMyPatients":
-            aspc.getMyPatient(1,res.end);
+            aspc.getMyPatient(1, res.end);
             break;
 
         case "chronicDisease":
@@ -79,14 +86,14 @@ router.post('/', (req, res) => {
             aspc.search_for_Medicines(req.body.searchField, res.end);
             break;
         default:
-           
+
             console.log("i Will Download File default");
             var form = new formidable.IncomingForm();
-            form.parse(req,  function (err, fields, files) {
+            form.parse(req, function (err, fields, files) {
                 console.log(fields);
                 switch (fields.typeoftheaddeditem) {
                     case "0":
-                         pool.query("INSERT INTO scan (`Scan_Name`, `Scan_Date`, `Result`, `Patient_acc_ID`) VALUES ('" + fields.nameoftheitem + "','" + fields.dateofsubmition + "','" + files.filetoupload.name + "','" + fields.searchField + "');", (error, rows) => {
+                        pool.query("INSERT INTO scan (`Scan_Name`, `Scan_Date`, `Result`, `Patient_acc_ID`) VALUES ('" + fields.nameoftheitem + "','" + fields.dateofsubmition + "','" + files.filetoupload.name + "','" + fields.searchField + "');", (error, rows) => {
                             if (error)
                                 throw error;
                             else {
@@ -99,7 +106,7 @@ router.post('/', (req, res) => {
                         });
                         break;
                     case "1":
-                         pool.query("INSERT INTO analysis (`Analysis_Name`, `Analysis_Date`, `Result`, `Patient_acc_ID`) VALUES ('" + fields.nameoftheitem + "','" + fields.dateofsubmition + "','" + files.filetoupload.name + "','" + fields.searchField + "');", (error, rows) => {
+                        pool.query("INSERT INTO analysis (`Analysis_Name`, `Analysis_Date`, `Result`, `Patient_acc_ID`) VALUES ('" + fields.nameoftheitem + "','" + fields.dateofsubmition + "','" + files.filetoupload.name + "','" + fields.searchField + "');", (error, rows) => {
                             if (error)
                                 throw error;
                             else {
@@ -111,7 +118,7 @@ router.post('/', (req, res) => {
 
                         break;
                     case "2":
-                        pool.query("INSERT INTO prescription (`Prescription_diagnosis`, `Prescription_date`, `Patient_acc_ID`, `doctor_acc_ID`) VALUES ('" + files.filetoupload.name + "','" + fields.dateofsubmition + "','" + fields.searchField + "' ,"+ id +" );", (error, rows) => {
+                        pool.query("INSERT INTO prescription (`Prescription_diagnosis`, `Prescription_date`, `Patient_acc_ID`, `doctor_acc_ID`) VALUES ('" + files.filetoupload.name + "','" + fields.dateofsubmition + "','" + fields.searchField + "' ," + id + " );", (error, rows) => {
                             if (error)
                                 throw error;
                             else {
@@ -139,17 +146,17 @@ router.post('/', (req, res) => {
                 }
 
                 if (fields.typeoftheaddeditem != 3) {
-                     var oldpath = files.filetoupload.path;
-                //new path to save in our files
-                var newpath = 'F:/Mostafa/CMP 2/semester 1/DB-MS/Pharmacy App/public/pdfs/' + files.filetoupload.name;
+                    var oldpath = files.filetoupload.path;
+                    //new path to save in our files
+                    var newpath = 'F:/Mostafa/CMP 2/semester 1/DB-MS/Pharmacy App/public/pdfs/' + files.filetoupload.name;
 
-                mv(oldpath, newpath, function (err) {
-                    if (err) throw err;
-                    res.redirect('/main-Hall');
+                    mv(oldpath, newpath, function (err) {
+                        if (err) throw err;
+                        res.redirect('/main-Hall');
 
-                });
+                    });
                 }
-               
+
             });
 
             break;
