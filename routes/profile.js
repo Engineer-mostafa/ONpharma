@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const ASPC = require('../core/patient_ASPC');
 var aspc = new ASPC();
-const { body, validationResult } = require('express-validator');
 
 router.get('/', (request, Response) => {
 

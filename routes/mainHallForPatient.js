@@ -1,7 +1,6 @@
 
 const router = require('express').Router();
-const pool = require('../core/Pool');
-const { request } = require('express');
+const pool = require('../core/pool');
 var formidable = require('formidable');
 var fs = require('fs');
 var mv = require('mv');

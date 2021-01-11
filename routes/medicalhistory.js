@@ -2,8 +2,6 @@
 
 const router = require('express').Router();
 const ASPC = require('../core/patient_ASPC');
-const pool = require('../core/Pool');
-const { request } = require('express');
 
 var aspc = new ASPC();
 
