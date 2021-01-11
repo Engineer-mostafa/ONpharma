@@ -1,4 +1,4 @@
-const pool = require('./Pool');
+const pool = require('./pool');
 const { request } = require('express');
 const bcrypt = require('bcrypt');
 
