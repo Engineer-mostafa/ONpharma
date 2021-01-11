@@ -20,7 +20,3 @@ pool.getConnection((err, connection)=>{
   pool.query = util.promisify(pool.query);
   module.exports=pool ;
   
-
-
-
-
