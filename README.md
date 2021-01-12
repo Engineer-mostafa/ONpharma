@@ -1,7 +1,9 @@
 <p align="center">
     FIRST VIRTUAL ONLINE CARE
-    -----------------------
+   ---------------------------
 </p>
+---------------------------
+
 
 <img src="public/images/booth.jpg">
 
