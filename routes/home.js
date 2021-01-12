@@ -10,6 +10,11 @@ var nodemailer = require('nodemailer');
 var qr = require('qr-image')
 var fs = require('fs');
 
+
+
+
+
+
 const user = new User();
 
 
@@ -34,6 +39,7 @@ router.get('/', (request, Response) => {
         return;
     }
     else if ((request.session.opp === 0) && (request.session.user.User_type == "Doctor" || request.session.user.User_type == "Patient")) {
+
         console.log("p-D");
         console.log(request.session.user.Fname);
 
