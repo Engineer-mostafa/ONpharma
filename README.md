@@ -1,5 +1,7 @@
-FIRST ONLINE CARE
------------------------
+<p align="center">
+    FIRST VIRTUAL ONLINE CARE
+    -----------------------
+</p>
 
 <img src="public/images/booth.jpg">
 
@@ -10,7 +12,7 @@ Home Screen
 <img src="public/images/0.png">
 
 
-Doctor View
+Doctor's View
 -----------------------
 <img src="public/images/1.png">
 
@@ -39,16 +41,16 @@ Cashier Of Pharmacy
 
 
 
-To Run App Install
+To Run The Code, Install
 ----------------------------
     NodeJS
 
 
-Then Write In Terminal
+Then, In Terminal Write 
 ----------------------------
     npm i
 
-Then Replace Script Object In The Package.json File With This Object
+Then, Replace Script Object In The Package.json File With This Object
 -------------------------------------------------------------------------
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -56,12 +58,12 @@ Then Replace Script Object In The Package.json File With This Object
     },
 
 
-Then Wirte In The Terminal
+Then, In The Terminal Wirte
 -----------------------------
     npm start
 
-Now The App Run You Should Write This Line In The Search Field In Any Browser
--------------------------------------------------------------------------------
+Now, App Is Running! Write This Line In The Search Field Of Your Browser To enjoy Our Virtual Online Care
+--------------------------------------------------------------------------------------------------------------
     localhost:3000/home
 
 
