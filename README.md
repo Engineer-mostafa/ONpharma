@@ -68,7 +68,8 @@ Now, App Is Running! Write This Line In The Search Field Of Your Browser To enjo
 
 
 
-Or Just Visit Our Website
+Or Just Visit Our Website for full experience try it from PC
 ----------------------------
     https://online-care-p.herokuapp.com/home
+    
 
