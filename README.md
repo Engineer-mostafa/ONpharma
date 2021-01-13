@@ -1,3 +1,8 @@
+<p align="center">
+    <strong><b>ON-Pharma ... The First Virtual Online Care</b></strong>
+    
+</p>
+
 # 📙 Description
 Patients and their relatives from all over the world suffer from the problem of visiting doctors and having to hold all the patient's previous prescriptions, scans and analyses or more often having to memorize all the patient's medical records and allergies. 
 ONpharma presents a solution for these problems by holding all these stuff for them in a fully structured form. Moreover, it presents a searching tool to ease the process of searching for medicines in nearby pharmacies. 
@@ -7,11 +12,6 @@ better control and manage pharmacies by showing current medicines in the stock, 
 Here, we are presenting ONpharma which is served as a partial fulfillment of the requirements for the Database course, second computer engineering, Cairo University.
 Feel free to create a pull request, add any issues or suggestions. 
 --------------------
-
-<p align="center">
-    <strong><b>ON-Pharma ... The First Virtual Online Care</b></strong>
-    
-</p>
 
 💻 Built Using
 --------------------
@@ -29,7 +29,7 @@ Feel free to create a pull request, add any issues or suggestions.
 
 Home Screen
 -----------------------
-<img src="public/images/0.png">
+![image](https://user-images.githubusercontent.com/56788883/104456115-e20c6400-55b0-11eb-830c-8ad11abb1c0b.png)
 
 
 Doctor's View
@@ -52,7 +52,7 @@ View Your Pharmacy
 <img src="public/images/4.png">
 
 
-Cashier Of Pharmacy
+Pharmacy Cashier
 -----------------------
 <img src="public/images/5.png">
 
