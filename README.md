@@ -1,4 +1,4 @@
-# Description
+# 📙 Description
 Patients and their relatives from all over the world suffer from the problem of visiting doctors and having to hold all the patient's previous prescriptions, scans and analysis or more often having to memorize all the patient's medical records and allergies. 
 ONpharma presents a solution for these problems by holding all these stuff for them in a fully structured form. Moreover, it presents a searching tool to ease the process of searching for medicines in nearby pharmacies. 
 ONpharma establishes a secure connection between the patient and the doctor and allows the doctor to directly access and view patient's medical history to provide a professional examination process for both sides. 
@@ -9,6 +9,15 @@ better control and manage pharmacies by showing current medicines in the stock, 
     ON-Pharma ... The First Virtual Online Care
 </p>
 
+💻 Built Using
+--------------------
+   * MYSQL
+   * Nodejs
+   * Express
+   * HTML
+   * Ajax
+   * Jquery
+   * Bootstrap
 
 <img src="public/images/booth.jpg">
 
