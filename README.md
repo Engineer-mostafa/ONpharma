@@ -25,7 +25,6 @@ Feel free to create a pull request, add any issues or suggestions.
    * Jquery
    * Bootstrap
 
-<img src="public/images/OnPharma.gif">
 
 
 <img src="public/images/booth.jpg">
