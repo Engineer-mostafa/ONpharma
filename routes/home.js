@@ -273,7 +273,14 @@ router.post('/',
                                 break;
 
                             case "Pharmacist":
-                                user.CreatePharmacist(lastID);
+                                var pharmacist_input ={
+                                    ph_id :lastID,
+                                    ph_name:request.body.Phamacynamep,
+                                    ph_add :request.body.pharmacyaddp
+
+                                }
+                                console.log(pharmacist_input);
+                                user.CreatePharmacist(pharmacist_input);
                                 break;
 
 
