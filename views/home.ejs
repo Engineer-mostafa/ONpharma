@@ -438,8 +438,25 @@
                                                                     name="Mobilep"
                                                                     placeholder="Enter your Mobile number" required>
                                                             </div>
-
+                                                            
                                                         </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="pharmacyname">Pharmacy Name<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="Phamacynamep"
+                                                                    class="form-control" name="Phamacynamep"
+                                                                    placeholder="Enter your Pharmacy name" required>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="Pharmacyadd">Pharmacy Address<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input type="text" id="pharmacyaddp"
+                                                                    class="form-control" name="pharmacyaddp"
+                                                                    placeholder="Enter your Pharamacy Address" required>
+                                                            </div>
+                                                        </div>
+                                                        
                             </div>
                             <div class="modal-footer">
                                 <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
@@ -523,61 +540,6 @@
 
 
             <!--RESET PASSWORD FORM---------------------------------------------------------------------------------------------------------------------------------------------------------->
-
-
-            <form id="RESETPASSWORD" class="form-validate" method="POST" action="home">
-                <input aria-hidden="true" type="text" class="hidden" name="type" value="not">
-
-
-                <div class="modal fade" id="modal-4" tabindex="-1" role="modal" aria-labelledby="modal-label-3"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-sm modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-
-                                <h4 id="modal-label-3" class="modal-title">Reset Password</h4>
-                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                            </div>
-                            <div class="modal-body">
-                                <%if(errors=="") {%>
-
-                                    <% } %>
-                                        <%if(errors.length && typeof(type) !="undefined" && type=="Reset" ) {%>
-                                            <% errors.forEach(function(error){ %>
-                                                <div class="form-row">
-                                                    <div class="alert col-md-12 alert-warning alert-dismissible fade show"
-                                                        role="alert">
-                                                        <%= error%>
-                                                            <button type="button" class="close" data-dismiss="alert"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                    </div>
-                                                </div>
-                                                <% }); %>
-                                                    <% } %>
-
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label for="Passwordl">New Password<span class="text-danger">*</span></label>
-                                        <input type="password" id="Passwordn" class="form-control" name="Passwordn"
-                                            placeholder="password" required>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="modal-footer">
-                                <button data-dismiss="modal" class="btn btn-b" type="button">Close</button>
-                                <button class="btn btn-b" type="submit">Reset</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-
 
 
 

@@ -157,16 +157,32 @@ User.prototype = {
 
     CreatePharmacist: function (user) {
         if (user) {
-            var ID = user
-            let sql = `INSERT INTO Pharmacist (Pharmacist_acc_ID) VALUES ( ?)`;
+
+
+            let sql = `INSERT INTO Pharmacist (Pharmacist_acc_ID) VALUES ('?')`;
+            console.log(sql);
             // call the query give it the sql string and the values (bind array)
-            pool.query(sql, ID).then(function (result) {
+            pool.query(sql, user.ph_id).then(function (result) {
                 // return the last inserted id. if there is no error
-                console.log('inserted pharmacist successfully....');
-                return;
+                console.log("inserted  ph -succes");
+                let sql2 = `INSERT INTO Pharmacy (pharmacy_manager_ID , pharmacy_ID,pharmacy_name ,pharmacy_address ) VALUES ( '${user.ph_id}' ,'${user.ph_id}','${user.ph_name}' ,'${user.ph_add}')`;
+                pool.query(sql2).then(function (result) {
+                    let sql3 =`UPDATE Pharmacist SET Pharmacist_pharmacy_ID= '${user.ph_id}' WHERE Pharmacist_acc_ID= ${user.ph_id} ` ;
+                    pool.query(sql3).then(function(result){
+                        console.log('done');
+
+                    }).catch(function(err){
+                        throw err ;
+                    })
+
+                    console.log('inserted pharmacist successfully....');
+                }).catch(function (err) {
+                    throw err;
+                });
             }).catch(function (err) {
                 throw err;
             });
+
 
 
         }
@@ -174,61 +190,8 @@ User.prototype = {
 
     },
 
-    forget_mypassword: function (mail = null,callback) {
-        this.find(email, function(result){
-          if (result)
-          {
-
-            console.log("i will send");
-            var transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                    user: 'mostafamagdi999.mm@gmail.com',
-                    pass: 'Mosstafalover999'
-                }
-            });
-       
-            var mailOptions = {
-                from: 'mostafamagdi999.mm@gmail.com',
-                to: `${request.session.user.acc_email}`,
-                subject: 'Sending Email to reset Password',
-                //here should redirect him to reset form 
-                //to accept base64 content in messsage
-                
-            };
-    
-            transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log('Email sent: ' + info.response);
-                }
-            });
-          }
-          else
-          {
-              callback ("EMAIL NOT FOUND");
-          }
-
-        })
-    },
-    resetmypassword : function (mail = null , newpassword)
-    {
-        /*string query = "UPDATE Employee  "
-                + " SET Salary ='" + salary + "' Where  SSN ='" + G_SSN + "';";*/
-                newpassword = bcrypt.hashSync(newpassword, 10);
-
-           let sql ="UPPDATE account  SET acc_password =  '"+ newpassword + "'  where acc_email = '"+mail+"';'" ;     
-
-           pool.query(sql ,function(result , err){
-               if (err)  throw  err
-
-               return;
-
-           })
 
 
-    }
 
 
 
