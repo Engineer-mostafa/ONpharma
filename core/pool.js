@@ -2,10 +2,10 @@ const util = require('util');
 var mysql      = require('mysql');
 
 const pool = mysql.createPool({
-  host     : 'online-care-p.mysql.database.azure.com',
-  user     : 'rootdb@online-care-p',
-  password : 'databaseserver123456789$',
-  database : 'pharmacy_app_db'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER ,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DATABASE 
 });
  
 pool.getConnection((err, connection)=>{

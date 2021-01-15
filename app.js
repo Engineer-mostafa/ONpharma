@@ -25,6 +25,8 @@ const mainHallForPatients = require('./routes/mainHallForPatient');
 const cashier = require('./routes/cashier');
 const profile = require('./routes/profile');
 
+require("dotenv").config();
+
 //local host
 const port = process.env.PORT || 3000;
 
