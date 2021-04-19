@@ -17,8 +17,7 @@ Feel free to create a pull request, add any issues or suggestions.
 
 💻 Video
 --------------------
-https://www.linkedin.com/posts/mostafa-magdi-1200121b9_healthcare-medical-medicine-ugcPost-6755563754894757888-X0zH
-
+https://drive.google.com/file/d/1J2eKql0zimkVOGVKr24aeqoqy2tcuwpA/view
 --------------------
 
 💻 Built Using
