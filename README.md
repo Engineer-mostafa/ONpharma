@@ -15,6 +15,12 @@ ONpharma can also be used by pharmacists to better control and manage pharmacies
 Feel free to create a pull request, add any issues or suggestions. 
 --------------------
 
+💻 Video
+--------------------
+https://www.linkedin.com/posts/mostafa-magdi-1200121b9_healthcare-medical-medicine-ugcPost-6755563754894757888-X0zH
+
+--------------------
+
 💻 Built Using
 --------------------
    * MYSQL
